@@ -66,7 +66,7 @@ fn App() -> Element {
     // eval for hidden and visible button when scroll
     // let eval_provider = use_eval(cx);
     let mut button_visible = use_signal(|| "hidden");
-    // let _ = use_future(move || async move {
+    // let _ = use_resource(move || async move {
     //     // Wait a little bit just to give the appearance of a loading screen
     //     tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
 
@@ -87,10 +87,8 @@ fn App() -> Element {
     //     while let Ok(res) = eval.recv().await {
     //         if res == "hidden" {
     //             button_visible.set("hidden");
-    //             println!("hidden")
     //         } else {
     //             button_visible.set("visible");
-    //             println!("visible")
     //         }
     //     }
     // });
@@ -646,9 +644,8 @@ fn App() -> Element {
                 }
             }
         }
-        // Scroll
+        // Scroll button
         a {
-            // Scroll
             class: "fixed {button_visible} right-4 bottom-4 h-11 w-11 bg-secondaryColor shadow-sm flex rounded-full text-lg text-blackColor z-50 hover:-translate-y-1 ease-in duration-200 items-center justify-center",
             onclick: move |_| { selected_menu.set(0) },
             href: "#",
