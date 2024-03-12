@@ -10,8 +10,8 @@
     <div id="main"></div>
     <!-- Note the usage of `type=module` here as this is an ES6 module -->
     <script type="module">
-      import init from "/./assets/dioxus/Fustfood.js";
-      init("/./assets/dioxus/Fustfood_bg.wasm").then((wasm) => {
+      import init from "/crabsburger/assets/dioxus/Fustfood.js";
+      init("/crabsburger/assets/dioxus/Fustfood_bg.wasm").then((wasm) => {
         if (wasm.__wbindgen_start == undefined) {
           wasm.main();
         }
@@ -22,3 +22,29 @@
     
   </body>
 </html>
+<script>// Dioxus-CLI
+// https://github.com/DioxusLabs/dioxus/tree/master/packages/cli
+
+(function () {
+  var protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  var url = protocol + '//' + window.location.host + '/_dioxus/ws';
+  var poll_interval = 8080;
+  var reload_upon_connect = () => {
+      window.setTimeout(
+          () => {
+              var ws = new WebSocket(url);
+              ws.onopen = () => window.location.reload();
+              ws.onclose = reload_upon_connect;
+          },
+          poll_interval);
+  };
+
+  var ws = new WebSocket(url);
+  ws.onmessage = (ev) => {
+      if (ev.data == "reload") {
+          window.location.reload();
+      }
+  };
+  ws.onclose = reload_upon_connect;
+})()
+</script>
