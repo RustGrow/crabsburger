@@ -126,18 +126,23 @@ fn App() -> Element {
     //     }
     // });
 
-    // Old for dioxus 0.4 version
-    // add class dark to html tag
-    // let dark = if dark_state() { "dark" } else { "" };
-    // use_effect(cx, (&dark,), |(dark,)| async move {
-    //     web_sys::window()
-    //         .unwrap()
-    //         .document()
-    //         .unwrap()
-    //         .document_element()
-    //         .unwrap()
-    //         .set_attribute("class", &(format!("{dark}")));
-    // });
+    // add dark class to html tag for tailwind css theme
+    use_effect(move || {
+        spawn({
+            to_owned![dark_state];
+            let dark = if dark_state() { "dark" } else { " " };
+            async move {
+                web_sys::window()
+                    .unwrap()
+                    .document()
+                    .unwrap()
+                    .document_element()
+                    .unwrap()
+                    .set_attribute("class", &(format!("{dark}")))
+                    .expect("error")
+            }
+        });
+    });
 
     /////////////////////////////////////////////
     /// It doesn't work for 0.4 and 0.5. I need to change local storage in browser
@@ -681,3 +686,18 @@ fn App() -> Element {
 //         }
 //     });
 // }
+
+fn change_html(theme: Signal<bool>) {
+    let dark = if theme() { "dark" } else { "" };
+    println!("{dark}");
+    use_effect(move || {
+        web_sys::window()
+            .unwrap()
+            .document()
+            .unwrap()
+            .document_element()
+            .unwrap()
+            .set_attribute("class", &(format!("{dark}")))
+            .expect("error");
+    });
+}

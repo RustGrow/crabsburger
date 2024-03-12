@@ -16,7 +16,7 @@ This example showcases the new syntax introduced in Dioxus 0.5 and utilizes sign
 
 - [ ] Create a button that appears when scrolling the page
 - [ ] Highlight the top menu when scrolling
-- [ ] Implement light and dark mode toggling and set the mode in the HTML tag as required by Tailwind CSS
+- [X] Implement light and dark mode toggling and set the mode in the HTML tag as required by Tailwind CSS
 - [ ] Save the color scheme to the browser's local storage
 - [ ] Retrieve the browser client's language
 - [ ] Change the language in the HTML tag when switching languages
