@@ -2,13 +2,13 @@
 
 Welcome to the Crabsburger example food landing page site for the [Dioxus community](https://dioxuslabs.com/)!
 
-```
+
 <div align="center">
   <h3>  
     <a href="https://dioxusgrow.github.io/crabsburger/"> Website </a>  
   </h3>
 </div>
-```
+
 
 
 ## About This Example
