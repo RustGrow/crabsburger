@@ -31,98 +31,62 @@ fn App() -> Element {
     let mut selected_menu = use_signal(|| 0);
     let mut dark_state = use_signal(|| false);
 
-    //Old for dioxus 0.4 version
     // eval for hidden and visible button when scroll
-    // let eval_provider = use_eval(cx);
-    // let button_visible = use_signal(|| "hidden");
-    // use_future(cx, (), |_| {
-    //     to_owned![eval_provider, button_visible];
-    //     async move {
-    //         let eval = eval_provider(
-    //             r#"
-    //             let button = "";
-    //             window.addEventListener('scroll', () => {
-    //               if (window.pageYOffset < 600 ) {
-    //                 button = "hidden";
-    //               } else {
-    //                 button = "visible";
-    //               }
-    //               dioxus.send(button);
-    //             });
-    //             "#,
-    //         )
-    //         .unwrap();
-    //         while let Ok(res) = eval.recv().await {
-    //             if res == "hidden" {
-    //                 button_visible.set("hidden");
-    //             } else {
-    //                 button_visible.set("visible");
-    //             }
-    //         }
-    //     }
-    // });
-
-    // New for dioxus 0.5 version. It block changes for top menu
-    // eval for hidden and visible button when scroll
-    // let eval_provider = use_eval(cx);
     let mut button_visible = use_signal(|| "hidden");
-    // let _ = use_resource(move || async move {
-    //     // Wait a little bit just to give the appearance of a loading screen
-    //     tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
+    let _ = use_resource(move || async move {
+        // Don't using tokio
+        // tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
 
-    //     let mut eval = eval(
-    //         r#"
-    //             let button = "";
-    //             window.addEventListener('scroll', () => {
-    //               if (window.pageYOffset < 600 ) {
-    //                 button = "hidden";
-    //               } else {
-    //                 button = "visible";
-    //               }
-    //               dioxus.send(button);
-    //             });
-    //             "#,
-    //     );
+        let mut eval = eval(
+            r#"
+                let button = "";
+                window.addEventListener('scroll', () => {
+                  if (window.pageYOffset < 600 ) {
+                    button = "hidden";
+                  } else {
+                    button = "visible";
+                  }
+                  dioxus.send(button);
+                });
+                "#,
+        );
 
-    //     while let Ok(res) = eval.recv().await {
-    //         if res == "hidden" {
-    //             button_visible.set("hidden");
-    //         } else {
-    //             button_visible.set("visible");
-    //         }
-    //     }
-    // });
+        while let Ok(res) = eval.recv().await {
+            if res == "hidden" {
+                button_visible.set("hidden");
+            } else {
+                button_visible.set("visible");
+            }
+        }
+    });
 
     // Old for dioxis 0.4 version
     // eval for hidden and visible border for header when scroll
     // let eval_border = use_eval(cx);
-    let header_border_visible = use_signal(|| "");
-    // use_future(cx, (), |_| {
-    //     to_owned![eval_border, header_border_visible];
-    //     async move {
-    //         let eval = eval_border(
-    //             r#"
-    //             let header_border = "";
-    //             window.addEventListener('scroll', () => {
-    //               if (window.pageYOffset < 50 ) {
-    //                 header_border = "hidden";
-    //               } else {
-    //                 header_border = "visible";
-    //               }
-    //               dioxus.send(header_border);
-    //             });
-    //             "#,
-    //         )
-    //         .unwrap();
-    //         while let Ok(res) = eval.recv().await {
-    //             if res == "hidden" {
-    //                 header_border_visible.set("");
-    //             } else {
-    //                 header_border_visible.set("border-b border-secondaryColor");
-    //             }
-    //         }
-    //     }
-    // });
+    let mut header_border_visible = use_signal(|| "");
+    let _ = use_resource(move || async move {
+        let mut eval = eval(
+            r#"
+                let header_border = "";
+                window.addEventListener('scroll', () => {
+                  if (window.pageYOffset < 50 ) {
+                    header_border = "hidden";
+                  } else {
+                    header_border = "visible";
+                  }
+                  dioxus.send(header_border);
+                });
+                "#,
+        );
+
+        while let Ok(res) = eval.recv().await {
+            if res == "hidden" {
+                header_border_visible.set("");
+            } else {
+                header_border_visible.set("border-b border-secondaryColor");
+            }
+        }
+    });
 
     // add dark class to html tag for tailwind css theme
     use_effect(move || {
