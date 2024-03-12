@@ -8,12 +8,13 @@ name = "Fustfood"
 default_platform = "web"
 
 # `build` & `serve` dist path
-out_dir = "dist"
+out_dir = "webapp"
 
 # resource (public) file folder
 asset_dir = "public"
 
 [web.app]
+base_path = "/"
 
 # HTML title tag content
 title = "fustfood"
