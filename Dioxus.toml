@@ -8,7 +8,7 @@ name = "Fustfood"
 default_platform = "web"
 
 # `build` & `serve` dist path
-out_dir = "webapp"
+out_dir = "docs"
 
 # resource (public) file folder
 asset_dir = "public"
