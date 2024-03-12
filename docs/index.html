@@ -10,8 +10,8 @@
     <div id="main"></div>
     <!-- Note the usage of `type=module` here as this is an ES6 module -->
     <script type="module">
-      import init from "///assets/dioxus/Fustfood.js";
-      init("///assets/dioxus/Fustfood_bg.wasm").then((wasm) => {
+      import init from "/./assets/dioxus/Fustfood.js";
+      init("/./assets/dioxus/Fustfood_bg.wasm").then((wasm) => {
         if (wasm.__wbindgen_start == undefined) {
           wasm.main();
         }
