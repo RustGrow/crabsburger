@@ -1,6 +1,6 @@
 # Crabsburger Example
 
-Welcome to the Crabsburger example food landing page site for the Dioxus community!
+Welcome to the Crabsburger example food landing page site for the [Dioxus community](https://dioxuslabs.com/)!
 
 ## About This Example
 
