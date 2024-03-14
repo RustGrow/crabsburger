@@ -1,9 +1,12 @@
+use crate::model::app_state::ApplicationData;
+use crate::route::Route;
 use dioxus::prelude::*;
 
 pub fn NavBar() -> Element {
+    let mut data = use_context::<ApplicationData>();
     let menu = vec!["Home", "About", "Menu", "Review", "Contact"];
     let mut menu_hidden = use_signal(|| "hidden".to_string());
-    let mut selected_menu = use_signal(|| 0);
+    // let mut selected_menu = use_signal(|| 0);
     let mut dark_state = use_signal(|| false);
 
     //Dark state eval
@@ -66,7 +69,7 @@ pub fn NavBar() -> Element {
                 div { class: "{menu_hidden} absolute top-0 left-0 w-full py-14 bg-primaryColor dark:bg-darkColor border-b border-secondaryColor md:block md:static md:py-0 md:border-none md:w-auto md:ml-auto",
                     ul { class: "flex flex-col text-center gap-5 md:flex-row",
                         { menu.iter().enumerate().map(|(id, _)| {
-                        let selected = selected_menu == id;
+                        let selected = data.selected_menu == id;
 
                         let bg_selected = match selected {
                             true => "text-secondaryColor ease-in duration-200",
@@ -76,7 +79,7 @@ pub fn NavBar() -> Element {
                         rsx! {
                             li {
                             onclick: move |_| {
-                                selected_menu.set(id);
+                                data.selected_menu.set(id);
                                 // hidden open menu from mobile
                                 menu_hidden.set("hidden".to_string())},
                             a {
@@ -140,5 +143,6 @@ pub fn NavBar() -> Element {
                 }
             }
         }
+        Outlet::<Route> {}
     )
 }

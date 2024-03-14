@@ -17,7 +17,7 @@ asset_dir = "public"
 # base_path = "crabsburger"
 
 # HTML title tag content
-# title = "fustfood"
+title = "Crabsburger"
 
 [web.watcher]
 
