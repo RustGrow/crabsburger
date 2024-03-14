@@ -6,7 +6,7 @@ module.exports = {
     // include all html files in the output (dist) directory
     "./dist/**/*.html",
   ],
-  darkMode: 'class',
+  darkMode: "class",
   theme: {
     screens: {
       sm: "480px",
@@ -15,8 +15,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        primaryColor: "#010a5e",
-        primaryColorLight: "#010d78",
+        // primaryColor: "#010a5e",
+        primaryColor: "#E6E0DE",
+        // primaryColorLight: "#010d78",
+        primaryColorLight: "#F1F1F1",
         secondaryColor: "#FFCC00",
         paragraphColor: "#c0c0c0",
         whiteColor: "#fff",
@@ -28,11 +30,11 @@ module.exports = {
       },
       keyframes: {
         move: {
-          "50%": {transform: 'translateY(-1rem)'}
-        }
+          "50%": { transform: "translateY(-1rem)" },
+        },
       },
       animation: {
-        'movingY': 'move 2s linear infinite'
+        movingY: "move 2s linear infinite",
       },
     },
     container: {
@@ -43,9 +45,9 @@ module.exports = {
       },
     },
     fontFamily: {
-      oswald: ['Oswald', 'sans-serif'],
-      dmsans: ['DM Sans', 'sans-serif']
-    }
+      oswald: ["Oswald", "sans-serif"],
+      dmsans: ["DM Sans", "sans-serif"],
+    },
   },
   plugins: [],
 };

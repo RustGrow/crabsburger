@@ -14,10 +14,10 @@ out_dir = "docs"
 asset_dir = "public"
 
 [web.app]
-base_path = "crabsburger"
+# base_path = "crabsburger"
 
 # HTML title tag content
-title = "fustfood"
+# title = "fustfood"
 
 [web.watcher]
 

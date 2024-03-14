@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
 
 /*
-! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -452,14 +452,14 @@ html{
 
 body{
   --tw-bg-opacity: 1;
-  background-color: rgb(1 10 94 / var(--tw-bg-opacity));
+  background-color: rgb(230 224 222 / var(--tw-bg-opacity));
   font-family: DM Sans, sans-serif;
   letter-spacing: 0.05em;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-:is(:where(.dark) body){
+:is(.dark body){
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
@@ -955,7 +955,7 @@ section{
 
 .border-primaryColorLight{
   --tw-border-opacity: 1;
-  border-color: rgb(1 13 120 / var(--tw-border-opacity));
+  border-color: rgb(241 241 241 / var(--tw-border-opacity));
 }
 
 .border-secondaryColor{
@@ -975,12 +975,12 @@ section{
 
 .bg-primaryColor{
   --tw-bg-opacity: 1;
-  background-color: rgb(1 10 94 / var(--tw-bg-opacity));
+  background-color: rgb(230 224 222 / var(--tw-bg-opacity));
 }
 
 .bg-primaryColorLight{
   --tw-bg-opacity: 1;
-  background-color: rgb(1 13 120 / var(--tw-bg-opacity));
+  background-color: rgb(241 241 241 / var(--tw-bg-opacity));
 }
 
 .bg-redColor{
@@ -1220,6 +1220,21 @@ section{
   opacity: 0.75;
 }
 
+:is(.dark .dark\:border-darkColorLight){
+  --tw-border-opacity: 1;
+  border-color: rgb(23 23 23 / var(--tw-border-opacity));
+}
+
+:is(.dark .dark\:bg-darkColor){
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+:is(.dark .dark\:bg-darkColorLight){
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
+}
+
 @media (min-width: 768px){
   .md\:static{
     position: static;
@@ -1353,19 +1368,4 @@ section{
   .lg\:gap-12{
     gap: 3rem;
   }
-}
-
-:is(:where(.dark) .dark\:border-darkColorLight){
-  --tw-border-opacity: 1;
-  border-color: rgb(23 23 23 / var(--tw-border-opacity));
-}
-
-:is(:where(.dark) .dark\:bg-darkColor){
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-:is(:where(.dark) .dark\:bg-darkColorLight){
-  --tw-bg-opacity: 1;
-  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
 }
