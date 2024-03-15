@@ -4,7 +4,7 @@ use super::food_card_ui::FoodCard;
 use super::home_card_icon_ui::HomeCardIcon;
 use super::promo_card_ui::PromoCard;
 use super::reviewers_card_ui::ReviewersCard;
-// use crate::components::nav_bar::NavBar;
+use crate::components::nav_bar::NavBar;
 use crate::model::app_state::ApplicationData;
 use crate::repository::category_card_repo::CATEGORY_CARDS;
 use crate::repository::food_card_repo::{BEVERAGE, BURGERS, SNACKS};
@@ -73,7 +73,7 @@ pub fn Home() -> Element {
     ////////////////////////////////////////////
 
     rsx! {
-        // NavBar {}
+        NavBar {}
         main {
             // Home ----------------------------------------------
             section { id: "home",

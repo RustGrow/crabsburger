@@ -5,16 +5,26 @@ use dioxus::prelude::*;
 
 #[derive(Routable, Clone, Debug, PartialEq)]
 #[rustfmt::skip]
-pub enum Route {    
-    #[layout(NavBar)]        
-        #[route("/")]
-        Home {},
-    #[end_layout]
+pub enum Route {
+    #[route("/")]
+    Home {},    
     #[route("/:..route")]
     PageNotFound {
         route: Vec<String>,
     },
 }
+// #[derive(Routable, Clone, Debug, PartialEq)]
+// #[rustfmt::skip]
+// pub enum Route {
+//     #[layout(NavBar)]
+//         #[route("/")]
+//         Home {},
+//     #[end_layout]
+//     #[route("/:..route")]
+//     PageNotFound {
+//         route: Vec<String>,
+//     },
+// }
 
 // #[derive(Routable, Clone, Debug, PartialEq)]
 // #[rustfmt::skip]
