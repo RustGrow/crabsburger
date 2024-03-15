@@ -7,7 +7,7 @@ use dioxus::prelude::*;
 #[rustfmt::skip]
 pub enum Route {    
     #[layout(NavBar)]        
-        #[route("/")]
+        #[route("/crabsburger")]
         Home {},
     #[end_layout]
     #[route("/:..route")]

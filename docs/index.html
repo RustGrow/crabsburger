@@ -11,8 +11,8 @@
     <div id="main"></div>
     <!-- Note the usage of `type=module` here as this is an ES6 module -->
     <script type="module">
-      import init from "/./assets/dioxus/Crabsburger.js";
-      init("/./assets/dioxus/Crabsburger_bg.wasm").then((wasm) => {
+      import init from "/crabsburger/assets/dioxus/Crabsburger.js";
+      init("/crabsburger/assets/dioxus/Crabsburger_bg.wasm").then((wasm) => {
         if (wasm.__wbindgen_start == undefined) {
           wasm.main();
         }
