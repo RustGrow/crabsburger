@@ -14,7 +14,7 @@ out_dir = "docs"
 asset_dir = "public"
 
 [web.app]
-base_path = "crabsburger"
+base_path = "/"
 
 # HTML title tag content
 title = "Crabsburger"
