@@ -6,6 +6,7 @@ pub fn NavBar() -> Element {
     let mut data = use_context::<ApplicationData>();
     let menu = vec!["Home", "About", "Menu", "Review", "Contact"];
     let mut menu_hidden = use_signal(|| "hidden".to_string());
+    // let mut theme_color = use_signal(|| "".to_string());
     // let mut selected_menu = use_signal(|| 0);
     let mut dark_state = use_signal(|| false);
 
@@ -14,7 +15,7 @@ pub fn NavBar() -> Element {
     use_effect(move || {
         spawn({
             to_owned![dark_state];
-            let dark = if dark_state() { "dark" } else { " " };
+            let dark = if dark_state() { "dark" } else { "light" };
             async move {
                 web_sys::window()
                     .unwrap()
@@ -146,3 +147,15 @@ pub fn NavBar() -> Element {
         Outlet::<Route> {}
     )
 }
+
+// pub fn change_local_storage(color: bool) {
+//     let dark = if color { "dark" } else { "light" };
+//     let _ = use_resource(move || async move {
+//         let _ = eval(&format!(
+//             r#"
+//             localStorage.setItem("mode", "{}");
+//         "#,
+//             dark
+//         ));
+//     });
+// }
