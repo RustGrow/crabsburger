@@ -1,7 +1,7 @@
 [application]
 
 # App (Project) Name
-name = "Fustfood"
+name = "Crabsburger"
 
 # Dioxus App Default Platform
 # desktop, web, mobile, ssr
@@ -28,13 +28,13 @@ reload_html = true
 watch_path = ["src", "public"]
 
 # uncomment line below if using Router
-# index_on_404 = true
+index_on_404 = true
 
 # include `assets` in web platform
 [web.resource]
 
 # CSS style file
-style = ["tailwind.css"]
+style = ["/tailwind.css"]
 
 # Javascript code file
 script = []
