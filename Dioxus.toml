@@ -8,13 +8,13 @@ name = "Crabsburger"
 default_platform = "web"
 
 # `build` & `serve` dist path
-out_dir = "docs"
+out_dir = "webapp"
 
 # resource (public) file folder
 asset_dir = "public"
 
 [web.app]
-base_path = "crabsburger"
+# base_path = ""
 
 # HTML title tag content
 title = "Crabsburger"
@@ -34,7 +34,7 @@ index_on_404 = true
 [web.resource]
 
 # CSS style file
-style = ["/crabsburger/tailwind.css"]
+style = []
 
 # Javascript code file
 script = []

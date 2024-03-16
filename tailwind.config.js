@@ -15,10 +15,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        primaryColor: "#010a5e",
-        // primaryColor: "#E6E0DE",
-        primaryColorLight: "#010d78",
-        // primaryColorLight: "#F1F1F1",
+        // primaryColor: "#010a5e",
+        primaryColor: "#E6E0DE",
+        // primaryColorLight: "#010d78",
+        primaryColorLight: "#F1F1F1",
         secondaryColor: "#FFCC00",
         paragraphColor: "#c0c0c0",
         whiteColor: "#fff",

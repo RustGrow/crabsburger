@@ -452,7 +452,7 @@ html{
 
 body{
   --tw-bg-opacity: 1;
-  background-color: rgb(1 10 94 / var(--tw-bg-opacity));
+  background-color: rgb(230 224 222 / var(--tw-bg-opacity));
   font-family: DM Sans, sans-serif;
   letter-spacing: 0.05em;
   --tw-text-opacity: 1;
@@ -955,7 +955,7 @@ section{
 
 .border-primaryColorLight{
   --tw-border-opacity: 1;
-  border-color: rgb(1 13 120 / var(--tw-border-opacity));
+  border-color: rgb(241 241 241 / var(--tw-border-opacity));
 }
 
 .border-secondaryColor{
@@ -975,12 +975,12 @@ section{
 
 .bg-primaryColor{
   --tw-bg-opacity: 1;
-  background-color: rgb(1 10 94 / var(--tw-bg-opacity));
+  background-color: rgb(230 224 222 / var(--tw-bg-opacity));
 }
 
 .bg-primaryColorLight{
   --tw-bg-opacity: 1;
-  background-color: rgb(1 13 120 / var(--tw-bg-opacity));
+  background-color: rgb(241 241 241 / var(--tw-bg-opacity));
 }
 
 .bg-redColor{

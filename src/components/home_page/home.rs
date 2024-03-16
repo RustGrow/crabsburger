@@ -78,13 +78,11 @@ pub fn Home() -> Element {
             // Home ----------------------------------------------
             section { id: "home",
                 div { class: "container flex flex-col items-center gap-10 md:flex-row",
-                    div { class: "mx-auto md:basis-1/2 lg:basis-2/5 animate-movingY",
-                        img {
-                            class: "w-60 md:w-full",
-                            src: "crabsburger/images/home-image.png",
-                            alt: "home image"
-                        }
-                    }
+                    div { class: "mx-auto md:basis-1/2 lg:basis-2/5 animate-movingY", img {
+                        class: "w-60 md:w-full",
+                        src: "images/home-image.png",
+                        alt: "home image"
+                    } }
                     div { class: "text-center md:basis-1/2 md:text-start lg:basis-3/5",
                         h1 { class: "home__title", "HAPPY TUMMY WITH TASTY CRABSBURGER." }
                         div { class: "separator mx-auto md:mx-0" }
