@@ -6,7 +6,7 @@ use dioxus::prelude::*;
 #[derive(Routable, Clone, Debug, PartialEq)]
 #[rustfmt::skip]
 pub enum Route {    
-    #[nest("/crabsburger")]
+    // #[nest("/crabsburger")]
     #[layout(NavBar)]        
         #[route("/")]
         Home {},
