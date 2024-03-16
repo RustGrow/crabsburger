@@ -14,7 +14,7 @@ out_dir = "docs"
 asset_dir = "public"
 
 [web.app]
-base_path = ""
+base_path = "crabsburger"
 
 # HTML title tag content
 title = "Crabsburger"
@@ -34,7 +34,7 @@ index_on_404 = true
 [web.resource]
 
 # CSS style file
-style = ["/tailwind.css"]
+style = ["/crabsburger/tailwind.css"]
 
 # Javascript code file
 script = []
