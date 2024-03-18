@@ -1,64 +1,18 @@
 use crate::model::app_state::ApplicationData;
 use crate::route::Route;
+use crate::utils::evals::HeaderBorderMenuVisible;
 use dioxus::prelude::*;
 
 pub fn NavBar() -> Element {
     let mut data = use_context::<ApplicationData>();
     let menu = vec!["Home", "About", "Menu", "Review", "Contact"];
-    let mut menu_hidden = use_signal(|| "hidden".to_string());
-    // let mut theme_color = use_signal(|| "".to_string());
-    // let mut selected_menu = use_signal(|| 0);
-    let mut dark_state = use_signal(|| false);
+    data.hidden_menu = use_signal(|| "hidden".to_string());
 
-    //Dark state eval
-    // add dark class to html tag for tailwind css theme
-    use_effect(move || {
-        spawn({
-            to_owned![dark_state];
-            let dark = if dark_state() { "dark" } else { "light" };
-            async move {
-                web_sys::window()
-                    .unwrap()
-                    .document()
-                    .unwrap()
-                    .document_element()
-                    .unwrap()
-                    .set_attribute("class", &(format!("{dark}")))
-                    .expect("error")
-            }
-        });
-    });
-
-    // eval for hidden and visible border for header when scroll
-    // let eval_border = use_eval(cx);
-    let mut header_border_visible = use_signal(|| "");
-    let _ = use_resource(move || async move {
-        let mut eval = eval(
-            r#"
-                let header_border = "";
-                window.addEventListener('scroll', () => {
-                  if (window.pageYOffset < 50 ) {
-                    header_border = "hidden";
-                  } else {
-                    header_border = "visible";
-                  }
-                  dioxus.send(header_border);
-                });
-                "#,
-        );
-
-        while let Ok(res) = eval.recv().await {
-            if res == "hidden" {
-                header_border_visible.set("");
-            } else {
-                header_border_visible.set("border-b border-secondaryColor");
-            }
-        }
-    });
+    HeaderBorderMenuVisible(data.header_border_visible);
 
     rsx!(
         // Header ----------------------------------
-        header { class: "bg-primaryColor dark:bg-darkColor fixed top-0 left-0 w-full z-50 {header_border_visible}",
+        header { class: "bg-primaryColor dark:bg-darkColor fixed top-0 left-0 w-full z-50 {data.header_border_visible}",
             nav { class: "container relative h-14 flex justify-between items-center",
                 div {
                     a { href: "#", class: "text-2xl uppercase font-oswald",
@@ -67,7 +21,7 @@ pub fn NavBar() -> Element {
                     }
                 }
 
-                div { class: "{menu_hidden} absolute top-0 left-0 w-full py-14 bg-primaryColor dark:bg-darkColor border-b border-secondaryColor md:block md:static md:py-0 md:border-none md:w-auto md:ml-auto",
+                div { class: "{data.hidden_menu} absolute top-0 left-0 w-full py-14 bg-primaryColor dark:bg-darkColor border-b border-secondaryColor md:block md:static md:py-0 md:border-none md:w-auto md:ml-auto",
                     ul { class: "flex flex-col text-center gap-5 md:flex-row",
                         { menu.iter().enumerate().map(|(id, _)| {
                         let selected = data.selected_menu == id;
@@ -82,7 +36,7 @@ pub fn NavBar() -> Element {
                             onclick: move |_| {
                                 data.selected_menu.set(id);
                                 // hidden open menu from mobile
-                                menu_hidden.set("hidden".to_string())},
+                                data.hidden_menu.set("hidden".to_string())},
                             a {
                                 class: "{bg_selected}",
                                 href: "#{menu[id].to_lowercase()}",
@@ -94,7 +48,7 @@ pub fn NavBar() -> Element {
                     }
                     div {
                         class: "absolute top-[0.7rem] right-4 cursor-pointer md:hidden",
-                        onclick: move |_| { menu_hidden.set("hidden".to_string()) },
+                        onclick: move |_| { data.hidden_menu.set("hidden".to_string()) },
                         svg {
                             class: " fill-current text-white",
                             xmlns: "http://www.w3.org/2000/svg",
@@ -106,10 +60,29 @@ pub fn NavBar() -> Element {
                 div { class: "flex flex-row items-center gap-5",
                     div {
                         onclick: move |_| {
-                            dark_state.set(!dark_state());
+                            if (data.theme_state)() == "light" {
+                                data.theme_state.set("dark".to_string())
+                            } else {
+                                data.theme_state.set("light".to_string())
+                            }
+                            let _ = use_resource(move || async move {
+                                let eval = eval(
+                                    r#"
+                                                                                                                                                            let color = await dioxus.recv();
+                                                                                                                                                            if (color == "light") {
+                                                                                                                                                            html.classList.remove("dark");
+                                                                                                                                                            localStorage.setItem("mode", color);
+                                                                                                                                                            } else {
+                                                                                                                                                            html.classList.add("dark");
+                                                                                                                                                            localStorage.setItem("mode", color);                                        
+                                                                                                                                                            } 
+                                                                                                                                                            "#,
+                                );
+                                eval.send((data.theme_state)().into()).unwrap();
+                            });
                         },
 
-                        {if dark_state == true {
+                        {if (data.theme_state)() == "dark" {
 
                             rsx!{
                                 svg {
@@ -132,7 +105,7 @@ pub fn NavBar() -> Element {
                             }
                         }}
                     }
-                    div { onclick: move |_| { menu_hidden.set("".to_string()) },
+                    div { onclick: move |_| { data.hidden_menu.set("".to_string()) },
                         svg {
                             class: "cursor-pointer ml-4 h-6 w-6 fill-current text-white md:hidden",
                             xmlns: "http://www.w3.org/2000/svg",
@@ -147,15 +120,3 @@ pub fn NavBar() -> Element {
         Outlet::<Route> {}
     )
 }
-
-// pub fn change_local_storage(color: bool) {
-//     let dark = if color { "dark" } else { "light" };
-//     let _ = use_resource(move || async move {
-//         let _ = eval(&format!(
-//             r#"
-//             localStorage.setItem("mode", "{}");
-//         "#,
-//             dark
-//         ));
-//     });
-// }

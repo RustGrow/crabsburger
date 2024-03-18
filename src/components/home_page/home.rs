@@ -11,6 +11,7 @@ use crate::repository::food_card_repo::{BEVERAGE, BURGERS, SNACKS};
 use crate::repository::home_card_icon_repo::HOME_CARD_ICONS;
 use crate::repository::promo_card_repo::PROMO_CARDS;
 use crate::repository::review_card_repo::REVIEWERS;
+use crate::utils::evals::ScrollButtonVisible;
 use chrono::Datelike;
 use dioxus::prelude::*;
 
@@ -18,59 +19,9 @@ pub fn Home() -> Element {
     let mut data = use_context::<ApplicationData>();
     let tabs = vec!["All", "Food", "Snack", "Beverage"];
     let mut selected_snippet = use_signal(|| 0);
+    data.scroll_button_visible = use_signal(|| "hidden".to_string());
 
-    // eval for hidden and visible button when scroll
-    let mut button_visible = use_signal(|| "hidden");
-    let _ = use_resource(move || async move {
-        // Don't using tokio
-        // tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
-
-        let mut eval = eval(
-            r#"
-                let button = "";
-                window.addEventListener('scroll', () => {
-                  if (window.pageYOffset < 600 ) {
-                    button = "hidden";
-                  } else {
-                    button = "visible";
-                  }
-                  dioxus.send(button);
-                });
-                "#,
-        );
-
-        while let Ok(res) = eval.recv().await {
-            if res == "hidden" {
-                button_visible.set("hidden");
-            } else {
-                button_visible.set("visible");
-            }
-        }
-    });
-
-    // add dark mode to localstorage
-    let local_storage = use_signal(|| "light");
-    // use_future(cx, (), |_| {
-    //     to_owned![local_storage, dark_state];
-    //     async move {
-    //         if *dark_state.get() {
-    //             local_storage(
-    //                 r#"
-    //              localStorage.setItem("mode", "dark");
-    //             "#,
-    //             )
-    //             .unwrap();
-    //         } else {
-    //             local_storage(
-    //                 r#"
-    //              localStorage.setItem("mode", "light");
-    //             "#,
-    //             )
-    //             .unwrap();
-    //         }
-    //     }
-    // });
-    ////////////////////////////////////////////
+    ScrollButtonVisible(data.scroll_button_visible);
 
     rsx! {
         NavBar {}
@@ -463,7 +414,7 @@ pub fn Home() -> Element {
         }
         // Scroll button
         a {
-            class: "fixed {button_visible} right-4 bottom-4 h-11 w-11 bg-secondaryColor shadow-sm flex rounded-full text-lg text-blackColor z-50 hover:-translate-y-1 ease-in duration-200 items-center justify-center",
+            class: "fixed {data.scroll_button_visible} right-4 bottom-4 h-11 w-11 bg-secondaryColor shadow-sm flex rounded-full text-lg text-blackColor z-50 hover:-translate-y-1 ease-in duration-200 items-center justify-center",
             onclick: move |_| { data.selected_menu.set(0) },
             href: "#",
             svg {
@@ -475,28 +426,3 @@ pub fn Home() -> Element {
         }
     }
 }
-
-// fn change_local_storage(cx: &Scoped<'_>, state: &UseState<bool>) {
-//     // add dark mode to localstorage
-//     let local_storage = use_eval(cx);
-//     use_future(cx, (), |_| {
-//         to_owned![local_storage, state];
-//         async move {
-//             if *state.get() {
-//                 local_storage(
-//                     r#"
-//                  localStorage.setItem("node", "dark");
-//                 "#,
-//                 )
-//                 .unwrap();
-//             } else {
-//                 local_storage(
-//                     r#"
-//                  localStorage.setItem("mode", "light");
-//                 "#,
-//                 )
-//                 .unwrap();
-//             }
-//         }
-//     });
-// }

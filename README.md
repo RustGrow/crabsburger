@@ -20,8 +20,8 @@ This example showcases the new syntax introduced in Dioxus 0.5 and utilizes sign
 
 ## Roadmap
 
-- [ ] Create a button that appears when scrolling the page
-- [ ] Highlight the top menu when scrolling
+- [X] Create a button that appears when scrolling the page
+- [X] Highlight the top menu when scrolling
 - [X] Implement light and dark mode toggling and set the mode in the HTML tag as required by Tailwind CSS
 - [ ] Save the color scheme to the browser's local storage
 - [ ] Retrieve the browser client's language
