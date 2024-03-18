@@ -3,21 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
-    <title></title>    
-  </head>
+    <title>Crabsburger</title>    
+  <link rel="stylesheet" href="/tailwindcssbd53e5e9b8fa2772.css">
+</head>
   <body>
     <div id="main"></div>
     <!-- Note the usage of `type=module` here as this is an ES6 module -->
     <script type="module">
-      import init from "/{base_path}/assets/dioxus/{app_name}.js";
-      init("/{base_path}/assets/dioxus/{app_name}_bg.wasm").then((wasm) => {
+      import init from "/./assets/dioxus/Crabsburger.js";
+      init("/./assets/dioxus/Crabsburger_bg.wasm").then((wasm) => {
         if (wasm.__wbindgen_start == undefined) {
           wasm.main();
         }
       });
     </script>
     <!-- <script src="/static/prism/prism.js"></script>
-    {script_include} -->
+     -->
     
   </body>
 </html>
