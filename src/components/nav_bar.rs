@@ -1,12 +1,13 @@
 use crate::model::app_state::ApplicationData;
 use crate::route::Route;
-use crate::utils::evals::HeaderBorderMenuVisible;
+use crate::utils::evals::{HeaderBorderMenuVisible, NavBarToggle};
 use dioxus::prelude::*;
 
 pub fn NavBar() -> Element {
     let mut data = use_context::<ApplicationData>();
     let menu = vec!["Home", "About", "Menu", "Review", "Contact"];
     data.hidden_menu = use_signal(|| "hidden".to_string());
+    // data.hidden_menu.set("hidden".to_string());
 
     HeaderBorderMenuVisible(data.header_border_visible);
 
@@ -60,21 +61,7 @@ pub fn NavBar() -> Element {
                             } else {
                                 data.theme_state.set("light".to_string())
                             }
-                            let _ = use_resource(move || async move {
-                                let eval = eval(
-                                    r#"
-                                                            let color = await dioxus.recv();
-                                                            if (color == "light") {
-                                                            html.classList.remove("dark");
-                                                            localStorage.setItem("mode", color);
-                                                            } else {
-                                                            html.classList.add("dark");
-                                                            localStorage.setItem("mode", color);                                        
-                                                            } 
-                                                            "#,
-                                );
-                                eval.send((data.theme_state)().into()).unwrap();
-                            });
+                            NavBarToggle(data.theme_state);
                         },
 
                         {if (data.theme_state)() == "dark" {
