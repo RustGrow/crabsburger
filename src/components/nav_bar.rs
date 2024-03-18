@@ -14,12 +14,7 @@ pub fn NavBar() -> Element {
         // Header ----------------------------------
         header { class: "bg-primaryColor dark:bg-darkColor fixed top-0 left-0 w-full z-50 {data.header_border_visible}",
             nav { class: "container relative h-14 flex justify-between items-center",
-                div {
-                    a { href: "#", class: "text-2xl uppercase font-oswald",
-                        "Crabs"
-                        span { class: "text-2xl uppercase text-secondaryColor", "Burger" }
-                    }
-                }
+                div { a { href: "#", class: "text-2xl uppercase font-oswald ", "CrabsBurger" } }
 
                 div { class: "{data.hidden_menu} absolute top-0 left-0 w-full py-14 bg-primaryColor dark:bg-darkColor border-b border-secondaryColor md:block md:static md:py-0 md:border-none md:w-auto md:ml-auto",
                     ul { class: "flex flex-col text-center gap-5 md:flex-row",
@@ -68,15 +63,15 @@ pub fn NavBar() -> Element {
                             let _ = use_resource(move || async move {
                                 let eval = eval(
                                     r#"
-                                                                                                                                                            let color = await dioxus.recv();
-                                                                                                                                                            if (color == "light") {
-                                                                                                                                                            html.classList.remove("dark");
-                                                                                                                                                            localStorage.setItem("mode", color);
-                                                                                                                                                            } else {
-                                                                                                                                                            html.classList.add("dark");
-                                                                                                                                                            localStorage.setItem("mode", color);                                        
-                                                                                                                                                            } 
-                                                                                                                                                            "#,
+                                                            let color = await dioxus.recv();
+                                                            if (color == "light") {
+                                                            html.classList.remove("dark");
+                                                            localStorage.setItem("mode", color);
+                                                            } else {
+                                                            html.classList.add("dark");
+                                                            localStorage.setItem("mode", color);                                        
+                                                            } 
+                                                            "#,
                                 );
                                 eval.send((data.theme_state)().into()).unwrap();
                             });

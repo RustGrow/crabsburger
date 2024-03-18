@@ -89,3 +89,21 @@ pub fn ScrollButtonVisible(mut visible: Signal<String>) {
         }
     });
 }
+
+pub fn NavBarToggle(theme: Signal<String>) {
+    let _ = use_resource(move || async move {
+        let eval = eval(
+            r#"
+               let color = await dioxus.recv();
+               if (color == "light") {
+                html.classList.remove("dark");
+               localStorage.setItem("mode", color);
+               } else {
+               html.classList.add("dark");
+               localStorage.setItem("mode", color);                                        
+               } 
+                "#,
+        );
+        eval.send((theme)().into()).unwrap();
+    });
+}

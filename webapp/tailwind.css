@@ -941,10 +941,6 @@ section{
   border-radius: 0.5rem;
 }
 
-.border{
-  border-width: 1px;
-}
-
 .border-b{
   border-bottom-width: 1px;
 }

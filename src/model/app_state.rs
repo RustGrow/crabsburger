@@ -1,4 +1,6 @@
 use dioxus::prelude::*;
+// pub enum Visibility {}
+// pub enum Theme {}
 
 #[derive(Clone, Copy, Default)]
 pub struct ApplicationData {
@@ -9,14 +11,14 @@ pub struct ApplicationData {
     pub hidden_menu: Signal<String>,
 }
 
-impl ApplicationData {
-    pub fn new() -> Self {
-        Self {
-            selected_menu: use_signal(|| 0 as usize),
-            theme_state: use_signal(|| "".to_string()),
-            header_border_visible: use_signal(|| "hidden".to_string()),
-            scroll_button_visible: use_signal(|| "hidden".to_string()),
-            hidden_menu: use_signal(|| "hidden".to_string()),
-        }
-    }
-}
+// impl ApplicationData {
+//     pub fn new() -> Self {
+//         Self {
+//             selected_menu: Signal::new(0 as usize),
+//             theme_state: Signal::new("".to_string()),
+//             header_border_visible: Signal::new("hidden".to_string()),
+//             scroll_button_visible: Signal::new("hidden".to_string()),
+//             hidden_menu: Signal::new("hidden".to_string()),
+//         }
+//     }
+// }

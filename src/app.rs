@@ -5,7 +5,7 @@ use dioxus::prelude::*;
 
 pub fn App() -> Element {
     use_context_provider(ApplicationData::default);
-    ApplicationData::new();
+    // ApplicationData::new();
 
     InitThemeColorState();
     rsx! { Router::<Route> {} }
