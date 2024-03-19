@@ -1128,6 +1128,11 @@ section{
   text-transform: uppercase;
 }
 
+.text-black{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .text-blackColor{
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -1136,6 +1141,11 @@ section{
 .text-paragraphColor{
   --tw-text-opacity: 1;
   color: rgb(40 1 13 / var(--tw-text-opacity));
+}
+
+.text-redColor{
+  --tw-text-opacity: 1;
+  color: rgb(204 52 51 / var(--tw-text-opacity));
 }
 
 .text-secondaryColor{
@@ -1150,12 +1160,6 @@ section{
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.shadow-lg{
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .shadow-sm{
@@ -1215,11 +1219,21 @@ section{
   line-height: 2.25rem;
 }
 
+.card-title{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .separator{
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
   height: 2px;
   width: 7rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(204 52 51 / var(--tw-bg-opacity));
+}
+
+:is(.dark .separator){
   --tw-bg-opacity: 1;
   background-color: rgb(255 204 0 / var(--tw-bg-opacity));
 }
@@ -1339,6 +1353,11 @@ section{
   background-color: rgb(29 19 79 / var(--tw-bg-opacity));
 }
 
+:is(.dark .dark\:text-secondaryColor){
+  --tw-text-opacity: 1;
+  color: rgb(255 204 0 / var(--tw-text-opacity));
+}
+
 :is(.dark .dark\:text-white){
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1347,6 +1366,19 @@ section{
 :is(.dark .dark\:shadow-white){
   --tw-shadow-color: #fff;
   --tw-shadow: var(--tw-shadow-colored);
+}
+
+:is(.dark .dark\:gradientLight){
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: #fca5a5 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(252 165 165 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: rgb(147 197 253 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #93c5fd var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-to: #86efac var(--tw-gradient-to-position);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
 }
 
 @media (min-width: 768px){

@@ -45,7 +45,7 @@
     }
 
     .separator {
-        @apply w-28 h-[2px] bg-secondaryColor my-5;
+        @apply w-28 h-[2px] bg-redColor dark:bg-secondaryColor my-5;
     }
 
     .paragraph {
@@ -54,6 +54,10 @@
 
     .gradient {
         @apply text-transparent bg-gradient-to-r from-red-500 via-blue-500 to-green-500 bg-clip-text
+    }
+
+    .gradientLight {
+        @apply text-transparent bg-gradient-to-r from-red-300 via-blue-300 to-green-300 bg-clip-text
     }
 
     .card-shadow {

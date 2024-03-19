@@ -14,7 +14,7 @@ pub fn CategoryCard(card: CategoryCard) -> Element {
             }
             div {
                 div { class: "mb-2",
-                    h4 { class: "card__title", "{card.title}" }
+                    h4 { class: "card-title", "{card.title}" }
                     p { class: "text-xs", "{card.text}" }
                 }
                 a { class: "text-blackColor cursor-pointer", href: "#", "Buy online" }

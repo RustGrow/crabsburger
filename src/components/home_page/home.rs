@@ -100,36 +100,36 @@ pub fn Home() -> Element {
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes."
                         }
                         ul { class: "grid grid-cols-2 py-5 space-y-1",
-                            li { class: "flex flex-row items-center gap-1 text-xs text-paragraphColor",
+                            li { class: "flex flex-row items-center gap-1 text-base text-paragraphColor dark:text-white",
                                 svg {
-                                    class: "h-4 w-4 fill-current text-secondaryColor",
+                                    class: "h-4 w-4 fill-current text-redColor dark:text-secondaryColor",
                                     xmlns: "http://www.w3.org/2000/svg",
                                     view_box: "0 0 448 512",
                                     path { d: "M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" }
                                 }
-                                p { "Best Price" }
+                                "Best Price"
                             }
-                            li { class: "flex flex-row items-center gap-1 text-xs text-paragraphColor",
+                            li { class: "flex flex-row items-center gap-1 text-base text-paragraphColor dark:text-white",
                                 svg {
-                                    class: "h-4 w-4 fill-current text-secondaryColor",
+                                    class: "h-4 w-4 fill-current text-redColor dark:text-secondaryColor",
                                     xmlns: "http://www.w3.org/2000/svg",
                                     view_box: "0 0 448 512",
                                     path { d: "M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" }
                                 }
                                 "Fresh Ingredient"
                             }
-                            li { class: "flex flex-row items-center gap-1 text-xs text-paragraphColor",
+                            li { class: "flex flex-row items-center gap-1 text-base text-paragraphColor dark:text-white",
                                 svg {
-                                    class: "h-4 w-4 fill-current text-secondaryColor",
+                                    class: "h-4 w-4 fill-current text-redColor dark:text-secondaryColor",
                                     xmlns: "http://www.w3.org/2000/svg",
                                     view_box: "0 0 448 512",
                                     path { d: "M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" }
                                 }
                                 "Best Service"
                             }
-                            li { class: "flex flex-row items-center gap-1 text-xs text-paragraphColor",
+                            li { class: "flex flex-row items-center gap-1 text-base text-paragraphColor dark:text-white",
                                 svg {
-                                    class: "h-4 w-4 fill-current text-secondaryColor",
+                                    class: "h-4 w-4 fill-current text-redColor dark:text-secondaryColor",
                                     xmlns: "http://www.w3.org/2000/svg",
                                     view_box: "0 0 448 512",
                                     path { d: "M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" }
@@ -278,7 +278,7 @@ pub fn Home() -> Element {
                             placeholder: "Email address"
                         }
                         a {
-                            class: "flex items-center justify-center gap-2 btn bg-blackColor hover:opacity-75",
+                            class: "flex items-center justify-center gap-2 btn text-white bg-blackColor hover:opacity-75",
                             href: "",
                             svg {
                                 class: "fill-current text-white",
@@ -297,7 +297,7 @@ pub fn Home() -> Element {
         footer {
             div { class: "flex flex-row justify-center items-center w-full h-full",
                 a {
-                    class: " py-8 text-transparent text-4xl uppercase font-poppinsRegular font-bold bg-gradient-to-r from-red-500 via-blue-500 to-green-500 bg-clip-text drop-shadow shadow-black dark:shadow-white",
+                    class: " py-8  text-4xl uppercase font-poppinsRegular font-bold gradient drop-shadow shadow-black dark:shadow-white",
                     href: "",
                     "CrabsBurger"
                 }
@@ -342,7 +342,7 @@ pub fn Home() -> Element {
                                 h3 { class: "text-lg uppercase font-oswald", "phone" }
                                 p { class: "flex items-center gap-2 text-xs",
                                     svg {
-                                        class: "fill-current h-5 w-5 text-secondaryColor",
+                                        class: "fill-current h-5 w-5 text-redColor dark:text-secondaryColor",
                                         xmlns: "http://www.w3.org/2000/svg",
                                         view_box: "0 0 512 512",
                                         path { d: "M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" }
@@ -354,7 +354,7 @@ pub fn Home() -> Element {
                                 h3 { class: "text-lg uppercase font-oswald", "email" }
                                 p { class: "flex items-center gap-2 text-xs",
                                     svg {
-                                        class: "fill-current h-5 w-5 text-secondaryColor",
+                                        class: "fill-current h-5 w-5 text-redColor dark:text-secondaryColor",
                                         xmlns: "http://www.w3.org/2000/svg",
                                         view_box: "0 0 512 512",
                                         path { d: "M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" }
@@ -368,7 +368,7 @@ pub fn Home() -> Element {
                                 h3 { class: "text-lg uppercase font-oswald", "address" }
                                 p { class: "flex items-center gap-2 text-xs",
                                     svg {
-                                        class: "fill-current h-5 w-5 cursor-pointer text-secondaryColor",
+                                        class: "fill-current h-5 w-5 cursor-pointer text-redColor dark:text-secondaryColor",
                                         xmlns: "http://www.w3.org/2000/svg",
                                         view_box: "0 0 384 512",
                                         path { d: "M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" }
@@ -380,13 +380,13 @@ pub fn Home() -> Element {
                                 h3 { class: "text-lg uppercase font-oswald", "follow us" }
                                 div { class: "space-x-3 flex flex-row",
                                     svg {
-                                        class: "fill-current h-5 w-5 cursor-pointer text-secondaryColor hover:-translate-y-1 ease-in duration-200",
+                                        class: "fill-current h-5 w-5 cursor-pointer text-redColor dark:text-secondaryColor hover:-translate-y-1 ease-in duration-200",
                                         xmlns: "http://www.w3.org/2000/svg",
                                         view_box: "0 0 320 512",
                                         path { d: "M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" }
                                     }
                                     svg {
-                                        class: "fill-current h-5 w-5 cursor-pointer text-secondaryColor hover:-translate-y-1 ease-in duration-200",
+                                        class: "fill-current h-5 w-5 cursor-pointer text-redColor dark:text-secondaryColor hover:-translate-y-1 ease-in duration-200",
                                         xmlns: "http://www.w3.org/2000/svg",
                                         height: "16",
                                         width: "16",
@@ -394,7 +394,7 @@ pub fn Home() -> Element {
                                         path { d: "M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" }
                                     }
                                     svg {
-                                        class: "fill-current h-5 w-5 cursor-pointer text-secondaryColor hover:-translate-y-1 ease-in duration-200",
+                                        class: "fill-current h-5 w-5 cursor-pointer text-redColor dark:text-secondaryColor hover:-translate-y-1 ease-in duration-200",
                                         xmlns: "http://www.w3.org/2000/svg",
                                         height: "16",
                                         width: "14",
@@ -407,7 +407,8 @@ pub fn Home() -> Element {
                     }
                     div { class: "flex flex-col items-center border-t border-primaryColorLight dark:border-darkColorLight py-5 md:flex-row md:justify-between",
                         p { class: "paragraph",
-                            "CrabsBurger Template Kit with ❤️ to "
+                            span { class: "uppercase gradient", "CrabsBurger" }
+                            " Template Kit with ❤️ to "
                             a { href: "https://dioxuslabs.com/", alt: "Dioxus labs", "Dioxus" }
                         }
                         p { class: "paragraph",

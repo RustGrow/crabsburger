@@ -14,10 +14,10 @@ pub fn FoodCard(card: FoodCard) -> Element {
             }
             div { class: "pt-5",
                 div { class: "mb-2",
-                    h4 { class: "card__title", "{card.title}" }
+                    h4 { class: "card-title", "{card.title}" }
                     p { class: "paragraph", "{card.description}" }
                 }
-                p { class: " text-secondaryColor", "{card.price}" }
+                p { class: " text-black dark:text-secondaryColor", "{card.price}" }
             }
         }
     }

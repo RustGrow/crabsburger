@@ -11,10 +11,14 @@ pub fn PromoCard(card: PromoCard) -> Element {
                 alt: "{card.img.alt}"
             }
             div { class: "space-y-2 pt-5 md:pt-0",
-                p { class: "text-xs text-secondaryColor", "{card.promo_type}" }
-                h3 { class: "card__title", "{card.title}" }
+                p { class: "text-base text-redColor dark:text-secondaryColor", "{card.promo_type}" }
+                h3 { class: "card-title", "{card.title}" }
                 p { class: "paragraph", "{card.description}" }
-                a { class: "text-xs text-secondaryColor", href: "#", "Buy online" }
+                a {
+                    class: "text-base text-redColor dark:text-secondaryColor",
+                    href: "#",
+                    "Buy online"
+                }
             }
         }
     }
