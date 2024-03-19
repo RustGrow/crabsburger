@@ -49,11 +49,15 @@
     }
 
     .paragraph {
-        @apply font-poppinsRegular text-paragraphColor dark:text-whiteColor text-lg font-medium leading-5;
+        @apply font-poppinsRegular text-paragraphColor dark:text-whiteColor text-base font-medium leading-5;
     }
 
     .gradient {
         @apply text-transparent bg-gradient-to-r from-red-500 via-blue-500 to-green-500 bg-clip-text
+    }
+
+    .card-shadow {
+        @apply shadow-lg dark:shadow-[#402F95]
     }
 }
 

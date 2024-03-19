@@ -5,7 +5,7 @@ use dioxus::prelude::*;
 pub fn FoodCard(card: FoodCard) -> Element {
     rsx! {
         li { class: "item_wrap",
-            div { class: "h-56 grid place-items-center bg-primaryColorLight dark:bg-darkColorLight rounded-3xl hover:bg-secondaryColor ease-linear duration-200 lg:h-40",
+            div { class: "h-56 grid place-items-center bg-primaryColorLight dark:bg-darkColorLight rounded-3xl hover:bg-secondaryColor ease-linear duration-200 lg:h-40 card-shadow",
                 img {
                     class: "w-40 hover:scale-110 ease-linear duration-200 md:w-48 lg:w-24",
                     src: card.img_path,

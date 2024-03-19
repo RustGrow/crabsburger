@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 #[component]
 pub fn PromoCard(card: PromoCard) -> Element {
     rsx! {
-        div { class: "bg-primaryColorLight dark:bg-darkColorLight flex flex-col p-5 rounded-lg md:flex-row md:items-center lg:flex-row-reverse lg:flex-1",
+        div { class: "bg-primaryColorLight dark:bg-darkColorLight flex flex-col p-5 rounded-lg md:flex-row md:items-center lg:flex-row-reverse lg:flex-1 card-shadow",
             img {
                 class: "w-40 mx-auto hover:animate-movingY md:mx-5",
                 src: "{card.img.src}",

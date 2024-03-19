@@ -5,7 +5,7 @@ use dioxus::prelude::*;
 pub fn ReviewersCard(card: ReviewCard) -> Element {
     rsx! {
         li { class: "",
-            div { class: "flex flex-col gap-5 bg-primaryColor dark:bg-darkColor rounded-lg p-6",
+            div { class: "flex flex-col gap-5 bg-primaryColor dark:bg-darkColor rounded-lg p-6 card-shadow",
                 p { class: "paragraph", "{card.paragraph}" }
                 div { class: "flex items-center",
                     img {

@@ -55,7 +55,7 @@ pub fn HeaderBorderMenuVisible(mut visible: Signal<String>) {
             if res == "hidden" {
                 visible.set("".to_string());
             } else {
-                visible.set("border-b border-secondaryColor shadow-lg".to_string());
+                visible.set("border-b border-secondaryColor card-shadow".to_string());
             }
         }
     });

@@ -26,8 +26,10 @@ module.exports = {
         blackColor: "#000",
         greenColor: "#007936",
         redColor: "#cc3433",
-        darkColor: "#000",
-        darkColorLight: "#171717",
+        // darkColor: "#000",
+        darkColor: "#151031",
+        // darkColorLight: "#171717",
+        darkColorLight: "#1D134F",
       },
       keyframes: {
         move: {
