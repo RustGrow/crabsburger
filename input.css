@@ -10,7 +10,7 @@
     }
     
     body {
-        @apply text-whiteColor bg-primaryColor tracking-wider font-dmsans dark:bg-darkColor;
+        @apply text-[#28010d] dark:text-whiteColor bg-primaryColor tracking-wider font-dmsans dark:bg-darkColor;
     }
 
     section {
@@ -30,17 +30,17 @@
 }
 
 @layer utilities {
-    .home__title,
-    .card__title,
-    .section__title {
+    .home-title,
+    .card-title,
+    .section-title {
         @apply text-4xl font-oswald font-bold uppercase lg:text-6xl;
     }
 
-    .section__title {
+    .section-title {
         @apply text-3xl;
     }
 
-    .card__title {
+    .card-title {
         @apply text-xl;
     }
 
@@ -49,11 +49,20 @@
     }
 
     .paragraph {
-        @apply text-paragraphColor text-xs leading-5;
+        @apply font-poppinsRegular text-paragraphColor dark:text-whiteColor text-lg font-medium leading-5;
+    }
+
+    .gradient {
+        @apply text-transparent bg-gradient-to-r from-red-500 via-blue-500 to-green-500 bg-clip-text
     }
 }
 
 .tabs_wrap ul li:hover,
 .tabs_wrap ul li.active {
     @apply bg-secondaryColor text-blackColor;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/Poppins-Regular.ttf");
 }

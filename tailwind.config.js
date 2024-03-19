@@ -20,7 +20,8 @@ module.exports = {
         // primaryColorLight: "#010d78",
         primaryColorLight: "#F1F1F1",
         secondaryColor: "#FFCC00",
-        paragraphColor: "#c0c0c0",
+        // paragraphColor: "#c0c0c0",
+        paragraphColor: "#28010d",
         whiteColor: "#fff",
         blackColor: "#000",
         greenColor: "#007936",
@@ -47,6 +48,7 @@ module.exports = {
     fontFamily: {
       oswald: ["Oswald", "sans-serif"],
       dmsans: ["DM Sans", "sans-serif"],
+      poppinsRegular: ["PoppinsRegular", "serif"],
     },
   },
   plugins: [],

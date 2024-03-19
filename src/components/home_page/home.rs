@@ -34,7 +34,10 @@ pub fn Home() -> Element {
                         alt: "home image"
                     } }
                     div { class: "text-center md:basis-1/2 md:text-start lg:basis-3/5",
-                        h1 { class: "home__title", "HAPPY TUMMY WITH TASTY CRABSBURGER." }
+                        h1 { class: "home-title drop-shadow shadow-black dark:shadow-white",
+                            "HAPPY TUMMY WITH TASTY "
+                            span { class: "gradient", "CRABSBURGER" }
+                        }
                         div { class: "separator mx-auto md:mx-0" }
                         p { class: "paragraph",
                             "The ultimate destination for burger fans who want to indulge in mouth-watering and satisfying burgers. We use only fresh and quality ingredients to make our burgers, and we offer a variety of options to suit your taste. Come and visit us today, or order online and get a free drink. You will love our burgers."
@@ -89,7 +92,7 @@ pub fn Home() -> Element {
                         alt: "about image"
                     } }
                     div { class: "flex-1",
-                        h2 { class: "section__title",
+                        h2 { class: "section-title",
                             "FIND FOOD AND DRINKS, ALL-IN-ONE PLACE FOR YOUR BEST TASTE."
                         }
                         div { class: "separator" }
@@ -142,7 +145,7 @@ pub fn Home() -> Element {
             section { id: "menu",
                 div { class: "container",
                     div { class: "max-w-md mx-auto text-center",
-                        h2 { class: "section__title", "OUR BEST MENU" }
+                        h2 { class: "section-title", "OUR BEST MENU" }
                         div { class: "separator mx-auto" }
                         p { class: "paragraph",
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."
@@ -166,7 +169,7 @@ pub fn Home() -> Element {
                             }
                         }
                     }
-                    div { class: "menu__items",
+                    div { class: "menu-items",
                         ul { class: "grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-12",
                             match selected_snippet() {
                         1 => {
@@ -241,7 +244,7 @@ pub fn Home() -> Element {
                 class: "bg-primaryColorLight dark:bg-darkColorLight py-20",
                 div { class: "container",
                     div { class: "max-w-md mx-auto text-center",
-                        h2 { class: "section__title", "CUSTOMER REVIEW" }
+                        h2 { class: "section-title", "CUSTOMER REVIEW" }
                         div { class: "separator mx-auto" }
                         p { class: "paragraph",
                             "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."
@@ -265,7 +268,7 @@ pub fn Home() -> Element {
             section { class: "bg-secondaryColor py-16", id: "contact",
                 div { class: "container flex flex-col gap-5 md:items-center md:flex-row",
                     div { class: "space-y-4 md:flex-1",
-                        h2 { class: "section__title text-blackColor", "GET EXCLUSIVE UPDATE" }
+                        h2 { class: "section-title text-blackColor", "GET EXCLUSIVE UPDATE" }
                         p { class: "text-sm", "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
                     }
                     div { class: "flex flex-col gap-3 md:flex-row md:flex-1",
@@ -292,15 +295,18 @@ pub fn Home() -> Element {
             }
         }
         footer {
-            section { class: "footer",
+            div { class: "flex flex-row justify-center items-center w-full h-full",
+                a {
+                    class: " py-8 text-transparent text-4xl uppercase font-poppinsRegular font-bold bg-gradient-to-r from-red-500 via-blue-500 to-green-500 bg-clip-text drop-shadow shadow-black dark:shadow-white",
+                    href: "",
+                    "CrabsBurger"
+                }
+            }
+            div { class: "footer",
                 div { class: "container",
                     ul { class: "grid grid-cols-1 items-start gap-5 pb-5 md:grid-cols-2 lg:grid-cols-4",
                         li {
                             div { class: "space-y-3",
-                                a { class: "text-4xl font-oswald uppercase", href: "",
-                                    "Crabs"
-                                    span { class: "text-secondaryColor", "Burger" }
-                                }
                                 p { class: "text-sm",
                                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
                                 }

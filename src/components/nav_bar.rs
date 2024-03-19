@@ -15,7 +15,13 @@ pub fn NavBar() -> Element {
         // Header ----------------------------------
         header { class: "bg-primaryColor dark:bg-darkColor fixed top-0 left-0 w-full z-50 {data.header_border_visible}",
             nav { class: "container relative h-14 flex justify-between items-center",
-                div { a { href: "#", class: "text-2xl uppercase font-oswald ", "CrabsBurger" } }
+                div {
+                    a {
+                        href: "#",
+                        class: "text-2xl uppercase font-poppinsRegular font-bold gradient drop-shadow shadow-black dark:shadow-white",
+                        "CrabsBurger"
+                    }
+                }
 
                 div { class: "{data.hidden_menu} absolute top-0 left-0 w-full py-14 bg-primaryColor dark:bg-darkColor border-b border-secondaryColor md:block md:static md:py-0 md:border-none md:w-auto md:ml-auto",
                     ul { class: "flex flex-col text-center gap-5 md:flex-row",
@@ -23,8 +29,8 @@ pub fn NavBar() -> Element {
                         let selected = data.selected_menu == id;
 
                         let bg_selected = match selected {
-                            true => "text-secondaryColor ease-in duration-200",
-                            false => "hover:text-secondaryColor ease-in duration-200",
+                            true => "gradient ease-in duration-200",
+                            false => "hover:gradient ease-in duration-200",
                         };
 
                         rsx! {
@@ -68,7 +74,7 @@ pub fn NavBar() -> Element {
 
                             rsx!{
                                 svg {
-                                    class: "cursor-pointer ml-4 h-6 w-6 fill-current text-white",
+                                    class: "cursor-pointer ml-4 h-6 w-6 fill-current text-paragraphColor dark:text-white",
                                     xmlns: "http://www.w3.org/2000/svg",
                                     view_box: "0 -960 960 960",
                                     // sun icon
@@ -78,7 +84,7 @@ pub fn NavBar() -> Element {
 
                             rsx!{
                                 svg {
-                                class: "cursor-pointer ml-4 h-6 w-6 fill-current text-white",
+                                class: "cursor-pointer ml-4 h-6 w-6 fill-current text-paragraphColor dark:text-white",
                                 xmlns: "http://www.w3.org/2000/svg",
                                 view_box: "0 0 24 24",
                                 // moon icon
@@ -89,7 +95,7 @@ pub fn NavBar() -> Element {
                     }
                     div { onclick: move |_| { data.hidden_menu.set("".to_string()) },
                         svg {
-                            class: "cursor-pointer ml-4 h-6 w-6 fill-current text-white md:hidden",
+                            class: "cursor-pointer ml-4 h-6 w-6 fill-current text-paragraphColor dark:text-white md:hidden",
                             xmlns: "http://www.w3.org/2000/svg",
                             view_box: "0 0 24 24",
                             // hamburger icon
