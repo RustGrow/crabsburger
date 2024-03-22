@@ -4,7 +4,7 @@ use crate::utils::evals::InitThemeColorState;
 use dioxus::prelude::*;
 
 pub fn App() -> Element {
-    use_context_provider(ApplicationData::default);
+    use_context_provider(ApplicationData::new);
 
     InitThemeColorState();
     rsx! { Router::<Route> {} }

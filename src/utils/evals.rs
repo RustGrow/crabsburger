@@ -1,6 +1,7 @@
 use crate::model::app_state::ApplicationData;
 use dioxus::prelude::*;
 
+// Get colour from local storage and set to html when page loads or reloads
 pub fn InitThemeColorState() {
     let mut data = use_context::<ApplicationData>();
     let _ = use_resource(move || async move {
@@ -35,7 +36,8 @@ pub fn InitThemeColorState() {
     });
 }
 
-pub fn HeaderBorderMenuVisible(mut visible: Signal<String>) {
+// Change the style of the navigation menu when scrolling
+pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<String>) {
     let _ = use_resource(move || async move {
         let mut eval = eval(
             r#"
@@ -44,7 +46,7 @@ pub fn HeaderBorderMenuVisible(mut visible: Signal<String>) {
                   if (window.pageYOffset < 50 ) {
                     header_border = "hidden";
                   } else {
-                    header_border = "visible";
+                    header_border = "";
                   }
                   dioxus.send(header_border);
                 });
@@ -53,9 +55,9 @@ pub fn HeaderBorderMenuVisible(mut visible: Signal<String>) {
 
         while let Ok(res) = eval.recv().await {
             if res == "hidden" {
-                visible.set("".to_string());
+                navbar_style.set("".to_string());
             } else {
-                visible.set("border-b border-secondaryColor card-shadow".to_string());
+                navbar_style.set("border-b border-secondaryColor card-shadow".to_string());
             }
         }
     });

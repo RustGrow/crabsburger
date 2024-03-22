@@ -1,24 +1,24 @@
 use crate::model::app_state::ApplicationData;
 use crate::route::Route;
-use crate::utils::evals::{HeaderBorderMenuVisible, NavBarToggle};
+use crate::utils::evals::{toggle_navbar_style_on_scroll, NavBarToggle};
 use dioxus::prelude::*;
 
 pub fn NavBar() -> Element {
     let mut data = use_context::<ApplicationData>();
     let menu = vec!["Home", "About", "Menu", "Review", "Contact"];
-    data.hidden_menu = use_signal(|| "hidden".to_string());
+    // data.hidden_menu = use_signal(|| "hidden".to_string());
     // data.hidden_menu.set("hidden".to_string());
 
-    HeaderBorderMenuVisible(data.header_border_visible);
+    toggle_navbar_style_on_scroll(data.header_border_style_on_scroll);
 
     rsx!(
         // Header ----------------------------------
-        header { class: "bg-primaryColor dark:bg-darkColor fixed top-0 left-0 w-full z-50 {data.header_border_visible}",
+        header { class: "bg-primaryColor dark:bg-darkColor fixed top-0 left-0 w-full z-50 {data.header_border_style_on_scroll}",
             nav { class: "container relative h-14 flex justify-between items-center",
                 div {
                     a {
                         href: "#",
-                        class: "text-2xl uppercase font-poppinsRegular font-bold gradient drop-shadow shadow-black dark:shadow-white",
+                        class: "text-2xl uppercase font-poppinsRegular font-bold gradient  drop-shadow shadow-black dark:shadow-white",
                         "CrabsBurger"
                     }
                 }

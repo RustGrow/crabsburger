@@ -995,30 +995,6 @@ section{
   background-color: rgb(255 204 0 / var(--tw-bg-opacity));
 }
 
-.bg-gradient-to-r{
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
-}
-
-.from-red-500{
-  --tw-gradient-from: #ef4444 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(239 68 68 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.via-blue-500{
-  --tw-gradient-to: rgb(59 130 246 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), #3b82f6 var(--tw-gradient-via-position), var(--tw-gradient-to);
-}
-
-.to-green-500{
-  --tw-gradient-to: #22c55e var(--tw-gradient-to-position);
-}
-
-.bg-clip-text{
-  -webkit-background-clip: text;
-          background-clip: text;
-}
-
 .fill-current{
   fill: currentColor;
 }
@@ -1151,10 +1127,6 @@ section{
 .text-secondaryColor{
   --tw-text-opacity: 1;
   color: rgb(255 204 0 / var(--tw-text-opacity));
-}
-
-.text-transparent{
-  color: transparent;
 }
 
 .text-white{
@@ -1366,19 +1338,6 @@ section{
 :is(.dark .dark\:shadow-white){
   --tw-shadow-color: #fff;
   --tw-shadow: var(--tw-shadow-colored);
-}
-
-:is(.dark .dark\:gradientLight){
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
-  --tw-gradient-from: #fca5a5 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(252 165 165 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  --tw-gradient-to: rgb(147 197 253 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), #93c5fd var(--tw-gradient-via-position), var(--tw-gradient-to);
-  --tw-gradient-to: #86efac var(--tw-gradient-to-position);
-  -webkit-background-clip: text;
-          background-clip: text;
-  color: transparent;
 }
 
 @media (min-width: 768px){
