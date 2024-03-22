@@ -1,4 +1,4 @@
-use crate::model::app_state::ApplicationData;
+use crate::model::app_state::{ApplicationData, Visibility};
 use dioxus::prelude::*;
 
 // Get colour from local storage and set to html when page loads or reloads
@@ -37,7 +37,7 @@ pub fn InitThemeColorState() {
 }
 
 // Change the style of the navigation menu when scrolling
-pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<String>) {
+pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<Visibility>) {
     let _ = use_resource(move || async move {
         let mut eval = eval(
             r#"
@@ -55,15 +55,16 @@ pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<String>) {
 
         while let Ok(res) = eval.recv().await {
             if res == "hidden" {
-                navbar_style.set("".to_string());
+                navbar_style.set(Visibility::Hidden);
             } else {
-                navbar_style.set("border-b border-secondaryColor card-shadow".to_string());
+                // navbar_style.set("border-b border-secondaryColor card-shadow".to_string());
+                navbar_style.set(Visibility::Visible);
             }
         }
     });
 }
 
-pub fn ScrollButtonVisible(mut visible: Signal<String>) {
+pub fn ScrollButtonVisible(mut visible: Signal<Visibility>) {
     let _ = use_resource(move || async move {
         // Don't using tokio
         // tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
@@ -84,9 +85,9 @@ pub fn ScrollButtonVisible(mut visible: Signal<String>) {
 
         while let Ok(res) = eval.recv().await {
             if res == "hidden" {
-                visible.set("hidden".to_string());
+                visible.set(Visibility::Hidden);
             } else {
-                visible.set("visible".to_string());
+                visible.set(Visibility::Visible);
             }
         }
     });

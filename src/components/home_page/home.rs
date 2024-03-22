@@ -4,7 +4,7 @@ use super::food_card_ui::FoodCard;
 use super::home_card_icon_ui::HomeCardIcon;
 use super::promo_card_ui::PromoCard;
 use super::reviewers_card_ui::ReviewersCard;
-use crate::model::app_state::ApplicationData;
+use crate::model::app_state::{ApplicationData, Visibility};
 use crate::repository::category_card_repo::CATEGORY_CARDS;
 use crate::repository::food_card_repo::{BEVERAGE, BURGERS, SNACKS};
 use crate::repository::home_card_icon_repo::HOME_CARD_ICONS;
@@ -18,7 +18,7 @@ pub fn Home() -> Element {
     let mut data = use_context::<ApplicationData>();
     let tabs = vec!["All", "Burger", "Snack", "Beverage"];
     let mut selected_snippet = use_signal(|| 0);
-    data.scroll_button_visibility = use_signal(|| "hidden".to_string());
+    data.scroll_button_visibility = use_signal(|| Visibility::Hidden);
 
     ScrollButtonVisible(data.scroll_button_visibility);
 
@@ -420,7 +420,8 @@ pub fn Home() -> Element {
         }
         // Scroll button
         a {
-            class: "fixed {data.scroll_button_visibility} right-4 bottom-4 h-11 w-11 bg-secondaryColor shadow-sm flex rounded-full text-lg text-blackColor z-50 hover:-translate-y-1 ease-in duration-200 items-center justify-center",
+            class: "fixed right-4 bottom-4 h-11 w-11 bg-secondaryColor shadow-sm flex rounded-full text-lg text-blackColor z-50 hover:-translate-y-1 ease-in duration-200 items-center justify-center",
+            class: if *data.scroll_button_visibility.read() == Visibility::Hidden { "hidden" } else { "" },
             onclick: move |_| { data.selected_menu.set(0) },
             href: "#",
             svg {
