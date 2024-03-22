@@ -18,9 +18,11 @@ pub fn Home() -> Element {
     let mut data = use_context::<ApplicationData>();
     let tabs = vec!["All", "Burger", "Snack", "Beverage"];
     let mut selected_snippet = use_signal(|| 0);
-    data.scroll_button_visibility = use_signal(|| Visibility::Hidden);
+    // data.scroll_button_visibility = use_signal(|| Visibility::Hidden);
+    let vis = use_signal(|| Visibility::Hidden);
+    // vis.set(Visibility::Visible);
 
-    ScrollButtonVisible(data.scroll_button_visibility);
+    ScrollButtonVisible(vis);
 
     rsx! {
         // NavBar {}
@@ -421,7 +423,8 @@ pub fn Home() -> Element {
         // Scroll button
         a {
             class: "fixed right-4 bottom-4 h-11 w-11 bg-secondaryColor shadow-sm flex rounded-full text-lg text-blackColor z-50 hover:-translate-y-1 ease-in duration-200 items-center justify-center",
-            class: if *data.scroll_button_visibility.read() == Visibility::Hidden { "hidden" } else { "" },
+            // class: if *data.scroll_button_visibility.read() == Visibility::Hidden { "hidden" } else { "" },
+            class: if *vis.read() == Visibility::Hidden { "hidden" } else { "" },
             onclick: move |_| { data.selected_menu.set(0) },
             href: "#",
             svg {

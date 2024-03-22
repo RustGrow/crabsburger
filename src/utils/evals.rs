@@ -37,32 +37,32 @@ pub fn InitThemeColorState() {
 }
 
 // Change the style of the navigation menu when scrolling
-pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<Visibility>) {
-    let _ = use_resource(move || async move {
-        let mut eval = eval(
-            r#"
-                let header_border = "";
-                window.addEventListener('scroll', () => {
-                  if (window.pageYOffset < 50 ) {
-                    header_border = "hidden";
-                  } else {
-                    header_border = "";
-                  }
-                  dioxus.send(header_border);
-                });
-                "#,
-        );
+// pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<Visibility>) {
+//     let _ = use_resource(move || async move {
+//         let mut eval = eval(
+//             r#"
+//                 let header_border = "";
+//                 window.addEventListener('scroll', () => {
+//                   if (window.pageYOffset < 50 ) {
+//                     header_border = "hidden";
+//                   } else {
+//                     header_border = "";
+//                   }
+//                   dioxus.send(header_border);
+//                 });
+//                 "#,
+//         );
 
-        while let Ok(res) = eval.recv().await {
-            if res == "hidden" {
-                navbar_style.set(Visibility::Hidden);
-            } else {
-                // navbar_style.set("border-b border-secondaryColor card-shadow".to_string());
-                navbar_style.set(Visibility::Visible);
-            }
-        }
-    });
-}
+//         while let Ok(res) = eval.recv().await {
+//             if res == "hidden" {
+//                 navbar_style.set(Visibility::Hidden);
+//             } else {
+//                 // navbar_style.set("border-b border-secondaryColor card-shadow".to_string());
+//                 navbar_style.set(Visibility::Visible);
+//             }
+//         }
+//     });
+// }
 
 pub fn ScrollButtonVisible(mut visible: Signal<Visibility>) {
     let _ = use_resource(move || async move {
@@ -85,9 +85,9 @@ pub fn ScrollButtonVisible(mut visible: Signal<Visibility>) {
 
         while let Ok(res) = eval.recv().await {
             if res == "hidden" {
-                visible.set(Visibility::Hidden);
+                *visible.write() = Visibility::Hidden;
             } else {
-                visible.set(Visibility::Visible);
+                *visible.write() = Visibility::Visible;
             }
         }
     });
