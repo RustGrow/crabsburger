@@ -1,55 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" id="html" class="ltr">
+<html>
   <head>
+    <title>Crabsburger</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
-    <title>Crabsburger</title>    
-  <link rel="stylesheet" href="/tailwindcss4640a65b4f0194f9.css">
-</head>
+  <link rel="preload" href="/./assets/dioxus/Crabsburger_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+            <link rel="preload" href="/./assets/dioxus/Crabsburger.js" as="script">
+            </head>
   <body>
     <div id="main"></div>
-    <!-- Note the usage of `type=module` here as this is an ES6 module -->
-    <script type="module">
-      import init from "/./assets/dioxus/Crabsburger.js";
-      init("/./assets/dioxus/Crabsburger_bg.wasm").then((wasm) => {
-        if (wasm.__wbindgen_start == undefined) {
-          wasm.main();
-        }
-      });
-    </script>
-    <!-- <script src="/static/prism/prism.js"></script>
-     -->
-    
-  </body>
+  <script>
+            // We can't use a module script here because we need to start the script immediately when streaming
+            import("/./assets/dioxus/Crabsburger.js").then(
+                ({ default: init }) => {
+                init("/./assets/dioxus/Crabsburger_bg.wasm").then((wasm) => {
+                    if (wasm.__wbindgen_start == undefined) {
+                    wasm.main();
+                    }
+                });
+                }
+            );
+            </script>
+            
+            </body>
 </html>
-<script>// Dioxus-CLI
-// https://github.com/DioxusLabs/dioxus/tree/master/packages/cli
-
-(function () {
-  var protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-  var url = protocol + '//' + window.location.host + '/_dioxus/ws';
-    var poll_interval = 8080;
-
-  var reload_upon_connect = () => {
-      window.setTimeout(
-          () => {
-              var ws = new WebSocket(url);
-              ws.onopen = () => window.location.reload();
-              ws.onclose = reload_upon_connect;
-          },
-          poll_interval);
-  };
-
-    var ws = new WebSocket(url);
-
-    ws.onmessage = (ev) => {
-        console.log("Received message: ", ev, ev.data);
-
-        if (ev.data == "reload") {
-            window.location.reload();
-        }
-  };
-
-  ws.onclose = reload_upon_connect;
-})()
-</script>

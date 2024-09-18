@@ -1,4 +1,4 @@
-use crate::components::err_page::PageNotFound;
+use crate::components::err::PageNotFound;
 use crate::components::home_page::home::Home;
 use crate::components::nav_bar::NavBar;
 use dioxus::prelude::*;

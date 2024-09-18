@@ -11,10 +11,10 @@ default_platform = "web"
 out_dir = "webapp"
 
 # resource (public) file folder
-asset_dir = "public"
+asset_dir = "assets"
 
 [web.app]
-# base_path = "."
+base_path = "."
 
 # HTML title tag content
 title = "Crabsburger"
@@ -25,7 +25,7 @@ title = "Crabsburger"
 reload_html = true
 
 # which files or dirs will be watcher monitoring
-watch_path = ["src", "public"]
+watch_path = ["src", "assets"]
 
 # uncomment line below if using Router
 index_on_404 = true

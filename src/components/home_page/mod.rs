@@ -1,6 +1,6 @@
-pub mod category_card_ui;
-pub mod food_card_ui;
+pub mod category_card;
+pub mod food_card;
 pub mod home;
-pub mod home_card_icon_ui;
-pub mod promo_card_ui;
-pub mod reviewers_card_ui;
+pub mod home_card_icon;
+pub mod promo_card;
+pub mod reviewers_card;

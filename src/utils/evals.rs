@@ -2,7 +2,8 @@ use crate::model::app_state::ApplicationData;
 use dioxus::prelude::*;
 
 // Get colour from local storage and set to html when page loads or reloads
-pub fn InitThemeColorState() {
+#[component]
+pub fn InitThemeColorState() -> Element {
     let mut data = use_context::<ApplicationData>();
     let _ = use_resource(move || async move {
         let mut theme_state = eval(
@@ -10,10 +11,10 @@ pub fn InitThemeColorState() {
             const html = document.querySelector("html");
             if (localStorage.getItem("mode") == "dark") {
                 darkMode();
-                dioxus.send("dark");
+                dioxus.send(true);
             } else {
                 lightMode();
-                dioxus.send("light");
+                dioxus.send(false);
             }
 
             function darkMode() {
@@ -28,25 +29,27 @@ pub fn InitThemeColorState() {
             
             "#,
         );
-        if theme_state.recv().await.unwrap() == "dark" {
-            data.theme_state.set("dark".to_string());
+        if theme_state.recv().await.unwrap() == true {
+            data.dark.set(true);
         } else {
-            data.theme_state.set("light".to_string());
+            data.dark.set(false);
         }
     });
+    rsx! {}
 }
 
 // Change the style of the navigation menu when scrolling
-pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<String>) {
+#[component]
+pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<bool>) -> Element {
     let _ = use_resource(move || async move {
         let mut eval = eval(
             r#"
                 let header_border = "";
                 window.addEventListener('scroll', () => {
                   if (window.pageYOffset < 50 ) {
-                    header_border = "hidden";
+                    header_border = false;
                   } else {
-                    header_border = "";
+                    header_border = true;
                   }
                   dioxus.send(header_border);
                 });
@@ -54,16 +57,19 @@ pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<String>) {
         );
 
         while let Ok(res) = eval.recv().await {
-            if res == "hidden" {
-                navbar_style.set("".to_string());
+            if res == false {
+                navbar_style.set(false);
             } else {
-                navbar_style.set("border-b border-secondaryColor card-shadow".to_string());
+                navbar_style.set(true);
             }
         }
     });
+    rsx! {}
 }
 
-pub fn ScrollButtonVisible(mut visible: Signal<String>) {
+#[component]
+pub fn ScrollButtonVisible(mut visible: Signal<String>) -> Element {
+    // let data = use_context::<ApplicationData>();
     let _ = use_resource(move || async move {
         // Don't using tokio
         // tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
@@ -90,22 +96,27 @@ pub fn ScrollButtonVisible(mut visible: Signal<String>) {
             }
         }
     });
+    rsx! {}
 }
 
-pub fn NavBarToggle(theme: Signal<String>) {
+#[component]
+pub fn NavBarToggle() -> Element {
+    // let data = use_context::<ApplicationData>();
+    // let dark_theme = *data.dark.read();
     let _ = use_resource(move || async move {
         let eval = eval(
             r#"
-               let color = await dioxus.recv();
-               if (color == "light") {
+               let dark = await dioxus.recv();
+               if (dark == false) {
                 html.classList.remove("dark");
-               localStorage.setItem("mode", color);
+               localStorage.setItem("mode", "light");
                } else {
                html.classList.add("dark");
-               localStorage.setItem("mode", color);                                        
+               localStorage.setItem("mode", "dark");                                        
                } 
                 "#,
         );
-        eval.send((theme)().into()).unwrap();
+        eval.send(true.into()).unwrap();
     });
+    rsx! {}
 }

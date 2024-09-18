@@ -1,15 +1,16 @@
 #![allow(non_snake_case)]
-use super::category_card_ui::CategoryCard;
-use super::food_card_ui::FoodCard;
-use super::home_card_icon_ui::HomeCardIcon;
-use super::promo_card_ui::PromoCard;
-use super::reviewers_card_ui::ReviewersCard;
+use super::category_card::CategoryCard;
+use super::food_card::FoodCard;
+use super::home_card_icon::HomeCardIcon;
+use super::promo_card::PromoCard;
+use super::reviewers_card::ReviewersCard;
+// use crate::components::nav_bar::NavBar;
 use crate::model::app_state::ApplicationData;
-use crate::repository::category_card_repo::CATEGORY_CARDS;
-use crate::repository::food_card_repo::{BEVERAGE, BURGERS, SNACKS};
-use crate::repository::home_card_icon_repo::HOME_CARD_ICONS;
-use crate::repository::promo_card_repo::PROMO_CARDS;
-use crate::repository::review_card_repo::REVIEWERS;
+use crate::repository::category_repo::CATEGORY_CARDS;
+use crate::repository::food_repo::{BEVERAGE, BURGERS, SNACKS};
+use crate::repository::home_icon_repo::HOME_CARD_ICONS;
+use crate::repository::promo_repo::PROMO_CARDS;
+use crate::repository::review_repo::REVIEWERS;
 use crate::utils::evals::ScrollButtonVisible;
 use chrono::Datelike;
 use dioxus::prelude::*;
@@ -20,19 +21,20 @@ pub fn Home() -> Element {
     let mut selected_snippet = use_signal(|| 0);
     data.scroll_button_visibility = use_signal(|| "hidden".to_string());
 
-    ScrollButtonVisible(data.scroll_button_visibility);
-
     rsx! {
+        ScrollButtonVisible { visible: data.scroll_button_visibility }
         // NavBar {}
         main {
             // Home ----------------------------------------------
             section { id: "home",
                 div { class: "container flex flex-col items-center gap-10 md:flex-row",
-                    div { class: "mx-auto md:basis-1/2 lg:basis-2/5 animate-movingY", img {
-                        class: "w-60 md:w-full",
-                        src: "images/home-image.png",
-                        alt: "home image"
-                    } }
+                    div { class: "mx-auto md:basis-1/2 lg:basis-2/5 animate-movingY",
+                        img {
+                            class: "w-60 md:w-full",
+                            src: "images/home-image.png",
+                            alt: "home image"
+                        }
+                    }
                     div { class: "text-center md:basis-1/2 md:text-start lg:basis-3/5",
                         h1 { class: "home-title drop-shadow shadow-black dark:shadow-white",
                             "HAPPY TUMMY WITH TASTY "
@@ -80,17 +82,19 @@ pub fn Home() -> Element {
                             card: *card
                         }
                     }
-                })}
+                    })}
                 }
             }
             // About
             section { id: "about",
                 div { class: "container flex flex-col gap-10 md:flex-row",
-                    div { class: "flex-1", img {
-                        class: "rounded-lg",
-                        src: "images/about.jpg",
-                        alt: "about image"
-                    } }
+                    div { class: "flex-1",
+                        img {
+                            class: "rounded-lg",
+                            src: "images/about.jpg",
+                            alt: "about image"
+                        }
+                    }
                     div { class: "flex-1",
                         h2 { class: "section-title",
                             "FIND FOOD AND DRINKS, ALL-IN-ONE PLACE FOR YOUR BEST TASTE."
@@ -153,7 +157,7 @@ pub fn Home() -> Element {
                         div { class: "tabs_wrap",
                             ul { class: "flex flex-wrap justify-center gap-3 py-10",
                                 { tabs.iter().enumerate().map(|(id, _)| {
-                                    let selected = selected_snippet == id;
+                                    let selected = *selected_snippet.read() == id;
 
                                     let bg_selected = match selected {
                                         true => "btn bg-secondaryColorLight dark:bg-darkColorLight active",
@@ -172,7 +176,7 @@ pub fn Home() -> Element {
                     div { class: "menu-items",
                         ul { class: "grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-12",
                             match selected_snippet() {
-                        1 => {
+                            1 => {
                             rsx!{
                                 {BURGERS.iter().enumerate().map(|(_, card)| {
                                     rsx!{
@@ -182,8 +186,8 @@ pub fn Home() -> Element {
                                     }
                                 })}
                             }
-                        },
-                        2 => {
+                            },
+                            2 => {
                             rsx!{
                                 {SNACKS.iter().enumerate().map(|(_, card)| {
                                     rsx!{
@@ -194,8 +198,8 @@ pub fn Home() -> Element {
                                 })}
                             }
 
-                        },
-                        3 => {
+                            },
+                            3 => {
                             rsx!{
                                 {BEVERAGE.iter().enumerate().map(|(_, card)| {
                                     rsx!{
@@ -205,8 +209,8 @@ pub fn Home() -> Element {
                                     }
                                 })}
                             }
-                        },
-                        _ => {
+                            },
+                            _ => {
                             rsx!{
                                 {BURGERS.iter().enumerate().map(|(_, card)| {
                                     rsx!{
@@ -230,8 +234,8 @@ pub fn Home() -> Element {
                                     }
                                 })}
                             }
-                        }
-                    }
+                            }
+                            }
                         }
                     }
                 }
@@ -259,8 +263,8 @@ pub fn Home() -> Element {
                                     card: *card
                                 }
                             }
-                        })
-                        }
+                            })
+                            }
                         }
                     }
                 }
@@ -269,7 +273,9 @@ pub fn Home() -> Element {
                 div { class: "container flex flex-col gap-5 md:items-center md:flex-row",
                     div { class: "space-y-4 md:flex-1",
                         h2 { class: "section-title text-blackColor", "GET EXCLUSIVE UPDATE" }
-                        p { class: "text-sm", "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+                        p { class: "text-sm",
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                        }
                     }
                     div { class: "flex flex-col gap-3 md:flex-row md:flex-1",
                         input {
@@ -409,7 +415,11 @@ pub fn Home() -> Element {
                         p { class: "paragraph",
                             span { class: "uppercase gradient", "CrabsBurger" }
                             " Template Kit with ❤️ to "
-                            a { href: "https://dioxuslabs.com/", alt: "Dioxus labs", "Dioxus" }
+                            a {
+                                href: "https://dioxuslabs.com/",
+                                alt: "Dioxus labs",
+                                "Dioxus"
+                            }
                         }
                         p { class: "paragraph",
                             "Copyright © {chrono::Utc::now().year()}. All rights reserved."

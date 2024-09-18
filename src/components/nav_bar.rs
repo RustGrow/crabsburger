@@ -1,19 +1,24 @@
 use crate::model::app_state::ApplicationData;
 use crate::route::Route;
-use crate::utils::evals::{toggle_navbar_style_on_scroll, NavBarToggle};
+use crate::utils::evals::toggle_navbar_style_on_scroll;
 use dioxus::prelude::*;
+use dioxus_logger::tracing::info;
+use serde_json::value::Value;
 
+#[component]
 pub fn NavBar() -> Element {
     let mut data = use_context::<ApplicationData>();
     let menu = vec!["Home", "About", "Menu", "Review", "Contact"];
     // data.hidden_menu = use_signal(|| "hidden".to_string());
     // data.hidden_menu.set("hidden".to_string());
+    let mut dark = use_signal(|| false);
 
-    toggle_navbar_style_on_scroll(data.header_border_style_on_scroll);
-
-    rsx!(
+    rsx! {
+        toggle_navbar_style_on_scroll { navbar_style: data.header_border_style_on_scroll }
         // Header ----------------------------------
-        header { class: "bg-primaryColor dark:bg-darkColor fixed top-0 left-0 w-full z-50 {data.header_border_style_on_scroll}",
+        header {
+            class: "bg-primaryColor dark:bg-darkColor fixed top-0 left-0 w-full z-50 ",
+            class: if *data.header_border_style_on_scroll.read() { "border-b border-secondaryColor card-shadow" },
             nav { class: "container relative h-14 flex justify-between items-center",
                 div {
                     a {
@@ -23,10 +28,11 @@ pub fn NavBar() -> Element {
                     }
                 }
 
+                // Menu
                 div { class: "{data.hidden_menu} absolute top-0 left-0 w-full py-14 bg-primaryColor dark:bg-darkColor border-b border-secondaryColor md:block md:static md:py-0 md:border-none md:w-auto md:ml-auto",
                     ul { class: "flex flex-col text-center gap-5 md:flex-row",
                         { menu.iter().enumerate().map(|(id, _)| {
-                        let selected = data.selected_menu == id;
+                        let selected = *data.selected_menu.read() == id;
 
                         let bg_selected = match selected {
                             true => "gradient ease-in duration-200",
@@ -62,15 +68,24 @@ pub fn NavBar() -> Element {
                 div { class: "flex flex-row items-center gap-5",
                     div {
                         onclick: move |_| {
-                            if (data.theme_state)() == "light" {
-                                data.theme_state.set("dark".to_string())
-                            } else {
-                                data.theme_state.set("light".to_string())
-                            }
-                            NavBarToggle(data.theme_state);
+                            dark.toggle();
+                            let eval = eval(
+                                r#"
+                                            var htmlElement = document.documentElement;
+                                            let dark = localStorage.getItem("mode");
+                                            htmlElement.classList.toggle('dark');
+                                            if (dark === "dark") { 
+                                            localStorage.setItem("mode", "light");
+                                            } else {
+                                            localStorage.setItem("mode", "dark");                                        
+                                            } 
+                                            "#,
+                            );
+                            let _ = eval.send(Value::Bool(true));
+                            info!("Dark is {dark}")
                         },
 
-                        {if (data.theme_state)() == "dark" {
+                        {if dark() {
 
                             rsx!{
                                 svg {
@@ -106,5 +121,5 @@ pub fn NavBar() -> Element {
             }
         }
         Outlet::<Route> {}
-    )
+    }
 }

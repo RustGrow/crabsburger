@@ -10,13 +10,13 @@ Welcome to the Crabsburger example food landing page site for the [Dioxus commun
 
 ## About This Example
 
-This example showcases the new syntax introduced in Dioxus 0.5 and utilizes signals as the state management approach. It's designed to demonstrate best practices and provide a reference for building your own Dioxus applications.
+This example showcases the new syntax introduced in Dioxus 0.6 and utilizes signals as the state management approach. It's designed to demonstrate best practices and provide a reference for building your own Dioxus applications.
 
 ### Features
 
-- Utilizes the new syntax of Dioxus 0.5
+- Utilizes the new syntax of Dioxus 0.6
 - State management with signals
-- Styling with Tailwind CSS v3.4.1
+- Styling with Tailwind CSS v3.4
 
 ## **How to Run Locally:**
 
@@ -32,10 +32,10 @@ Comment out this parameter in `Dioxus.toml` as it is intended only for redirecti
 ```
 
 Run the command:
-`dx serve`
+`dx serve --hot-reload true`
 
 If you want to change the Tailwind CSS in a different terminal run:
-`npx tailwindcss -i ./input.css -o ./public/tailwind.css --watch`
+`npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch`
 
 ## **How to Run in the Web:**
 
