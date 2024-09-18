@@ -14,7 +14,7 @@ out_dir = "webapp"
 asset_dir = "assets"
 
 [web.app]
-base_path = "."
+# base_path = "."
 
 # HTML title tag content
 title = "Crabsburger"
