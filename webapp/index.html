@@ -1,27 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" id="html" class="ltr">
   <head>
-    <title>Crabsburger</title>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
-  <link rel="preload" href="/./assets/dioxus/Crabsburger_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-            <link rel="preload" href="/./assets/dioxus/Crabsburger.js" as="script">
-            </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    <title>Crabsburger</title>    
+  </head>
   <body>
     <div id="main"></div>
-  <script>
-            // We can't use a module script here because we need to start the script immediately when streaming
-            import("/./assets/dioxus/Crabsburger.js").then(
-                ({ default: init }) => {
-                init("/./assets/dioxus/Crabsburger_bg.wasm").then((wasm) => {
-                    if (wasm.__wbindgen_start == undefined) {
-                    wasm.main();
-                    }
-                });
-                }
-            );
-            </script>
-            
-            </body>
+    <!-- Note the usage of `type=module` here as this is an ES6 module -->
+    <script type="module">
+      import init from "/./assets/dioxus/Crabsburger.js";
+      init("/./assets/dioxus/Crabsburger_bg.wasm").then((wasm) => {
+        if (wasm.__wbindgen_start == undefined) {
+          wasm.main();
+        }
+      });
+    </script>
+    <!-- <script src="/static/prism/prism.js"></script>
+    {script_include} -->
+    
+  </body>
 </html>
