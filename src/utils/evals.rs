@@ -1,5 +1,6 @@
 use crate::model::app_state::ApplicationData;
 use dioxus::prelude::*;
+use dioxus_logger::tracing::Value;
 
 // Get colour from local storage and set to html when page loads or reloads
 #[component]
@@ -35,7 +36,7 @@ pub fn InitThemeColorState() -> Element {
             data.dark.set(false);
         }
     });
-    rsx! {}
+    rsx! {  }
 }
 
 // Change the style of the navigation menu when scrolling
@@ -64,59 +65,52 @@ pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<bool>) -> Element 
             }
         }
     });
-    rsx! {}
+    rsx! {  }
 }
 
 #[component]
-pub fn ScrollButtonVisible(mut visible: Signal<String>) -> Element {
-    // let data = use_context::<ApplicationData>();
+pub fn ScrollButtonVisible() -> Element {
+    let mut data = use_context::<ApplicationData>();
     let _ = use_resource(move || async move {
-        // Don't using tokio
-        // tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
-
         let mut eval = eval(
             r#"
-                let button = "";
+                let button = false;
                 window.addEventListener('scroll', () => {
                   if (window.pageYOffset < 600 ) {
-                    button = "hidden";
+                    // hidden button
+                    button = false;
                   } else {
-                    button = "visible";
+                    // show button
+                    button = true;
                   }
                   dioxus.send(button);
                 });
                 "#,
         );
 
-        while let Ok(res) = eval.recv().await {
-            if res == "hidden" {
-                visible.set("hidden".to_string());
+        while let Ok(show) = eval.recv().await {
+            if show == true {
+                data.scroll_button_visibility.set(true);
             } else {
-                visible.set("visible".to_string());
+                data.scroll_button_visibility.set(false);
             }
         }
     });
-    rsx! {}
+    rsx! {  }
 }
 
-#[component]
-pub fn NavBarToggle() -> Element {
-    // let data = use_context::<ApplicationData>();
-    // let dark_theme = *data.dark.read();
-    let _ = use_resource(move || async move {
-        let eval = eval(
-            r#"
-               let dark = await dioxus.recv();
-               if (dark == false) {
-                html.classList.remove("dark");
-               localStorage.setItem("mode", "light");
-               } else {
-               html.classList.add("dark");
-               localStorage.setItem("mode", "dark");                                        
-               } 
-                "#,
-        );
-        eval.send(true.into()).unwrap();
-    });
-    rsx! {}
+pub fn NavBarToggle() {
+    let eval = eval(
+        r#"
+        var htmlElement = document.documentElement;
+        let dark = localStorage.getItem("mode");
+        htmlElement.classList.toggle('dark');
+        if (dark === "dark") { 
+        localStorage.setItem("mode", "light");
+        } else {
+        localStorage.setItem("mode", "dark");                                        
+        } 
+        "#,
+    );
+    eval.send(true.into()).unwrap();
 }

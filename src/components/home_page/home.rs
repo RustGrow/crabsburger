@@ -4,7 +4,6 @@ use super::food_card::FoodCard;
 use super::home_card_icon::HomeCardIcon;
 use super::promo_card::PromoCard;
 use super::reviewers_card::ReviewersCard;
-// use crate::components::nav_bar::NavBar;
 use crate::model::app_state::ApplicationData;
 use crate::repository::category_repo::CATEGORY_CARDS;
 use crate::repository::food_repo::{BEVERAGE, BURGERS, SNACKS};
@@ -19,11 +18,9 @@ pub fn Home() -> Element {
     let mut data = use_context::<ApplicationData>();
     let tabs = vec!["All", "Burger", "Snack", "Beverage"];
     let mut selected_snippet = use_signal(|| 0);
-    data.scroll_button_visibility = use_signal(|| "hidden".to_string());
 
     rsx! {
-        ScrollButtonVisible { visible: data.scroll_button_visibility }
-        // NavBar {}
+        ScrollButtonVisible {}
         main {
             // Home ----------------------------------------------
             section { id: "home",
@@ -158,7 +155,7 @@ pub fn Home() -> Element {
                             ul { class: "flex flex-wrap justify-center gap-3 py-10",
                                 { tabs.iter().enumerate().map(|(id, _)| {
                                     let selected = *selected_snippet.read() == id;
-
+                                
                                     let bg_selected = match selected {
                                         true => "btn bg-secondaryColorLight dark:bg-darkColorLight active",
                                         false => "btn bg-primaryColorLight dark:bg-darkColorLight",
@@ -197,7 +194,7 @@ pub fn Home() -> Element {
                                     }
                                 })}
                             }
-
+                            
                             },
                             3 => {
                             rsx!{
@@ -431,6 +428,7 @@ pub fn Home() -> Element {
         // Scroll button
         a {
             class: "fixed {data.scroll_button_visibility} right-4 bottom-4 h-11 w-11 bg-secondaryColor shadow-sm flex rounded-full text-lg text-blackColor z-50 hover:-translate-y-1 ease-in duration-200 items-center justify-center",
+            class: if !*data.scroll_button_visibility.read() { "hidden" },
             onclick: move |_| { data.selected_menu.set(0) },
             href: "#",
             svg {

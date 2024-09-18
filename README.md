@@ -24,39 +24,26 @@ Clone the repository:
 
 `git clone https://github.com/DioxusGrow/crabsburger`
 
-Comment out this parameter in `Dioxus.toml` as it is intended only for redirection in web:
-
-```
-[web.app]
-# base_path = "."
-```
-
 Run the command:
 `dx serve --hot-reload true`
 
 If you want to change the Tailwind CSS in a different terminal run:
 `npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch`
 
+On main.rs page uncomment this lines:
+
+```rust
+//const TAILWIND_CDN: &str = asset!("https://cdn.tailwindcss.com");
+// script { src: TAILWIND_CDN }
+```
+
 ## **How to Run in the Web:**
-
-Uncomment the parameter in `Dioxus.toml` as it is intended only for redirection in web:
-
-```
-[web.app]
-base_path = "."
-```
 
 Run the command:
 `dx build --release`
 
 The release or the ready website is located in the `webapp` folder.
 
-You can rename the folder in the `Dioxus.toml` parameter. For example, for use in GitHub Pages, the folder name should be `docs`
-
-```
-# `build` & `serve` dist path
-pathout_dir = "webapp"
-```
 
 However, the site with GitHub Pages will only work on the main domain, such as `https://dioxuslabs.com`
 It will work on a subdomain, but with a greater number of issues:
