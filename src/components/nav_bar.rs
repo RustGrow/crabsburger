@@ -71,15 +71,15 @@ pub fn NavBar() -> Element {
                             dark.toggle();
                             let eval = eval(
                                 r#"
-                                            var htmlElement = document.documentElement;
-                                            let dark = localStorage.getItem("mode");
-                                            htmlElement.classList.toggle('dark');
-                                            if (dark === "dark") { 
-                                            localStorage.setItem("mode", "light");
-                                            } else {
-                                            localStorage.setItem("mode", "dark");                                        
-                                            } 
-                                            "#,
+                                                        var htmlElement = document.documentElement;
+                                                        let dark = localStorage.getItem("mode");
+                                                        htmlElement.classList.toggle('dark');
+                                                        if (dark === "dark") { 
+                                                        localStorage.setItem("mode", "light");
+                                                        } else {
+                                                        localStorage.setItem("mode", "dark");                                        
+                                                        } 
+                                                        "#,
                             );
                             let _ = eval.send(Value::Bool(true));
                             info!("Dark is {dark}")
