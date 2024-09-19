@@ -24,7 +24,7 @@ title = "Crabsburger"
 reload_html = true
 
 # which files or dirs will be watcher monitoring
-watch_path = ["src", "assets"]
+watch_path = ["src", "assets", "lang"]
 
 # uncomment line below if using Router
 index_on_404 = true
@@ -36,7 +36,7 @@ index_on_404 = true
 style = []
 
 # Javascript code file
-script = []
+script = ["https://cdn.tailwindcss.com"]
 
 [web.resource.dev]
 

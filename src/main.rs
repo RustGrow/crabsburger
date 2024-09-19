@@ -9,10 +9,17 @@ use crate::route::Route;
 use crate::utils::evals::InitThemeColorState;
 use dioxus::prelude::*;
 use dioxus_logger::tracing::{info, Level};
+use fluent_templates::{static_loader, Loader};
 
 const STYLE: &str = asset!("./assets/tailwind.css");
-// Note: For development use only. Remove before production.
-// const TAILWIND_CDN: &str = asset!("https://cdn.tailwindcss.com");
+
+static_loader! {
+    static LOCALES = {
+        locales: "./lang",
+        fallback_language: "en-US",
+        customise: |bundle| bundle.set_use_isolating(false),
+    };
+}
 
 fn main() {
     dioxus_logger::init(Level::INFO).expect("failed to init logger");
@@ -25,8 +32,6 @@ fn App() -> Element {
     InitThemeColorState().expect("Fail to init color theme");
     rsx! {
         head::Link { rel: "stylesheet", href: STYLE }
-        // Note: For development use only. Remove before production.
-        // script { src: TAILWIND_CDN }
         Router::<Route> {}
     }
 }

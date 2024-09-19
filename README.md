@@ -18,38 +18,6 @@ This example showcases the new syntax introduced in Dioxus 0.6 and utilizes sign
 - State management with signals
 - Styling with Tailwind CSS v3.4
 
-## **How to Run Locally:**
-
-Clone the repository:
-
-`git clone https://github.com/DioxusGrow/crabsburger`
-
-Run the command:
-`dx serve --hot-reload true`
-
-If you want to change the Tailwind CSS in a different terminal run:
-`npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch`
-
-On main.rs page uncomment this lines:
-
-```rust
-//const TAILWIND_CDN: &str = asset!("https://cdn.tailwindcss.com");
-// script { src: TAILWIND_CDN }
-```
-
-## **How to Run in the Web:**
-
-Run the command:
-`dx build --release`
-
-The release or the ready website is located in the `webapp` folder.
-
-
-However, the site with GitHub Pages will only work on the main domain, such as `https://dioxuslabs.com`
-It will work on a subdomain, but with a greater number of issues:
-[Routing errors and the use of Manganis if the site is located in a subdirectory of the domain, as on GitHub Pages. ](https://github.com/DioxusLabs/dioxus/issues/2093)
-
-
 ## Roadmap
 
 - [X] Create a button that appears when scrolling the page
@@ -59,13 +27,154 @@ It will work on a subdomain, but with a greater number of issues:
 - [ ] Retrieve the browser client's language
 - [ ] Change the language in the HTML tag when switching languages
 
-## Browser JS Interaction
+### Important. This project uses the web platform
+# Quick start
+1. Reinstall the CLI to the git version.
+For Windows users need to install the [Netwide Assembler (NASM)](https://www.nasm.us/pub/nasm/releasebuilds/2.16.03/win64/). On startup it will open the shell and inside execute this command.
+```bash
+cargo install --git https://github.com/dioxuslabs/dioxus dioxus-cli --locked --force
+```
+2. Clone this repository
+```bash
+https://github.com/DioxusGrow/crabsburger.git
+```
+and 👇
 
-Please note that the interaction with the browser's JavaScript needs to be refined in this example.
+# Development
 
-## Contributing
+1. Install npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+2. Install the tailwind css cli: https://tailwindcss.com/docs/installation
+3. Run the following command in the root of the project to start the tailwind CSS compiler:
 
-We welcome contributions! If you have suggestions or want to contribute to the roadmap, please feel free to open an issue or submit a pull request.
+```bash
+npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch
+```
+
+Run the following command in the root of the project to start the Dioxus dev server:
+
+```bash
+dx serve --hot-reload true
+```
+
+- Open the browser to http://localhost:8080
+
+# Hot reloading with Tailwind CSS
+Hot reloading Tailwind CSS will work with [Tailwind CDN](https://tailwindcss.com/docs/installation/play-cdn) and Manganis using these settings.
+
+1. Reinstall the CLI:
+```bash
+cargo install --git https://github.com/dioxuslabs/dioxus dioxus-cli --locked --force
+```
+
+2. Check that the library version corresponds to 0.6
+```bash
+dx --version
+// dioxus 0.6.0-alpha.2 (3c699aa)
+```
+
+3. Create a new project from the command line:
+```bash
+// You can change the platform, name, and router as needed.
+dx new -> web -> Project Name: project-name -> Tailwind -> true
+```
+
+4. Add dependencies to your Cargo.toml file:
+```rust
+[dependencies]
+dioxus = { git = "https://github.com/DioxusLabs/dioxus", features = ["web", "router"] }
+dioxus-logger = "0.5.1"
+```
+
+4. Start the Tailwind CSS compiler and the Dioxus dev server in different terminals:
+```bash
+npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch
+dx serve --hot-reload true
+```
+
+5. The Script now has some bug
+```rust
+❌ Script { src: "https://cdn.tailwindcss.com" } //Has some bug
+```
+You need to set a script reference to use Tailwind CDN inside Dioxus.toml
+✔️ Tested
+```toml
+# include `assets` in web platform
+[web.resource]
+
+# CSS style file
+
+style = []
+
+# Javascript code file
+script = ["https://cdn.tailwindcss.com"]
+```
+
+# If you need a local stylesheet for custom styles inside input.css.
+1. Insert your custom styles inside input.css:
+```css
+@layer components {
+  p {
+    @apply p-10 bg-yellow-600;
+  }
+  .red {
+    @apply bg-red-600;
+  }
+  .yellow {
+    @apply bg-yellow-600;
+  }
+  .blue {
+    @apply bg-blue-600;
+  }
+}
+```
+2. Insert custom classes into the page:
+```rust
+rsx!{
+    p { "I" }
+    div { class: "red", "want to" }
+    div { class: "yellow", "burger" }
+    div { class: "blue", "burger" }
+}
+```
+3. Rebuild the app:
+
+button r on terminal 
+
+or 
+
+```bash
+dx serve --hot-reload true
+```
+
+# How to make a release
+
+1. Make sure you add the languages folder to the monitoring in the Dioxus.toml file:
+```toml
+# which files or dirs will be watcher monitoring
+watch_path = ["src", "assets", "lang"]
+```
+2. Use the `dx check` command to check that there are no errors in the logic for using the signals.
+```bash
+dx check
+//output No issues found.
+```
+3. Make a release using the command:
+```bash
+dx build --release
+```
+4. The `dist` folder is by default the main project folder where the finished site is located.
+
+# Netlify deployment
+
+Deploying an application in netlify requires a special settings file to be uploaded to the assets folder so that it is automatically loaded when the project is built. In this repository it is already in the assets folder.
+
+netlify.toml
+```toml
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
 
 ## License
 
