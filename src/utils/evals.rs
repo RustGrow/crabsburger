@@ -1,6 +1,5 @@
 use crate::model::app_state::ApplicationData;
 use dioxus::prelude::*;
-use dioxus_logger::tracing::Value;
 
 // Get colour from local storage and set to html when page loads or reloads
 #[component]
@@ -8,9 +7,19 @@ pub fn InitThemeColorState() -> Element {
     let mut data = use_context::<ApplicationData>();
     let _ = use_resource(move || async move {
         let mut theme_state = eval(
-            r#"
+            r#"            
             const html = document.querySelector("html");
-            if (localStorage.getItem("mode") == "dark") {
+
+            // Check the theme in localStorage
+            let mode = localStorage.getItem("mode");
+
+            // If the theme is not set, get it from system or browser settings
+            if (!mode) {
+                mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            }
+
+            // Apply the theme
+            if (mode === "dark") {
                 darkMode();
                 dioxus.send(true);
             } else {

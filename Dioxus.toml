@@ -8,13 +8,12 @@ name = "Crabsburger"
 default_platform = "web"
 
 # `build` & `serve` dist path
-out_dir = "webapp"
+out_dir = "dist"
 
 # resource (public) file folder
 asset_dir = "assets"
 
 [web.app]
-# base_path = "."
 
 # HTML title tag content
 title = "Crabsburger"
