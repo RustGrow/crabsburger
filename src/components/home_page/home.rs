@@ -11,10 +11,39 @@ use crate::repository::home_icon_repo::HOME_CARD_ICONS;
 use crate::repository::promo_repo::PROMO_CARDS;
 use crate::repository::review_repo::REVIEWERS;
 use crate::utils::evals::ScrollButtonVisible;
+use crate::Route;
 use chrono::Datelike;
 use dioxus::prelude::*;
 
+#[component]
 pub fn Home() -> Element {
+    // let lang: Signal<String> = use_context();
+    let data = use_context::<ApplicationData>();
+    let nav = navigator();
+    if &(data.lang_code)() as &str != "en" {
+        nav.push(Route::HomeLang {
+            lang: (data.lang_code)(),
+        });
+    }
+    rsx! {
+        HomeContent {}
+    }
+}
+
+#[component]
+pub fn HomeLang(lang: String) -> Element {
+    // let lang: Signal<String> = use_context();
+    let data = use_context::<ApplicationData>();
+    let nav = navigator();
+    if &(data.lang_code)() as &str == "en" {
+        nav.push(Route::Home {});
+    }
+    rsx! {
+        HomeContent {}
+    }
+}
+
+pub fn HomeContent() -> Element {
     let mut data = use_context::<ApplicationData>();
     let tabs = vec!["All", "Burger", "Snack", "Beverage"];
     let mut selected_snippet = use_signal(|| 0);

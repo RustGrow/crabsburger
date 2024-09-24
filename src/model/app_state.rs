@@ -15,6 +15,8 @@ pub struct ApplicationData {
     pub header_border_style_on_scroll: Signal<bool>,
     pub scroll_button_visibility: Signal<bool>,
     pub show_hidden_menu: Signal<bool>,
+    pub lang_code: Signal<String>,
+    pub show_lang_menu: Signal<bool>,
 }
 
 impl ApplicationData {
@@ -25,6 +27,8 @@ impl ApplicationData {
             header_border_style_on_scroll: Signal::new(false),
             scroll_button_visibility: Signal::new(false),
             show_hidden_menu: Signal::new(false), // hidden
+            lang_code: Signal::new("en".to_string()),
+            show_lang_menu: Signal::new(false),
         }
     }
 }
