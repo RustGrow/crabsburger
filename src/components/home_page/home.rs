@@ -16,11 +16,15 @@ use crate::utils::evals::ScrollButtonVisible;
 use crate::Route;
 use chrono::Datelike;
 use dioxus::prelude::*;
+use fluent_templates::Loader;
+use std::str::FromStr;
+use unic_langid::LanguageIdentifier;
 
 #[component]
 pub fn Home() -> Element {
     // let lang: Signal<String> = use_context();
     let data = use_context::<ApplicationData>();
+
     let nav = navigator();
     if &(data.lang_code)() as &str != "en" {
         nav.push(Route::HomeLang {
@@ -47,6 +51,7 @@ pub fn HomeLang(lang: String) -> Element {
 
 pub fn HomeContent() -> Element {
     let mut data = use_context::<ApplicationData>();
+    let lang_id = &LanguageIdentifier::from_str(&(data.lang_code)() as &str).unwrap();
     let tabs = vec!["All", "Burger", "Snack", "Beverage"];
     let mut selected_snippet = use_signal(|| 0);
 
@@ -54,7 +59,7 @@ pub fn HomeContent() -> Element {
         ScrollButtonVisible {}
         main {
             // Home ----------------------------------------------
-            section { id: "home",
+            section { id: "{LOCALES.lookup(lang_id, \"Home\").to_lowercase()}",
                 div { class: "container flex flex-col items-center gap-10 md:flex-row",
                     div { class: "mx-auto md:basis-1/2 lg:basis-2/5 animate-movingY",
                         img {
@@ -114,7 +119,7 @@ pub fn HomeContent() -> Element {
                 }
             }
             // About
-            section { id: "about",
+            section { id: "{LOCALES.lookup(lang_id, \"About\").to_lowercase()}",
                 div { class: "container flex flex-col gap-10 md:flex-row",
                     div { class: "flex-1",
                         img {
@@ -145,7 +150,7 @@ pub fn HomeContent() -> Element {
                 }
             }
             // Menu
-            section { id: "menu",
+            section { id: "{LOCALES.lookup(lang_id, \"Menu\").to_lowercase()}",
                 div { class: "container",
                     div { class: "max-w-md mx-auto text-center",
                         h2 { class: "section-title", "OUR BEST MENU" }
@@ -242,7 +247,7 @@ pub fn HomeContent() -> Element {
             // Review
             section {
                 // Review
-                id: "review",
+                id: "{LOCALES.lookup(lang_id, \"Review\").to_lowercase()}",
                 // Review
                 class: "bg-primaryColorLight dark:bg-darkColorLight py-20",
                 div { class: "container",
@@ -268,7 +273,9 @@ pub fn HomeContent() -> Element {
                     }
                 }
             }
-            section { class: "bg-secondaryColor py-16", id: "contact",
+            section {
+                class: "bg-secondaryColor py-16",
+                id: "{LOCALES.lookup(lang_id, \"Contact\").to_lowercase()}",
                 div { class: "container flex flex-col gap-5 md:items-center md:flex-row",
                     div { class: "space-y-4 md:flex-1",
                         h2 { class: "section-title text-blackColor", "GET EXCLUSIVE UPDATE" }
