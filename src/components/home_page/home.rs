@@ -5,10 +5,10 @@ use super::home_card_icon::HomeCardIcon;
 use super::promo_card::PromoCard;
 use super::reviewers_card::ReviewersCard;
 use crate::components::home_page::check_card::Check;
+use crate::components::home_page::food_card::Menu;
 use crate::components::icon::*;
 use crate::constants::*;
 use crate::model::app_state::ApplicationData;
-use crate::repository::food_repo::{BEVERAGE, BURGERS, SNACKS};
 use crate::repository::review_repo::REVIEWERS;
 use crate::utils::evals::ScrollButtonVisible;
 use crate::Route;
@@ -151,63 +151,16 @@ pub fn HomeContent() -> Element {
                         ul { class: "grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-12",
                             match selected_snippet() {
                             1 => {
-                            rsx!{
-                                {BURGERS.iter().enumerate().map(|(_, card)| {
-                                    rsx!{
-                                        FoodCard  {
-                                            card: *card
-                                        }
-                                    }
-                                })}
-                            }
+                            rsx!{ FoodCard  { card: Menu::Burger  } }
                             },
                             2 => {
-                            rsx!{
-                                {SNACKS.iter().enumerate().map(|(_, card)| {
-                                    rsx!{
-                                        FoodCard  {
-                                            card: *card
-                                        }
-                                    }
-                                })}
-                            }
-
+                            rsx!{ FoodCard  { card: Menu::Snack  } }
                             },
                             3 => {
-                            rsx!{
-                                {BEVERAGE.iter().enumerate().map(|(_, card)| {
-                                    rsx!{
-                                        FoodCard  {
-                                            card: *card
-                                        }
-                                    }
-                                })}
-                            }
+                            rsx!{ FoodCard  { card: Menu::Beverage  } }
                             },
                             _ => {
-                            rsx!{
-                                {BURGERS.iter().enumerate().map(|(_, card)| {
-                                    rsx!{
-                                        FoodCard  {
-                                            card: *card
-                                        }
-                                    }
-                                })}
-                                {SNACKS.iter().enumerate().map(|(_, card)| {
-                                    rsx!{
-                                        FoodCard  {
-                                            card: *card
-                                        }
-                                    }
-                                })}
-                                {BEVERAGE.iter().enumerate().map(|(_, card)| {
-                                    rsx!{
-                                        FoodCard  {
-                                            card: *card
-                                        }
-                                    }
-                                })}
-                            }
+                            rsx!{ FoodCard  { card: Menu::All  } }
                             }
                             }
                         }

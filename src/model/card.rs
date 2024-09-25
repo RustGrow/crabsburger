@@ -6,13 +6,13 @@ pub struct Category {
     pub bg_color: &'static str,
 }
 
-#[derive(PartialEq, Debug, Clone, Copy)]
+#[derive(PartialEq, Debug, Clone)]
 pub struct Food {
     pub img_path: &'static str,
-    pub alt: &'static str,
-    pub title: &'static str,
-    pub description: &'static str,
-    pub price: f64,
+    pub alt: String,
+    pub title: String,
+    pub description: String,
+    pub price: String,
 }
 
 #[derive(PartialEq, Debug, Clone, Copy)]

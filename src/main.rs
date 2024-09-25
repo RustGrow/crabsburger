@@ -24,6 +24,7 @@ fn App() -> Element {
     InitThemeColorState().expect("Fail to init color theme");
     rsx! {
         LangSettings {}
+        // Script { src: asset!(file("https://cdn.tailwindcss.com")) }
         head::Link { rel: "stylesheet", href: STYLE }
         Router::<Route> {}
     }
