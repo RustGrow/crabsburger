@@ -1,5 +1,7 @@
 use dioxus::prelude::*;
 
+const URL: &'static str = "http://www.w3.org/2000/svg";
+
 pub fn flags() -> [Element; 4] {
     [
         rsx! {
@@ -17,13 +19,63 @@ pub fn flags() -> [Element; 4] {
     ]
 }
 
+pub fn home_icons() -> [Element; 3] {
+    [
+        rsx! {
+            Delicious {}
+        },
+        rsx! {
+            Drop {}
+        },
+        rsx! {
+            Leaf {}
+        },
+    ]
+}
+
+// Delicious
+#[component]
+pub fn Delicious() -> Element {
+    rsx! {
+        svg {
+            class: "fa-solid h-10 w-10 fill-current text-redColor dark:text-secondaryColor",
+            xmlns: "{URL}",
+            view_box: "0 0 448 512",
+            path { d: "M416 0c-16 0-128 32-128 176v112c0 35.3 28.7 64 64 64h32v128c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32zM64 16C64 7.8 57.9 1 49.7.1S34.2 4.6 32.4 12.5L2.1 148.8C.7 155.1 0 161.5 0 167.9c0 45.9 35.1 83.6 80 87.7V480c0 17.7 14.3 32 32 32s32-14.3 32-32V255.6c44.9-4.1 80-41.8 80-87.7 0-6.4-.7-12.8-2.1-19.1L191.6 12.5c-1.8-8-9.3-13.3-17.4-12.4S160 7.8 160 16v134.2c0 5.4-4.4 9.8-9.8 9.8-5.1 0-9.3-3.9-9.8-9L127.9 14.6C127.2 6.3 120.3 0 112 0S96.8 6.3 96.1 14.6L83.7 151c-.5 5.1-4.7 9-9.8 9-5.4 0-9.8-4.4-9.8-9.8V16zm48.3 152h-.6l.3-.7.3.7z" }
+        }
+    }
+}
+// Drop
+#[component]
+pub fn Drop() -> Element {
+    rsx! {
+        svg {
+            class: "fa-solid h-10 w-10 fill-current text-redColor dark:text-secondaryColor",
+            xmlns: "{URL}",
+            view_box: "0 0 384 512",
+            path { d: "M192 512C86 512 0 426 0 320 0 228.8 130.2 57.7 166.6 11.7c6-7.5 14.9-11.7 24.5-11.7h1.8c9.6 0 18.5 4.2 24.5 11.7C253.8 57.7 384 228.8 384 320c0 106-86 192-192 192zM96 336c0-8.8-7.2-16-16-16s-16 7.2-16 16c0 61.9 50.1 112 112 112 8.8 0 16-7.2 16-16s-7.2-16-16-16c-44.2 0-80-35.8-80-80z" }
+        }
+    }
+}
+// Leaf
+#[component]
+pub fn Leaf() -> Element {
+    rsx! {
+        svg {
+            class: "fa-solid h-10 w-10 fill-current text-redColor dark:text-secondaryColor",
+            xmlns: "{URL}",
+            view_box: "0 0 448 512",
+            path { d: "M0 32c477.6 0 366.6 317.3 367.1 366.3L448 480h-26l-70.4-71.2c-39 4.2-124.4 34.5-214.4-37C47 300.3 52 214.7 0 32zm79.7 46c-49.7-23.5-5.2 9.2-5.2 9.2 45.2 31.2 66 73.7 90.2 119.9 31.5 60.2 79 139.7 144.2 167.7 65 28 34.2 12.5 6-8.5-28.2-21.2-68.2-87-91-130.2-31.7-60-61-118.6-144.2-158.1z" }
+        }
+    }
+}
 // ArrowUp
 #[component]
 pub fn ArrowUp() -> Element {
     rsx! {
         svg {
             class: "fill-current h-6 w-6 text-blackColor",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             view_box: "0 0 384 512",
             path { d: "M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" }
         }
@@ -35,7 +87,7 @@ pub fn Instagram() -> Element {
     rsx! {
         svg {
             class: "fill-current h-5 w-5 cursor-pointer text-redColor dark:text-secondaryColor hover:-translate-y-1 ease-in duration-200",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             height: "16",
             width: "14",
             view_box: "0 0 448 512",
@@ -49,7 +101,7 @@ pub fn X() -> Element {
     rsx! {
         svg {
             class: "fill-current h-5 w-5 cursor-pointer text-redColor dark:text-secondaryColor hover:-translate-y-1 ease-in duration-200",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             height: "16",
             width: "16",
             view_box: "0 0 512 512",
@@ -63,7 +115,7 @@ pub fn Facebook() -> Element {
     rsx! {
         svg {
             class: "fill-current h-5 w-5 cursor-pointer text-redColor dark:text-secondaryColor hover:-translate-y-1 ease-in duration-200",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             view_box: "0 0 320 512",
             path { d: "M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" }
         }
@@ -75,7 +127,7 @@ pub fn Address() -> Element {
     rsx! {
         svg {
             class: "fill-current h-5 w-5 cursor-pointer text-redColor dark:text-secondaryColor",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             view_box: "0 0 384 512",
             path { d: "M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" }
         }
@@ -87,7 +139,7 @@ pub fn Email() -> Element {
     rsx! {
         svg {
             class: "fill-current h-5 w-5 text-redColor dark:text-secondaryColor",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             view_box: "0 0 512 512",
             path { d: "M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" }
         }
@@ -99,7 +151,7 @@ pub fn Phone() -> Element {
     rsx! {
         svg {
             class: "fill-current h-5 w-5 text-redColor dark:text-secondaryColor",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             view_box: "0 0 512 512",
             path { d: "M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" }
         }
@@ -111,7 +163,7 @@ pub fn Subscribe() -> Element {
     rsx! {
         svg {
             class: "fill-current text-white",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             height: "16",
             width: "16",
             view_box: "0 0 512 512",
@@ -125,7 +177,7 @@ pub fn CheckMark() -> Element {
     rsx! {
         svg {
             class: "h-4 w-4 fill-current text-redColor dark:text-secondaryColor",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             view_box: "0 0 448 512",
             path { d: "M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z" }
         }
@@ -137,7 +189,7 @@ pub fn Sun() -> Element {
     rsx! {
         svg {
             class: "cursor-pointer ml-4 h-6 w-6 fill-current text-paragraphColor dark:text-white",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             view_box: "0 -960 960 960",
             path { d: "M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z" }
         }
@@ -150,7 +202,7 @@ pub fn Moon() -> Element {
     rsx! {
         svg {
             class: "cursor-pointer ml-4 h-6 w-6 fill-current text-paragraphColor dark:text-white",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             view_box: "0 0 24 24",
             path { d: "M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.98 6.98 0 0 0 10 7Zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12Z" }
         }
@@ -163,7 +215,7 @@ pub fn Hamburger() -> Element {
     rsx! {
         svg {
             class: "cursor-pointer ml-4 h-6 w-6 fill-current text-paragraphColor dark:text-white md:hidden",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             view_box: "0 0 24 24",
             path { d: "M3 4h18v2H3V4Zm0 7h12v2H3v-2Zm0 7h18v2H3v-2Z" }
         }
@@ -176,7 +228,7 @@ pub fn Close() -> Element {
     rsx! {
         svg {
             class: "cursor-pointer mr-1 h-8 w-8 fill-current text-paragraphColor dark:text-white md:hidden",
-            xmlns: "http://www.w3.org/2000/svg",
+            xmlns: "{URL}",
             view_box: "0 0 24 24",
             path { d: "m12 10.586 4.95-4.95 1.415 1.415-4.95 4.95 4.95 4.95-1.415 1.414-4.95-4.95-4.95 4.95-1.413-1.415 4.95-4.95-4.95-4.95L7.05 5.638l4.95 4.95Z" }
         }

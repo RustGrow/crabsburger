@@ -9,7 +9,6 @@ use crate::constants::*;
 use crate::model::app_state::ApplicationData;
 use crate::repository::category_repo::CATEGORY_CARDS;
 use crate::repository::food_repo::{BEVERAGE, BURGERS, SNACKS};
-use crate::repository::home_icon_repo::HOME_CARD_ICONS;
 use crate::repository::promo_repo::PROMO_CARDS;
 use crate::repository::review_repo::REVIEWERS;
 use crate::utils::evals::ScrollButtonVisible;
@@ -70,27 +69,19 @@ pub fn HomeContent() -> Element {
                     }
                     div { class: "text-center md:basis-1/2 md:text-start lg:basis-3/5",
                         h1 { class: "home-title drop-shadow shadow-black dark:shadow-white",
-                            "HAPPY TUMMY WITH TASTY "
+                            "{LOCALES.lookup(lang_id, \"home-title\")}"
                             span { class: "gradient", "CRABSBURGER" }
                         }
                         div { class: "separator mx-auto md:mx-0" }
-                        p { class: "paragraph",
-                            "The ultimate destination for burger fans who want to indulge in mouth-watering and satisfying burgers. We use only fresh and quality ingredients to make our burgers, and we offer a variety of options to suit your taste. Come and visit us today, or order online and get a free drink. You will love our burgers."
-                        }
+                        p { class: "paragraph", "{LOCALES.lookup(lang_id, \"home-desc\")}" }
 
                         // Home card icons
                         div { class: "text-base flex items-center justify-center gap-4 py-10 md:justify-start md:gap-20",
-                            {
-                                HOME_CARD_ICONS.iter().enumerate().map(|(_, card)| {
-                                    rsx!{
-                                        HomeCardIcon  {
-                                            card: *card
-                                        }
-                                    }
-                                })
-                            }
+                            HomeCardIcon {}
                         }
-                        a { class: "btn btn-primary", href: "#", "lern more" }
+                        a { class: "btn btn-primary", href: "#",
+                            "{LOCALES.lookup(lang_id, \"lern-more\")}"
+                        }
                     }
                 }
             }

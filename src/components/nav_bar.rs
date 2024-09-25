@@ -5,9 +5,7 @@ use crate::model::app_state::ApplicationData;
 use crate::route::Route;
 use crate::utils::evals::{toggle_navbar_style_on_scroll, NavBarToggle};
 use dioxus::prelude::*;
-use dioxus_logger::tracing::info;
 use fluent_templates::Loader;
-use serde_json::value::Value;
 use std::str::FromStr;
 use unic_langid::LanguageIdentifier;
 
