@@ -1,4 +1,12 @@
-hello-world = Hallo Welt!
-homepage = Die Startseite ist auf Deutsch geschrieben!
-dioxus = Mit ❤️ an das Dioxus-Team.
-greeting = Hallo { $name }!
+# Langs
+English = Englisch
+German = Deutsch
+Spanish = Spanisch
+Arabic = Arabisch
+
+# Menu
+Home = Startseite
+About = Über uns
+Menu = Speisekarte
+Review = Bewertungen
+Contact = Kontakt

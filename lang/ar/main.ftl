@@ -1,4 +1,12 @@
-hello-world = مرحبًا بالعالم!
-homepage = الصفحة الرئيسية مكتوبة باللغة العربية!
-dioxus = مع ❤️ لفريق Dioxus.
-greeting = مرحبًا { $name }!
+# Langs
+English = الإنجليزية
+German = الألمانية
+Spanish = الإسبانية
+Arabic = العربية
+
+# Menu
+Home = الصفحة الرئيسية
+About = معلومات عنا
+Menu = قائمة الطعام
+Review = المراجعات
+Contact = اتصل بنا

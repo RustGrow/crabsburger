@@ -1,7 +1,6 @@
 #![allow(non_snake_case)]
 mod components;
 mod constants;
-mod icons;
 mod model;
 mod repository;
 mod route;
@@ -12,6 +11,7 @@ use crate::utils::evals::InitThemeColorState;
 use constants::STYLE;
 use dioxus::prelude::*;
 use dioxus_logger::tracing::{info, Level};
+use utils::evals::LangSettings;
 
 fn main() {
     dioxus_logger::init(Level::INFO).expect("failed to init logger");
@@ -23,6 +23,7 @@ fn App() -> Element {
     use_context_provider(ApplicationData::new);
     InitThemeColorState().expect("Fail to init color theme");
     rsx! {
+        LangSettings {}
         head::Link { rel: "stylesheet", href: STYLE }
         Router::<Route> {}
     }
