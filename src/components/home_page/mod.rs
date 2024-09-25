@@ -1,4 +1,5 @@
 pub mod category_card;
+pub mod check_card;
 pub mod food_card;
 pub mod home;
 pub mod home_card_icon;

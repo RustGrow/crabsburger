@@ -1,7 +1,7 @@
-#[derive(PartialEq, Debug, Clone, Copy)]
+#[derive(PartialEq, Debug, Clone)]
 pub struct Category {
-    pub title: &'static str,
-    pub text: &'static str,
+    pub title: String,
+    pub text: String,
     pub img: Image,
     pub bg_color: &'static str,
 }
@@ -21,18 +21,18 @@ pub struct HomeIcon {
     pub title: &'static str,
 }
 
-#[derive(PartialEq, Debug, Clone, Copy)]
+#[derive(PartialEq, Debug, Clone)]
 pub struct Image {
     pub class: &'static str,
     pub src: &'static str,
-    pub alt: &'static str,
+    pub alt: String,
 }
 
-#[derive(PartialEq, Debug, Clone, Copy)]
+#[derive(PartialEq, Debug, Clone)]
 pub struct Promo {
-    pub promo_type: &'static str,
-    pub title: &'static str,
-    pub description: &'static str,
+    pub promo_type: String,
+    pub title: String,
+    pub description: String,
     pub img: Image,
 }
 

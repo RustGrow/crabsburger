@@ -10,7 +10,7 @@ use unic_langid::LanguageIdentifier;
 pub fn HomeCardIcon() -> Element {
     let data = use_context::<ApplicationData>();
     let lang_id = &LanguageIdentifier::from_str(&(data.lang_code)() as &str).unwrap();
-    let card_name = vec![
+    let card_name: [String; 3] = [
         { LOCALES.lookup(lang_id, "Delicious") },
         { LOCALES.lookup(lang_id, "Fresh") },
         { LOCALES.lookup(lang_id, "Organic") },

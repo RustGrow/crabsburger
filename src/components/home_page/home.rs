@@ -4,12 +4,11 @@ use super::food_card::FoodCard;
 use super::home_card_icon::HomeCardIcon;
 use super::promo_card::PromoCard;
 use super::reviewers_card::ReviewersCard;
+use crate::components::home_page::check_card::Check;
 use crate::components::icon::*;
 use crate::constants::*;
 use crate::model::app_state::ApplicationData;
-use crate::repository::category_repo::CATEGORY_CARDS;
 use crate::repository::food_repo::{BEVERAGE, BURGERS, SNACKS};
-use crate::repository::promo_repo::PROMO_CARDS;
 use crate::repository::review_repo::REVIEWERS;
 use crate::utils::evals::ScrollButtonVisible;
 use crate::Route;
@@ -87,26 +86,12 @@ pub fn HomeContent() -> Element {
             }
             // Category --------------------------------------------
             section { id: "category",
-                div { class: "container flex flex-col gap-5 md:flex-row",
-                    {CATEGORY_CARDS.iter().enumerate().map(|(_, card)| {
-                        rsx!{
-                            CategoryCard  {
-                                card: *card
-                            }
-                        }
-                    })}
-                }
+                div { class: "container flex flex-col gap-5 md:flex-row", CategoryCard {} }
             }
             // Promo ---------------------------------------------
             section { id: "promo",
                 div { class: "container flex flex-col gap-5 lg:gap-10 lg:flex-row",
-                    {PROMO_CARDS.iter().enumerate().map(|(_, card)| {
-                    rsx!{
-                        PromoCard  {
-                            card: *card
-                        }
-                    }
-                    })}
+                    PromoCard {}
                 }
             }
             // About
@@ -116,27 +101,17 @@ pub fn HomeContent() -> Element {
                         img {
                             class: "rounded-lg",
                             src: "/images/about.jpg",
-                            alt: "about image"
+                            alt: "{LOCALES.lookup(lang_id, \"ab-alt\")}"
                         }
                     }
                     div { class: "flex-1",
-                        h2 { class: "section-title",
-                            "FIND FOOD AND DRINKS, ALL-IN-ONE PLACE FOR YOUR BEST TASTE."
-                        }
+                        h2 { class: "section-title", "{LOCALES.lookup(lang_id, \"ab-title\")}" }
                         div { class: "separator" }
-                        p { class: "paragraph",
-                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes."
+                        p { class: "paragraph", "{LOCALES.lookup(lang_id, \"ab-par\")}" }
+                        ul { class: "grid grid-cols-2 py-5 space-y-1", Check {} }
+                        a { class: "btn btn-primary", href: "",
+                            "{LOCALES.lookup(lang_id, \"about\")}"
                         }
-                        ul { class: "grid grid-cols-2 py-5 space-y-1",
-                            for check in CHECK.iter() {
-                                li { class: "flex flex-row items-center gap-1 text-base text-paragraphColor dark:text-white",
-                                    // Check mark icon
-                                    CheckMark {}
-                                    "{check}"
-                                }
-                            }
-                        }
-                        a { class: "btn btn-primary", href: "", "About us" }
                     }
                 }
             }
