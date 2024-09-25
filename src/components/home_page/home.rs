@@ -50,7 +50,13 @@ pub fn HomeLang(lang: String) -> Element {
 pub fn HomeContent() -> Element {
     let mut data = use_context::<ApplicationData>();
     let lang_id = &LanguageIdentifier::from_str(&(data.lang_code)() as &str).unwrap();
-    let tabs = vec!["All", "Burger", "Snack", "Beverage"];
+
+    let tabs: [String; 4] = [
+        { LOCALES.lookup(lang_id, "all") },
+        { LOCALES.lookup(lang_id, "Burger") },
+        { LOCALES.lookup(lang_id, "Snack") },
+        { LOCALES.lookup(lang_id, "Beverage") },
+    ];
     let mut selected_snippet = use_signal(|| 0);
 
     rsx! {
@@ -119,11 +125,9 @@ pub fn HomeContent() -> Element {
             section { id: "{LOCALES.lookup(lang_id, \"Menu\").to_lowercase()}",
                 div { class: "container",
                     div { class: "max-w-md mx-auto text-center",
-                        h2 { class: "section-title", "OUR BEST MENU" }
+                        h2 { class: "section-title", "{LOCALES.lookup(lang_id, \"s-title\")}" }
                         div { class: "separator mx-auto" }
-                        p { class: "paragraph",
-                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."
-                        }
+                        p { class: "paragraph", "{LOCALES.lookup(lang_id, \"s-par\")}" }
                         div { class: "tabs_wrap",
                             ul { class: "flex flex-wrap justify-center gap-3 py-10",
                                 { tabs.iter().enumerate().map(|(id, _)| {

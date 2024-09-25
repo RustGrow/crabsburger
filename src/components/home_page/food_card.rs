@@ -1,6 +1,12 @@
 use crate::model::card::Food;
 use dioxus::prelude::*;
 
+pub enum Menu {
+    Burger,
+    Snack,
+    Beverage,
+}
+
 #[component]
 pub fn FoodCard(card: Food) -> Element {
     rsx! {

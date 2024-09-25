@@ -51,4 +51,12 @@ check-service = Best Service
 check-protocol = Health Protocol
 about = About us
 
+# Menu Section
+s-title = OUR BEST MENU
+s-par = Dive into a world of flavors with our carefully curated menu. Each dish is crafted with love and attention to detail, ensuring you an unforgettable culinary experience.
+all = All
+Burger = Burger
+Snack = Snack
+Beverage = Beverage
+
 

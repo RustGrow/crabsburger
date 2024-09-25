@@ -51,4 +51,12 @@ check-service = Bester Service
 check-protocol = Gesundheitsprotokoll
 about = Über uns
 
+# Menu Section
+s-title = UNSER BESTES MENÜ
+s-par = Tauchen Sie ein in eine Welt voller Aromen mit unserem sorgfältig zusammengestellten Menü. Jedes Gericht wird mit Liebe und Aufmerksamkeit zum Detail zubereitet, um Ihnen ein unvergessliches kulinarisches Erlebnis zu bieten.
+all = Alle
+Burger = Burger
+Snack = Snack
+Beverage = Getränk
+
 

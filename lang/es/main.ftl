@@ -51,4 +51,12 @@ check-service = Mejor servicio
 check-protocol = Protocolo de salud
 about = Sobre nosotros
 
+# Menu Section
+s-title = NUESTRO MEJOR MENÚ
+s-par = Sumérgete en un mundo de sabores con nuestro menú cuidadosamente seleccionado. Cada plato está elaborado con amor y atención al detalle, asegurando una experiencia culinaria inolvidable.
+all = Todo
+Burger = Hamburguesa
+Snack = Aperitivo
+Beverage = Bebida
+
 
