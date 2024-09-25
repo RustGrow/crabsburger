@@ -63,3 +63,26 @@ Beverage = Getränk
 customer-review = Hören Sie von unseren zufriedenen Kunden
 customer-desc = Entdecken Sie, warum unsere Kunden uns lieben! Lesen Sie ihre Erfahrungen und sehen Sie, wie wir einen Unterschied in ihrem Leben gemacht haben. Ihre Zufriedenheit ist unsere oberste Priorität.
 
+# Subscribe section
+sub-title = ERHALTEN SIE EXKLUSIVE UPDATES
+sub-par = Abonnieren Sie unseren Newsletter und bleiben Sie mit den neuesten Nachrichten und Sonderangeboten auf dem Laufenden.
+sub-email-placeholder = E-Mail-Adresse
+sub-button = Abonnieren
+
+# Footer
+ft-mission = Wir bieten hochwertige Lebensmittel zu großartigen Preisen. Egal, ob Sie bei uns essen oder online bestellen, wir bemühen uns, jede Mahlzeit zu einem unvergesslichen Erlebnis zu machen.
+support = SUPPORT
+faq = FAQ's
+privacy = Datenschutzrichtlinie
+term = Allgemeine Geschäftsbedingungen
+contact = Kontakt
+phone = Telefon
+email = E-Mail
+address = Adresse
+address-text = Mars, Schiaparelli-Krater, Siedlungsbeginn, Elon Musk
+follow = Folgen Sie uns
+template = Template-Kit mit ❤️ zu
+dioxus = Dioxus
+copyright = Urheberrecht
+rights = Alle Rechte vorbehalten.
+

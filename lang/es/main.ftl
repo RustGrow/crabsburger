@@ -63,3 +63,27 @@ Beverage = Bebida
 customer-review = Escucha a nuestros clientes satisfechos
 customer-desc = ¡Descubre por qué nuestros clientes nos aman! Lee sus experiencias y ve cómo hemos hecho una diferencia en sus vidas. Tu satisfacción es nuestra máxima prioridad.
 
+# Subscribe section
+sub-title = OBTÉN ACTUALIZACIONES EXCLUSIVAS
+sub-par = Suscríbete a nuestro boletín y mantente al día con las últimas noticias y ofertas especiales.
+sub-email-placeholder = Dirección de correo electrónico
+sub-button = Suscribirse
+
+# Footer
+ft-mission = Ofrecemos alimentos de alta calidad a precios excelentes. Ya sea que cene con nosotros o haga un pedido en línea, nos esforzamos por hacer que cada comida sea una experiencia memorable.
+support = SOPORTE
+faq = Preguntas Frecuentes
+privacy = Política de Privacidad
+term = Términos y Condiciones
+contact = Contacto
+phone = Teléfono
+email = Correo Electrónico
+address = Dirección
+address-text = Marte, Cráter Schiaparelli, Comienzo de la Colonia, Elon Musk
+follow = Síguenos
+template = Kit de Plantilla con ❤️ para
+dioxus = Dioxus
+copyright = Derechos de Autor
+rights = Todos los derechos reservados.
+
+

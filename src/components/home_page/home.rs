@@ -56,6 +56,13 @@ pub fn HomeContent() -> Element {
         { LOCALES.lookup(lang_id, "Snack") },
         { LOCALES.lookup(lang_id, "Beverage") },
     ];
+
+    let support: [String; 4] = [
+        { LOCALES.lookup(lang_id, "faq") },
+        { LOCALES.lookup(lang_id, "privacy") },
+        { LOCALES.lookup(lang_id, "term") },
+        { LOCALES.lookup(lang_id, "contact") },
+    ];
     let mut selected_snippet = use_signal(|| 0);
 
     rsx! {
@@ -185,33 +192,36 @@ pub fn HomeContent() -> Element {
                     }
                 }
             }
+
+            // Subscribe section
             section {
                 class: "bg-secondaryColor py-16",
                 id: "{LOCALES.lookup(lang_id, \"Contact\").to_lowercase()}",
                 div { class: "container flex flex-col gap-5 md:items-center md:flex-row",
                     div { class: "space-y-4 md:flex-1",
-                        h2 { class: "section-title text-blackColor", "GET EXCLUSIVE UPDATE" }
-                        p { class: "text-sm",
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                        h2 { class: "section-title text-blackColor",
+                            "{LOCALES.lookup(lang_id, \"sub-title\")}"
                         }
+                        p { class: "text-sm", "{LOCALES.lookup(lang_id, \"sub-par\")}" }
                     }
                     div { class: "flex flex-col gap-3 md:flex-row md:flex-1",
                         input {
                             class: "p-2 text-blackColor rounded-lg outline-none md:w-full",
                             r#type: "text",
-                            placeholder: "Email address"
+                            placeholder: "{LOCALES.lookup(lang_id, \"sub-email-placeholder\")}"
                         }
                         a {
                             class: "flex items-center justify-center gap-2 btn text-white bg-blackColor hover:opacity-75",
                             href: "",
                             // Subscribe icon
                             Subscribe {}
-                            "Subscribe"
+                            "{LOCALES.lookup(lang_id, \"sub-button\")}"
                         }
                     }
                 }
             }
         }
+
         footer {
             div { class: "flex flex-row justify-center items-center w-full h-full",
                 a {
@@ -225,15 +235,15 @@ pub fn HomeContent() -> Element {
                     ul { class: "grid grid-cols-1 items-start gap-5 pb-5 md:grid-cols-2 lg:grid-cols-4",
                         li {
                             div { class: "space-y-3",
-                                p { class: "text-sm",
-                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
-                                }
+                                p { class: "text-sm", "{LOCALES.lookup(lang_id, \"ft-mission\")}" }
                             }
                         }
                         li {
                             div { class: "flex flex-col gap-3",
-                                h3 { class: "text-lg uppercase font-oswald", "SUPPORT" }
-                                for name in SUPPORT.iter() {
+                                h3 { class: "text-lg uppercase font-oswald",
+                                    "{LOCALES.lookup(lang_id, \"support\")}"
+                                }
+                                for name in support.iter() {
                                     a {
                                         class: "text-xs hover:text-secondaryColor",
                                         href: "",
@@ -244,7 +254,9 @@ pub fn HomeContent() -> Element {
                         }
                         li { class: "space-y-8",
                             div { class: "space-y-2",
-                                h3 { class: "text-lg uppercase font-oswald", "phone" }
+                                h3 { class: "text-lg uppercase font-oswald",
+                                    "{LOCALES.lookup(lang_id, \"phone\")}"
+                                }
                                 p { class: "flex items-center gap-2 text-xs",
                                     // Phone icon
                                     Phone {}
@@ -252,7 +264,9 @@ pub fn HomeContent() -> Element {
                                 }
                             }
                             div { class: "space-y-2",
-                                h3 { class: "text-lg uppercase font-oswald", "email" }
+                                h3 { class: "text-lg uppercase font-oswald",
+                                    "{LOCALES.lookup(lang_id, \"email\")}"
+                                }
                                 p { class: "flex items-center gap-2 text-xs",
                                     // Email icon
                                     Email {}
@@ -262,15 +276,19 @@ pub fn HomeContent() -> Element {
                         }
                         li { class: "space-y-8",
                             div { class: "space-y-2",
-                                h3 { class: "text-lg uppercase font-oswald", "address" }
+                                h3 { class: "text-lg uppercase font-oswald",
+                                    "{LOCALES.lookup(lang_id, \"address\")}"
+                                }
                                 p { class: "flex items-center gap-2 text-xs",
                                     // Address icon
                                     Address {}
-                                    "Address goes here"
+                                    "{LOCALES.lookup(lang_id, \"address-text\")}"
                                 }
                             }
                             div { class: "space-y-2",
-                                h3 { class: "text-lg uppercase font-oswald", "follow us" }
+                                h3 { class: "text-lg uppercase font-oswald",
+                                    "{LOCALES.lookup(lang_id, \"follow\")}"
+                                }
                                 div { class: "space-x-3 flex flex-row",
                                     // Facebook icon
                                     Facebook {}
@@ -285,15 +303,15 @@ pub fn HomeContent() -> Element {
                     div { class: "flex flex-col items-center border-t border-primaryColorLight dark:border-darkColorLight py-5 md:flex-row md:justify-between",
                         p { class: "paragraph",
                             span { class: "uppercase gradient", "CrabsBurger" }
-                            "Template Kit with ❤️ to "
+                            "{LOCALES.lookup(lang_id, \"template\")}"
                             a {
                                 href: "https://dioxuslabs.com/",
                                 alt: "Dioxus labs",
-                                "Dioxus"
+                                "{LOCALES.lookup(lang_id, \"dioxus\")}"
                             }
                         }
                         p { class: "paragraph",
-                            "Copyright © {chrono::Utc::now().year()}. All rights reserved."
+                            "{LOCALES.lookup(lang_id, \"copyright\")} © {chrono::Utc::now().year()}. {LOCALES.lookup(lang_id, \"rights\")}"
                         }
                     }
                 }

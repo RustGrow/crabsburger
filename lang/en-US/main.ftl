@@ -63,4 +63,25 @@ Beverage = Beverage
 customer-review = Hear from Our Happy Customers
 customer-desc = Discover why our customers love us! Read their experiences and see how we’ve made a difference in their lives. Your satisfaction is our top priority.
 
+# Subscribe section
+sub-title = GET EXCLUSIVE UPDATE
+sub-par = Subscribe to our newsletter and stay updated with the latest news and special offers.
+sub-email-placeholder = Email address
+sub-button = Subscribe
 
+# Footer
+ft-mission = We provide high-quality food at great prices. Whether you're dining in or ordering online, we strive to make every meal a memorable experience.
+support = SUPPORT
+faq = FAQ's
+privacy = Privacy Policy
+term = Term & Condition
+contact = Contact
+phone = phone
+email = email
+address = address
+address-text = Mars, Schiaparelli Crater, Settlement Beginning, Elon Musk
+follow = follow us
+template = Template Kit with ❤️ to 
+dioxus = Dioxus
+copyright = Copyright
+rights = All rights reserved.
