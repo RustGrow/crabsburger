@@ -2,7 +2,6 @@
 mod components;
 mod constants;
 mod model;
-mod repository;
 mod route;
 mod utils;
 use crate::model::app_state::ApplicationData;

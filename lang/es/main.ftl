@@ -59,4 +59,7 @@ Burger = Hamburguesa
 Snack = Aperitivo
 Beverage = Bebida
 
+# Review Section
+customer-review = Escucha a nuestros clientes satisfechos
+customer-desc = ¡Descubre por qué nuestros clientes nos aman! Lee sus experiencias y ve cómo hemos hecho una diferencia en sus vidas. Tu satisfacción es nuestra máxima prioridad.
 

@@ -36,13 +36,13 @@ pub struct Promo {
     pub img: Image,
 }
 
-#[derive(PartialEq, Debug, Clone, Copy)]
+#[derive(PartialEq, Debug, Clone)]
 pub struct Review {
-    pub paragraph: &'static str,
+    pub paragraph: String,
     pub img: &'static str,
-    pub img_alt: &'static str,
-    pub name: &'static str,
-    pub job: &'static str,
+    pub img_alt: String,
+    pub name: String,
+    pub job: String,
 }
 
 #[derive(PartialEq, Debug, Clone, Copy)]

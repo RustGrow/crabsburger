@@ -59,4 +59,7 @@ Burger = Burger
 Snack = Snack
 Beverage = Getränk
 
+# Review Section
+customer-review = Hören Sie von unseren zufriedenen Kunden
+customer-desc = Entdecken Sie, warum unsere Kunden uns lieben! Lesen Sie ihre Erfahrungen und sehen Sie, wie wir einen Unterschied in ihrem Leben gemacht haben. Ihre Zufriedenheit ist unsere oberste Priorität.
 

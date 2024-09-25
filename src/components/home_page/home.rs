@@ -9,7 +9,6 @@ use crate::components::home_page::food_card::Menu;
 use crate::components::icon::*;
 use crate::constants::*;
 use crate::model::app_state::ApplicationData;
-use crate::repository::review_repo::REVIEWERS;
 use crate::utils::evals::ScrollButtonVisible;
 use crate::Route;
 use chrono::Datelike;
@@ -175,23 +174,13 @@ pub fn HomeContent() -> Element {
                 class: "bg-primaryColorLight dark:bg-darkColorLight py-20",
                 div { class: "container",
                     div { class: "max-w-md mx-auto text-center",
-                        h2 { class: "section-title", "CUSTOMER REVIEW" }
+                        h2 { class: "section-title", "{LOCALES.lookup(lang_id, \"customer-review\")}" }
                         div { class: "separator mx-auto" }
-                        p { class: "paragraph",
-                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa."
-                        }
+                        p { class: "paragraph", "{LOCALES.lookup(lang_id, \"customer-desc\")}" }
                     }
                     div { class: "swiper py-10",
                         ul { class: "grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3",
-                            {
-                                REVIEWERS.iter().enumerate().map(|(_, card)| {
-                            rsx!{
-                                ReviewersCard  {
-                                    card: *card
-                                }
-                            }
-                            })
-                            }
+                            ReviewersCard {}
                         }
                     }
                 }
