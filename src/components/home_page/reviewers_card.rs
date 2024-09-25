@@ -10,7 +10,7 @@ pub fn ReviewersCard(card: Review) -> Element {
                 div { class: "flex items-center",
                     img {
                         class: "w-12 h-12 rounded-full",
-                        src: "images/{card.img}",
+                        src: "/images/{card.img}",
                         alt: card.img_alt
                     }
                     div { class: "ml-2",

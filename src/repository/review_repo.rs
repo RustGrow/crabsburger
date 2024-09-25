@@ -19,7 +19,7 @@ Review {
     paragraph: "They are amazing to work with. They listen to your needs and preferences and create a design that suits you perfectly. They are also very friendly and responsive.", 
     img: "review-3.jpg", 
     img_alt: "review image", 
-    name: "Lisa Chen", 
+    name: "Emily Johnson", 
     job: "Blogger" 
 },
 Review { 
@@ -33,6 +33,6 @@ Review {
     paragraph: "They are the best in the business. They have a lot of experience and knowledge in design and they always deliver on time and on budget. They are also very easy to communicate with.", 
     img: "review-5.jpg", 
     img_alt: "review image", 
-    name: "Anna Garcia", 
+    name: "Michael Anderson", 
     job: "Teacher", },
 ];

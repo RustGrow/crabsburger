@@ -1,16 +1,27 @@
 use crate::components::icon::*;
 use crate::components::lang_dd::LangDropDown;
+use crate::constants::LOCALES;
 use crate::model::app_state::ApplicationData;
 use crate::route::Route;
 use crate::utils::evals::{toggle_navbar_style_on_scroll, NavBarToggle};
 use dioxus::prelude::*;
 use dioxus_logger::tracing::info;
+use fluent_templates::Loader;
 use serde_json::value::Value;
+use std::str::FromStr;
+use unic_langid::LanguageIdentifier;
 
 #[component]
 pub fn NavBar() -> Element {
     let mut data = use_context::<ApplicationData>();
-    let menu = vec!["Home", "About", "Menu", "Review", "Contact"];
+    let lang_id = &LanguageIdentifier::from_str(&(data.lang_code)() as &str).unwrap();
+    let menu = vec![
+        { LOCALES.lookup(lang_id, "Home") },
+        { LOCALES.lookup(lang_id, "About") },
+        { LOCALES.lookup(lang_id, "Menu") },
+        { LOCALES.lookup(lang_id, "Review") },
+        { LOCALES.lookup(lang_id, "Contact") },
+    ];
 
     rsx! {
         toggle_navbar_style_on_scroll { navbar_style: data.header_border_style_on_scroll }
@@ -79,6 +90,9 @@ pub fn NavBar() -> Element {
                             rsx!{ Moon{}}
                         }
                         }
+                    }
+                    if !(data.show_hidden_menu)() {
+                        div { LangDropDown {} }
                     }
                     div { onclick: move |_| { data.show_hidden_menu.set(true) },
                         // Hamburger icon

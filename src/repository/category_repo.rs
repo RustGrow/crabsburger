@@ -6,7 +6,7 @@ pub static CATEGORY_CARDS: &[Category] = &[
     text: "Eat healthy and tasty",
     img: Image{
         class: "",
-        src: "images/burger-1.png",
+        src: "/images/burger-1.png",
         alt: "A photo of a big and juicy burger with a patty, cheese, lettuce and tomato on a sesame bun.",
     },
     bg_color: "bg-secondaryColor",
@@ -18,7 +18,7 @@ pub static CATEGORY_CARDS: &[Category] = &[
     text: "Snack smart and happy",
     img: Image{
         class: "",
-        src: "images/snack-1.png",
+        src: "/images/snack-1.png",
         alt: "A photo of various snacks, such as nuts, dried fruits, cheese sticks, chips, cookies and so on.",
     },
     bg_color: "bg-redColor",
@@ -28,7 +28,7 @@ pub static CATEGORY_CARDS: &[Category] = &[
     text: "Drink enough and well",
     img: Image{
         class: "",
-        src: "images/beverage-2.png",
+        src: "/images/beverage-2.png",
         alt: "A photo of different drinks, such as water, milk, juice, tea, coffee, beer, wine and so on.",
     },
     bg_color: "bg-greenColor",

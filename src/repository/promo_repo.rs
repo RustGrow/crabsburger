@@ -7,7 +7,7 @@ pub static PROMO_CARDS: &[Promo] = &[
     description: "Enjoy our juicy and delicious burgers with a refreshing beverage of your choice.",
     img: Image {
         class: "",
-        src: "images/promo-1.png",
+        src: "/images/promo-1.png",
         alt: "A photo of a burger and a drink on a wooden table.",
     },
 },
@@ -17,7 +17,7 @@ pub static PROMO_CARDS: &[Promo] = &[
     description: "Quench your thirst with our selection of drinks, from water and juice to coffee and beer.",
     img: Image {
         class: "",
-        src: "images/promo-2.png",
+        src: "/images/promo-2.png",
         alt: "A photo of two glasses of different beverages on a colorful background.",
     },
 }
