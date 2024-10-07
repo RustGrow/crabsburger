@@ -24,8 +24,8 @@ This example showcases the new syntax introduced in Dioxus 0.6 and utilizes sign
 - [X] Highlight the top menu when scrolling
 - [X] Implement light and dark mode toggling and set the mode in the HTML tag as required by Tailwind CSS
 - [X] Save the color scheme to the browser's local storage
-- [ ] Retrieve the browser client's language
-- [ ] Change the language in the HTML tag when switching languages
+- [X] Retrieve the browser client's language
+- [X] Change the language in the HTML tag when switching languages
 
 ### Important. This project uses the web platform
 # Quick start
@@ -53,7 +53,7 @@ npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch
 Run the following command in the root of the project to start the Dioxus dev server:
 
 ```bash
-dx serve --hot-reload true
+dx serve
 ```
 
 - Open the browser to http://localhost:8080
@@ -88,26 +88,14 @@ dioxus-logger = "0.5.1"
 4. Start the Tailwind CSS compiler and the Dioxus dev server in different terminals:
 ```bash
 npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch
-dx serve --hot-reload true
+dx serve
 ```
 
-5. The Script now has some bug
+5. You need to set a script reference to use Tailwind CDN
 ```rust
-❌ Script { src: "https://cdn.tailwindcss.com" } //Has some bug
+Script { src: "https://cdn.tailwindcss.com" }
 ```
-You need to set a script reference to use Tailwind CDN inside Dioxus.toml
-✔️ Tested
-```toml
-# include `assets` in web platform
-[web.resource]
 
-# CSS style file
-
-style = []
-
-# Javascript code file
-script = ["https://cdn.tailwindcss.com"]
-```
 
 # If you need a local stylesheet for custom styles inside input.css.
 1. Insert your custom styles inside input.css:
@@ -143,7 +131,7 @@ button r on terminal
 or 
 
 ```bash
-dx serve --hot-reload true
+dx serve
 ```
 
 # How to make a release

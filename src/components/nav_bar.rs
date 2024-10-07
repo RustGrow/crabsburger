@@ -62,6 +62,7 @@ pub fn NavBar() -> Element {
                                 class: "w-full h-full flex flex-row justify-center items-center md:p-2",
                                 href: "#{menu[id].to_lowercase()}",
                                 span { class: "{bg_selected}",
+                                class: if (data.lang_code)() != "ar" {"whitespace-nowrap"},
                                     "{menu[id]}",
                                 }
                             }
