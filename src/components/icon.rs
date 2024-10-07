@@ -255,7 +255,7 @@ pub fn Close() -> Element {
 pub fn Lang() -> Element {
     rsx! {
         svg {
-            fill: "#000000",
+            class: "cursor-pointer fill-current text-paragraphColor dark:text-white",
             height: "20px",
             width: "20px",
             view_box: "0 0 24 24",

@@ -23,7 +23,7 @@ pub fn LangDropDown() -> Element {
         div { class: "relative ml-3",
             div {
                 button {
-                    class: "relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2",
+                    class: "relative flex rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2",
                     r#type: "button",
                     id: "user-menu-button",
                     aria_expanded: "false",
@@ -40,7 +40,7 @@ pub fn LangDropDown() -> Element {
                 }
             }
             div {
-                class: "absolute z-10 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none",
+                class: "absolute z-10 mt-2 w-40 origin-top-right rounded-md bg-primaryColor dark:bg-darkColor text-paragraphColor dark:text-white py-1 border-[1px] border-secondaryColor card-shadow focus:outline-none",
                 class: if !(data.show_lang_menu)() { "hidden" },
                 class: if !rtl() { "right-0" } else { "left-0" },
                 role: "menu",
@@ -50,7 +50,7 @@ pub fn LangDropDown() -> Element {
                     for ((code , name) , flag) in LANG_CODES.iter().zip(LANG_NAMES.iter()).zip(flags().iter()) {
                         match *code {
                             "en" => rsx!{
-                                Link { class: "grid grid-cols-3 gap-4 text-sm text-gray-700 hover:bg-slate-300 cursor-pointer hover:ring-1 items-center px-2 py-1",
+                                Link { class: "grid grid-cols-3 gap-4 text-sm hover:primaryColorLight cursor-pointer border-[2px] dark:border-[1px] border-transparent hover:border-t-secondaryColor hover:border-b-secondaryColor hover:card-shadow items-center px-2 py-1",
                                     onclick: move |_| {
                                         (data.lang_code).set(code.to_string());
                                         let eval = ButtonLang();
@@ -63,7 +63,7 @@ pub fn LangDropDown() -> Element {
                                 },
                             },
                             _ => rsx!{
-                                Link { class: "grid grid-cols-3 gap-4 text-sm text-gray-700 hover:bg-slate-300 cursor-pointer hover:ring-1 items-center px-2 py-1",
+                                Link { class: "grid grid-cols-3 gap-4 text-sm hover:primaryColorLight cursor-pointer border-[2px] dark:border-[1px] border-transparent hover:border-t-secondaryColor hover:border-b-secondaryColor hover:card-shadow items-center px-2 py-1",
                                     onclick: move |_| {
                                         (data.lang_code).set(code.to_string());
                                         let eval = ButtonLang();
