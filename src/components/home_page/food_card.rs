@@ -171,7 +171,7 @@ pub fn FoodList(cards: Vec<Food>) -> Element {
                     img {
                         class: "w-40 hover:scale-110 ease-linear duration-200 md:w-48 lg:w-24",
                         src: card.img_path,
-                        alt: card.alt.clone()
+                        alt: card.alt.clone(),
                     }
                 }
                 div { class: "pt-5",

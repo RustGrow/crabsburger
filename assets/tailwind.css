@@ -807,6 +807,10 @@ section{
   height: 2.25rem;
 }
 
+.h-\[60px\]{
+  height: 60px;
+}
+
 .h-full{
   height: 100%;
 }
@@ -933,6 +937,10 @@ section{
   justify-content: space-between;
 }
 
+.gap-0{
+  gap: 0px;
+}
+
 .gap-1{
   gap: 0.25rem;
 }
@@ -1029,10 +1037,6 @@ section{
   border-top-width: 1px;
 }
 
-.border-none{
-  border-style: none;
-}
-
 .border-primaryColorLight{
   --tw-border-opacity: 1;
   border-color: rgb(241 241 241 / var(--tw-border-opacity));
@@ -1093,6 +1097,10 @@ section{
   padding: 1.5rem;
 }
 
+.p-0{
+  padding: 0px;
+}
+
 .px-2{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1106,11 +1114,6 @@ section{
 .py-10{
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-}
-
-.py-14{
-  padding-top: 3.5rem;
-  padding-bottom: 3.5rem;
 }
 
 .py-16{
@@ -1140,6 +1143,10 @@ section{
 
 .pb-5{
   padding-bottom: 1.25rem;
+}
+
+.pt-14{
+  padding-top: 3.5rem;
 }
 
 .pt-5{
@@ -1399,12 +1406,6 @@ section{
   opacity: 0.75;
 }
 
-.hover\:ring-1:hover{
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-}
-
 .hover\:gradient:hover{
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
   --tw-gradient-from: #ef4444 var(--tw-gradient-from-position);
@@ -1447,6 +1448,19 @@ section{
 
 .focus\:ring-offset-2:focus{
   --tw-ring-offset-width: 2px;
+}
+
+.group:hover .group-hover\:gradient{
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: #ef4444 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(239 68 68 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  --tw-gradient-to: rgb(59 130 246 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #3b82f6 var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-to: #22c55e var(--tw-gradient-to-position);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
 }
 
 .dark\:border-\[1px\]:is(.dark *){
@@ -1510,6 +1524,10 @@ section{
     display: none;
   }
 
+  .md\:h-full{
+    height: 100%;
+  }
+
   .md\:w-48{
     width: 12rem;
   }
@@ -1554,13 +1572,20 @@ section{
     gap: 5rem;
   }
 
+  .md\:gap-5{
+    gap: 1.25rem;
+  }
+
   .md\:border-none{
     border-style: none;
   }
 
-  .md\:py-0{
-    padding-top: 0px;
-    padding-bottom: 0px;
+  .md\:p-2{
+    padding: 0.5rem;
+  }
+
+  .md\:p-4{
+    padding: 1rem;
   }
 
   .md\:pt-0{
@@ -1569,6 +1594,12 @@ section{
 
   .md\:text-start{
     text-align: start;
+  }
+
+  .md\:shadow-none{
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 }
 

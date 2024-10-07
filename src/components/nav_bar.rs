@@ -33,34 +33,37 @@ pub fn NavBar() -> Element {
                 div {
                     a {
                         href: "#",
-                        class: "text-2xl uppercase font-poppinsRegular font-bold gradient  drop-shadow shadow-black dark:shadow-white",
+                        class: "text-2xl uppercase font-poppinsRegular font-bold gradient drop-shadow shadow-black dark:shadow-white",
                         "CrabsBurger"
                     }
                 }
 
                 // Menu
                 div {
-                    class: "absolute top-0 left-0 w-full py-14 bg-primaryColor dark:bg-darkColor border-b border-secondaryColor md:block md:static md:py-0 md:border-none md:w-auto md:ml-auto",
+                    class: "absolute top-0 left-0 w-full md:h-full pt-14 bg-primaryColor dark:bg-darkColor border-[2px] dark:border-[1px] border-secondaryColor md:block md:static md:pt-0 md:border-none md:w-auto md:ml-auto card-shadow md:shadow-none",
                     class: if !*data.show_hidden_menu.read() { "hidden" },
-                    ul { class: "flex flex-col text-center gap-5 md:flex-row",
+                    ul { class: "flex flex-col gap-0 md:h-full md:flex-row",
                         { menu.iter().enumerate().map(|(id, _)| {
                         let selected = *data.selected_menu.read() == id;
 
                         let bg_selected = match selected {
                             true => "gradient ease-in duration-200",
-                            false => "hover:gradient ease-in duration-200",
+                            false => "group-hover:gradient ease-in duration-200",
                         };
 
                         rsx! {
-                            li {
+                            li { class: "group w-full h-[60px] md:h-ful border-[2px] dark:border-[1px] border-transparent hover:border-t-secondaryColor hover:border-b-secondaryColor md:border-none hover:card-shadow",
                             onclick: move |_| {
                                 data.selected_menu.set(id);
                                 // hidden open menu from mobile
-                                data.show_hidden_menu.set(false)},
+                                data.show_hidden_menu.set(false)
+                            },
                             a {
-                                class: "{bg_selected}",
+                                class: "w-full h-full flex flex-row justify-center items-center md:p-2",
                                 href: "#{menu[id].to_lowercase()}",
-                                "{menu[id]}"
+                                span { class: "{bg_selected}",
+                                    "{menu[id]}",
+                                }
                             }
 
                         }

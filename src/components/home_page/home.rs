@@ -76,7 +76,7 @@ pub fn HomeContent() -> Element {
                         img {
                             class: " w-60 md:w-full",
                             src: "/images/home-image.png",
-                            alt: "home image"
+                            alt: "home image",
                         }
                     }
                     div { class: "text-center md:basis-1/2 md:text-start lg:basis-3/5",
@@ -114,7 +114,7 @@ pub fn HomeContent() -> Element {
                         img {
                             class: "rounded-lg",
                             src: "/images/about.jpg",
-                            alt: "{LOCALES.lookup(lang_id, \"ab-alt\")}"
+                            alt: "{LOCALES.lookup(lang_id, \"ab-alt\")}",
                         }
                     }
                     div { class: "flex-1",
@@ -137,38 +137,46 @@ pub fn HomeContent() -> Element {
                         p { class: "paragraph", "{LOCALES.lookup(lang_id, \"s-par\")}" }
                         div { class: "tabs_wrap",
                             ul { class: "flex flex-wrap justify-center gap-3 py-10",
-                                { tabs.iter().enumerate().map(|(id, _)| {
-                                    let selected = *selected_snippet.read() == id;
-
-                                    let bg_selected = match selected {
-                                        true => "btn bg-secondaryColorLight dark:bg-darkColorLight active",
-                                        false => "btn bg-primaryColorLight dark:bg-darkColorLight",
-                                    };
-                                    rsx! {
-                                        li { class: "{bg_selected}",
-                                        onclick: move |_| selected_snippet.set(id),
-                                        "{tabs[id]}",
-                                    }
-                                    }
-                                })}
+                                {
+                                    tabs.iter()
+                                        .enumerate()
+                                        .map(|(id, _)| {
+                                            let selected = *selected_snippet.read() == id;
+                                            let bg_selected = match selected {
+                                                true => "btn bg-secondaryColorLight dark:bg-darkColorLight active",
+                                                false => "btn bg-primaryColorLight dark:bg-darkColorLight",
+                                            };
+                                            rsx! {
+                                                li { class: "{bg_selected}", onclick: move |_| selected_snippet.set(id), "{tabs[id]}" }
+                                            }
+                                        })
+                                }
                             }
                         }
                     }
                     div { class: "menu-items",
                         ul { class: "grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-12",
                             match selected_snippet() {
-                            1 => {
-                            rsx!{ FoodCard  { card: Menu::Burger  } }
-                            },
-                            2 => {
-                            rsx!{ FoodCard  { card: Menu::Snack  } }
-                            },
-                            3 => {
-                            rsx!{ FoodCard  { card: Menu::Beverage  } }
-                            },
-                            _ => {
-                            rsx!{ FoodCard  { card: Menu::All  } }
-                            }
+                                1 => {
+                                    rsx! {
+                                        FoodCard { card: Menu::Burger }
+                                    }
+                                }
+                                2 => {
+                                    rsx! {
+                                        FoodCard { card: Menu::Snack }
+                                    }
+                                }
+                                3 => {
+                                    rsx! {
+                                        FoodCard { card: Menu::Beverage }
+                                    }
+                                }
+                                _ => {
+                                    rsx! {
+                                        FoodCard { card: Menu::All }
+                                    }
+                                }
                             }
                         }
                     }
@@ -209,7 +217,7 @@ pub fn HomeContent() -> Element {
                         input {
                             class: "p-2 text-blackColor rounded-lg outline-none md:w-full",
                             r#type: "text",
-                            placeholder: "{LOCALES.lookup(lang_id, \"sub-email-placeholder\")}"
+                            placeholder: "{LOCALES.lookup(lang_id, \"sub-email-placeholder\")}",
                         }
                         a {
                             class: "flex items-center justify-center gap-2 btn text-white bg-blackColor hover:opacity-75",

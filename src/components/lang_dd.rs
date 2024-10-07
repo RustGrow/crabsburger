@@ -49,8 +49,9 @@ pub fn LangDropDown() -> Element {
                 ul { class: "flex flex-col",
                     for ((code , name) , flag) in LANG_CODES.iter().zip(LANG_NAMES.iter()).zip(flags().iter()) {
                         match *code {
-                            "en" => rsx!{
-                                Link { class: "grid grid-cols-3 gap-4 text-sm hover:primaryColorLight cursor-pointer border-[2px] dark:border-[1px] border-transparent hover:border-t-secondaryColor hover:border-b-secondaryColor hover:card-shadow items-center px-2 py-1",
+                            "en" => rsx! {
+                                Link {
+                                    class: "grid grid-cols-3 gap-4 text-sm hover:primaryColorLight cursor-pointer border-[2px] dark:border-[1px] border-transparent hover:border-t-secondaryColor hover:border-b-secondaryColor hover:card-shadow items-center px-2 py-1",
                                     onclick: move |_| {
                                         (data.lang_code).set(code.to_string());
                                         let eval = ButtonLang();
@@ -58,12 +59,13 @@ pub fn LangDropDown() -> Element {
                                         (data.show_lang_menu).toggle();
                                     },
                                     to: Route::Home {},
-                                        div{ class: "col-span-1 ", {flag} },
-                                        div { class: "col-span-2 text-base", {LOCALES.lookup(lang_id, name)} }
-                                },
+                                    div { class: "col-span-1 ", {flag} }
+                                    div { class: "col-span-2 text-base", {LOCALES.lookup(lang_id, name)} }
+                                }
                             },
-                            _ => rsx!{
-                                Link { class: "grid grid-cols-3 gap-4 text-sm hover:primaryColorLight cursor-pointer border-[2px] dark:border-[1px] border-transparent hover:border-t-secondaryColor hover:border-b-secondaryColor hover:card-shadow items-center px-2 py-1",
+                            _ => rsx! {
+                                Link {
+                                    class: "grid grid-cols-3 gap-4 text-sm hover:primaryColorLight cursor-pointer border-[2px] dark:border-[1px] border-transparent hover:border-t-secondaryColor hover:border-b-secondaryColor hover:card-shadow items-center px-2 py-1",
                                     onclick: move |_| {
                                         (data.lang_code).set(code.to_string());
                                         let eval = ButtonLang();
@@ -73,10 +75,10 @@ pub fn LangDropDown() -> Element {
                                     to: Route::HomeLang {
                                         lang: code.to_string(),
                                     },
-                                    div{ class: "col-span-1 ", {flag} },
+                                    div { class: "col-span-1 ", {flag} }
                                     div { class: "col-span-2 text-base", {LOCALES.lookup(lang_id, name)} }
                                 }
-                            }
+                            },
                         }
                     }
                 }

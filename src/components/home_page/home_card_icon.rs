@@ -19,7 +19,7 @@ pub fn HomeCardIcon() -> Element {
     rsx! {
         for (name , svg_icon) in card_name.iter().zip(home_icons().iter()) {
             div { class: "text-center flex flex-col items-center justify-center",
-                {svg_icon},
+                {svg_icon}
                 br {}
                 "{name}"
             }

@@ -49,7 +49,7 @@ pub fn CategoryCard() -> Element {
                     img {
                         class: "absolute w-28 -bottom-4 -left-4",
                         src: "{card.img.src}",
-                        alt: "{card.img.alt}"
+                        alt: "{card.img.alt}",
                     }
                 }
                 div {
