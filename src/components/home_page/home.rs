@@ -9,6 +9,7 @@ use crate::components::home_page::food_card::Menu;
 use crate::components::icon::*;
 use crate::constants::*;
 use crate::model::app_state::ApplicationData;
+use crate::utils::close::close_dropdown;
 use crate::utils::evals::ScrollButtonVisible;
 use crate::Route;
 use chrono::Datelike;
@@ -67,7 +68,7 @@ pub fn HomeContent() -> Element {
 
     rsx! {
         ScrollButtonVisible {}
-        main {
+        main { onclick: move |_| close_dropdown(),
             // Home ----------------------------------------------
             section { id: "{LOCALES.lookup(lang_id, \"Home\").to_lowercase()}",
                 div { class: "container flex flex-col items-center gap-10 md:flex-row",
@@ -222,7 +223,7 @@ pub fn HomeContent() -> Element {
             }
         }
 
-        footer {
+        footer { onclick: move |_| close_dropdown(),
             div { class: "flex flex-row justify-center items-center w-full h-full",
                 a {
                     class: " py-8  text-4xl uppercase font-poppinsRegular font-bold gradient drop-shadow shadow-black dark:shadow-white",
@@ -321,7 +322,10 @@ pub fn HomeContent() -> Element {
         a {
             class: "fixed {data.scroll_button_visibility} right-4 bottom-4 h-11 w-11 bg-secondaryColor shadow-sm flex rounded-full text-lg text-blackColor z-50 hover:-translate-y-1 ease-in duration-200 items-center justify-center",
             class: if !*data.scroll_button_visibility.read() { "hidden" },
-            onclick: move |_| { data.selected_menu.set(0) },
+            onclick: move |_| {
+                close_dropdown();
+                data.selected_menu.set(0);
+            },
             href: "#",
             // ArrowUp icon
             ArrowUp {}

@@ -3,6 +3,7 @@ use crate::components::lang_dd::LangDropDown;
 use crate::constants::LOCALES;
 use crate::model::app_state::ApplicationData;
 use crate::route::Route;
+use crate::utils::close::close_dropdown;
 use crate::utils::evals::{toggle_navbar_style_on_scroll, NavBarToggle};
 use dioxus::prelude::*;
 use fluent_templates::Loader;
@@ -25,6 +26,7 @@ pub fn NavBar() -> Element {
         toggle_navbar_style_on_scroll { navbar_style: data.header_border_style_on_scroll }
         // Header ----------------------------------
         header {
+            onclick: move |_| close_dropdown(),
             class: "bg-primaryColor dark:bg-darkColor fixed top-0 left-0 w-full z-50 ",
             class: if *data.header_border_style_on_scroll.read() { "border-b border-secondaryColor card-shadow" },
             nav { class: "container relative h-14 flex justify-between items-center",
@@ -92,7 +94,11 @@ pub fn NavBar() -> Element {
                     if !(data.show_hidden_menu)() {
                         div { LangDropDown {} }
                     }
-                    div { onclick: move |_| { data.show_hidden_menu.set(true) },
+                    div {
+                        onclick: move |ev| {
+                            ev.stop_propagation();
+                            data.show_hidden_menu.set(true)
+                        },
                         // Hamburger icon
                         Hamburger {}
                     }

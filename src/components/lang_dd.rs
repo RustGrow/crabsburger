@@ -28,7 +28,10 @@ pub fn LangDropDown() -> Element {
                     id: "user-menu-button",
                     aria_expanded: "false",
                     aria_haspopup: "true",
-                    onclick: move |_| (data.show_lang_menu).toggle(),
+                    onclick: move |ev| {
+                        ev.stop_propagation();
+                        (data.show_lang_menu).toggle()
+                    },
                     // "Up high!"
                     span { class: "absolute -inset-1.5" }
                     span { class: "sr-only", "Open user menu" }
