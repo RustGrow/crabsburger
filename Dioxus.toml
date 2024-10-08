@@ -36,7 +36,7 @@ index_on_404 = true
 style = []
 
 # Javascript code file
-script = ["https://cdn.tailwindcss.com"]
+script = []
 
 [web.resource.dev]
 
@@ -46,4 +46,4 @@ script = ["https://cdn.tailwindcss.com"]
 style = []
 
 # Javascript code file
-script = []
+script = ["https://cdn.tailwindcss.com"]

@@ -17,6 +17,7 @@ pub struct ApplicationData {
     pub show_hidden_menu: Signal<bool>,
     pub lang_code: Signal<String>,
     pub show_lang_menu: Signal<bool>,
+    pub title_menu: Signal<String>,
 }
 
 impl ApplicationData {
@@ -29,6 +30,7 @@ impl ApplicationData {
             show_hidden_menu: Signal::new(false), // hidden
             lang_code: Signal::new("en".to_string()),
             show_lang_menu: Signal::new(false),
+            title_menu: Signal::new("Home".to_string()),
         }
     }
 }

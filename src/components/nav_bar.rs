@@ -1,9 +1,8 @@
 use crate::components::icon::*;
 use crate::components::lang_dd::LangDropDown;
-use crate::constants::LOCALES;
+use crate::constants::*;
 use crate::model::app_state::ApplicationData;
 use crate::route::Route;
-use crate::utils::close::close_dropdown;
 use crate::utils::evals::{toggle_navbar_style_on_scroll, NavBarToggle};
 use dioxus::prelude::*;
 use fluent_templates::Loader;
@@ -26,9 +25,9 @@ pub fn NavBar() -> Element {
         toggle_navbar_style_on_scroll { navbar_style: data.header_border_style_on_scroll }
         // Header ----------------------------------
         header {
-            onclick: move |_| close_dropdown(),
             class: "bg-primaryColor dark:bg-darkColor fixed top-0 left-0 w-full z-50 ",
             class: if *data.header_border_style_on_scroll.read() { "border-b border-secondaryColor card-shadow" },
+            Title { "{TITLE} | {data.title_menu}" }
             nav { class: "container relative h-14 flex justify-between items-center",
                 div {
                     a {
@@ -50,13 +49,14 @@ pub fn NavBar() -> Element {
                             true => "gradient ease-in duration-200",
                             false => "group-hover:gradient ease-in duration-200",
                         };
-
+                        let value = menu[id].clone();
                         rsx! {
                             li { class: "group w-full h-[60px] md:h-ful border-[2px] dark:border-[1px] border-transparent hover:border-t-secondaryColor hover:border-b-secondaryColor md:border-none hover:card-shadow",
                             onclick: move |_| {
                                 data.selected_menu.set(id);
                                 // hidden open menu from mobile
-                                data.show_hidden_menu.set(false)
+                                data.show_hidden_menu.set(false);
+                                data.title_menu.set(value.clone());
                             },
                             a {
                                 class: "w-full h-full flex flex-row justify-center items-center md:p-2",
@@ -65,6 +65,7 @@ pub fn NavBar() -> Element {
                                 class: if (data.lang_code)() != "ar" {"whitespace-nowrap"},
                                     "{menu[id]}",
                                 }
+
                             }
 
                         }
@@ -101,7 +102,7 @@ pub fn NavBar() -> Element {
                     div {
                         onclick: move |ev| {
                             ev.stop_propagation();
-                            data.show_hidden_menu.set(true)
+                            data.show_hidden_menu.set(true);
                         },
                         // Hamburger icon
                         Hamburger {}

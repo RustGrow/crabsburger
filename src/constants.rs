@@ -13,6 +13,7 @@ static_loader! {
 
 pub const LANG_CODES: [&str; 4] = ["en", "de", "es", "ar"];
 pub const LANG_NAMES: [&str; 4] = ["English", "German", "Spanish", "Arabic"];
+pub const TITLE: &'static str = "Crabsburger";
 
 pub const SUPPORT: [&str; 4] = ["FAQ's", "Privacy Policy", "Term & Condition", "Contact"];
 

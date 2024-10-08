@@ -9,7 +9,6 @@ use crate::components::home_page::food_card::Menu;
 use crate::components::icon::*;
 use crate::constants::*;
 use crate::model::app_state::ApplicationData;
-use crate::utils::close::close_dropdown;
 use crate::utils::evals::ScrollButtonVisible;
 use crate::Route;
 use chrono::Datelike;
@@ -68,7 +67,7 @@ pub fn HomeContent() -> Element {
 
     rsx! {
         ScrollButtonVisible {}
-        main { onclick: move |_| close_dropdown(),
+        main {
             // Home ----------------------------------------------
             section { id: "{LOCALES.lookup(lang_id, \"Home\").to_lowercase()}",
                 div { class: "container flex flex-col items-center gap-10 md:flex-row",
@@ -76,7 +75,7 @@ pub fn HomeContent() -> Element {
                         img {
                             class: " w-60 md:w-full",
                             src: "/images/home-image.png",
-                            alt: "home image",
+                            alt: "home image"
                         }
                     }
                     div { class: "text-center md:basis-1/2 md:text-start lg:basis-3/5",
@@ -114,7 +113,7 @@ pub fn HomeContent() -> Element {
                         img {
                             class: "rounded-lg",
                             src: "/images/about.jpg",
-                            alt: "{LOCALES.lookup(lang_id, \"ab-alt\")}",
+                            alt: "{LOCALES.lookup(lang_id, \"ab-alt\")}"
                         }
                     }
                     div { class: "flex-1",
@@ -217,7 +216,7 @@ pub fn HomeContent() -> Element {
                         input {
                             class: "p-2 text-blackColor rounded-lg outline-none md:w-full",
                             r#type: "text",
-                            placeholder: "{LOCALES.lookup(lang_id, \"sub-email-placeholder\")}",
+                            placeholder: "{LOCALES.lookup(lang_id, \"sub-email-placeholder\")}"
                         }
                         a {
                             class: "flex items-center justify-center gap-2 btn text-white bg-blackColor hover:opacity-75",
@@ -231,7 +230,7 @@ pub fn HomeContent() -> Element {
             }
         }
 
-        footer { onclick: move |_| close_dropdown(),
+        footer {
             div { class: "flex flex-row justify-center items-center w-full h-full",
                 a {
                     class: " py-8  text-4xl uppercase font-poppinsRegular font-bold gradient drop-shadow shadow-black dark:shadow-white",
@@ -331,8 +330,8 @@ pub fn HomeContent() -> Element {
             class: "fixed {data.scroll_button_visibility} right-4 bottom-4 h-11 w-11 bg-secondaryColor shadow-sm flex rounded-full text-lg text-blackColor z-50 hover:-translate-y-1 ease-in duration-200 items-center justify-center",
             class: if !*data.scroll_button_visibility.read() { "hidden" },
             onclick: move |_| {
-                close_dropdown();
                 data.selected_menu.set(0);
+                data.title_menu.set("Home".to_string());
             },
             href: "#",
             // ArrowUp icon

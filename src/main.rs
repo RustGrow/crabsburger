@@ -10,7 +10,7 @@ use crate::utils::evals::InitThemeColorState;
 use constants::STYLE;
 use dioxus::prelude::*;
 use dioxus_logger::tracing::{info, Level};
-use utils::evals::LangSettings;
+use utils::{close::close_dropdown, evals::LangSettings};
 
 fn main() {
     dioxus_logger::init(Level::INFO).expect("failed to init logger");
@@ -23,8 +23,8 @@ fn App() -> Element {
     InitThemeColorState().expect("Fail to init color theme");
     rsx! {
         LangSettings {}
-        // Script { src: asset!(file("https://cdn.tailwindcss.com")) }
+        // Script { src: "https://cdn.tailwindcss.com" }
         head::Link { rel: "stylesheet", href: STYLE }
-        Router::<Route> {}
+        div { class: "w-full h-full", onclick: move |_| close_dropdown(), Router::<Route> {} }
     }
 }
