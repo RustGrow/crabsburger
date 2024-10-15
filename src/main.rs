@@ -15,7 +15,7 @@ use utils::{close::close_dropdown, evals::LangSettings};
 fn main() {
     dioxus_logger::init(Level::INFO).expect("failed to init logger");
     info!("starting app");
-    launch(App);
+    dioxus::launch(App);
 }
 
 fn App() -> Element {
