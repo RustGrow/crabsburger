@@ -65,6 +65,9 @@ Hot reloading Tailwind CSS will work with [Tailwind CDN](https://tailwindcss.com
 ```bash
 cargo install --git https://github.com/dioxuslabs/dioxus dioxus-cli --locked --force
 ```
+For existing projects, to synchronize with cli, you must also run the command
+
+`cargo update`
 
 2. Check that the library version corresponds to 0.6
 ```bash
@@ -81,8 +84,11 @@ dx new -> web -> Project Name: project-name -> Tailwind -> true
 4. Add dependencies to your Cargo.toml file:
 ```rust
 [dependencies]
-dioxus = { git = "https://github.com/DioxusLabs/dioxus", features = ["web", "router"] }
+dioxus = { git = "https://github.com/DioxusLabs/dioxus", features = ["router"] }
 dioxus-logger = "0.5.1"
+
+[features]
+web = ["dioxus/web"]
 ```
 
 4. Start the Tailwind CSS compiler and the Dioxus dev server in different terminals:
@@ -93,7 +99,7 @@ dx serve
 
 5. You need to set a script reference to use Tailwind CDN
 ```rust
-Script { src: "https://cdn.tailwindcss.com" }
+document::Script { src: "https://cdn.tailwindcss.com" }
 ```
 
 
