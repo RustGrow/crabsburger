@@ -55,7 +55,7 @@ pub fn LangDropDown() -> Element {
                                     onclick: move |_| {
                                         (data.lang_code).set(code.to_string());
                                         let eval = ButtonLang();
-                                        eval.send((*code).into()).unwrap();
+                                        eval.send(*code).unwrap();
                                         (data.show_lang_menu).toggle();
                                     },
                                     to: Route::Home {},
@@ -69,7 +69,7 @@ pub fn LangDropDown() -> Element {
                                     onclick: move |_| {
                                         (data.lang_code).set(code.to_string());
                                         let eval = ButtonLang();
-                                        eval.send((*code).into()).unwrap();
+                                        eval.send(*code).unwrap();
                                         (data.show_lang_menu).toggle();
                                     },
                                     to: Route::HomeLang {

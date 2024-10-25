@@ -1,6 +1,7 @@
 use crate::components::icon::*;
 use crate::components::lang_dd::LangDropDown;
 use crate::constants::*;
+use crate::document::Title;
 use crate::model::app_state::ApplicationData;
 use crate::route::Route;
 use crate::utils::evals::{toggle_navbar_style_on_scroll, NavBarToggle};

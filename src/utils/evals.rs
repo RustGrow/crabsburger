@@ -1,3 +1,4 @@
+use crate::document::*;
 use crate::model::app_state::ApplicationData;
 use dioxus::prelude::*;
 use dioxus_logger::tracing::info;
@@ -40,7 +41,7 @@ pub fn InitThemeColorState() -> Element {
             
             "#,
         );
-        if theme_state.recv().await.unwrap() == true {
+        if theme_state.recv::<bool>().await.unwrap() == true {
             data.dark.set(true);
         } else {
             data.dark.set(false);
@@ -67,7 +68,7 @@ pub fn toggle_navbar_style_on_scroll(mut navbar_style: Signal<bool>) -> Element 
                 "#,
         );
 
-        while let Ok(res) = eval.recv().await {
+        while let Ok(res) = eval.recv::<bool>().await {
             if res == false {
                 navbar_style.set(false);
             } else {
@@ -98,7 +99,7 @@ pub fn ScrollButtonVisible() -> Element {
                 "#,
         );
 
-        while let Ok(show) = eval.recv().await {
+        while let Ok(show) = eval.recv::<bool>().await {
             if show == true {
                 data.scroll_button_visibility.set(true);
             } else {
@@ -122,7 +123,7 @@ pub fn NavBarToggle() {
         } 
         "#,
     );
-    eval.send(true.into()).unwrap();
+    eval.send(true).unwrap();
 }
 
 #[component]
@@ -185,11 +186,11 @@ pub fn LangSettings() -> Element {
             // How to get arr from JS to Dioxus
             // let arr = [lang, langCode];
             // dioxus.send(arr);
-            
+
             "#,
         );
-        let js_lang = eval.recv().await.unwrap();
-        *(data.lang_code).write() = String::from(js_lang.as_str().unwrap());
+        let js_lang: String = eval.recv().await.unwrap();
+        *(data.lang_code).write() = js_lang;
 
         // Working with array from JS
         // if js_lang[0] == Value::Null {
@@ -205,7 +206,7 @@ pub fn LangSettings() -> Element {
     rsx! {}
 }
 
-pub fn ButtonLang() -> UseEval {
+pub fn ButtonLang() -> Eval {
     eval(
         r#"
         // Function to set lang and dir attributes for the <html> tag
@@ -221,14 +222,14 @@ pub fn ButtonLang() -> UseEval {
 
         let lang = await dioxus.recv();
         localStorage.setItem("lang", lang);
-        
+
         // Set language and direction in HTML
         if (lang === "ar" || lang === "he") {
             setHtmlLanguageAndDirection(lang, 'rtl');
         } else {
             setHtmlLanguageAndDirection(lang, null);
         }
-        
+
         "#,
     )
 }

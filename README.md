@@ -69,7 +69,7 @@ cargo install --git https://github.com/dioxuslabs/dioxus dioxus-cli --locked --f
 2. Check that the library version corresponds to 0.6
 ```bash
 dx --version
-// dioxus 0.6.0-alpha.2 (3c699aa)
+// dioxus 0.6.0-alpha.3 (ef436e4)
 ```
 
 3. Create a new project from the command line:

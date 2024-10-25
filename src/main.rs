@@ -8,6 +8,7 @@ use crate::model::app_state::ApplicationData;
 use crate::route::Route;
 use crate::utils::evals::InitThemeColorState;
 use constants::STYLE;
+use dioxus::document;
 use dioxus::prelude::*;
 use dioxus_logger::tracing::{info, Level};
 use utils::{close::close_dropdown, evals::LangSettings};
@@ -23,8 +24,8 @@ fn App() -> Element {
     InitThemeColorState().expect("Fail to init color theme");
     rsx! {
         LangSettings {}
-        // Script { src: "https://cdn.tailwindcss.com" }
-        head::Link { rel: "stylesheet", href: STYLE }
+        // document::Script { src: "https://cdn.tailwindcss.com" }
+        document::Link { rel: "stylesheet", href: STYLE }
         div { class: "w-full h-full", onclick: move |_| close_dropdown(), Router::<Route> {} }
     }
 }
