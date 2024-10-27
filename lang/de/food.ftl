@@ -55,10 +55,10 @@ sn-Trail-alt = Eine Schachtel Kekse mit Schokoladenstückchen, Haferflocken und 
 sn-Trail-desc = Ein süßer und zufriedenstellender Snack, Kekse sind Backwaren mit verschiedenen Zutaten wie Schokoladenstückchen, Haferflocken und Rosinen
 sn-Trail-price = $8.99
 
-sn-Cookies-title = Kekse
-sn-Cookies-alt = Eine Schachtel Kekse mit Schokoladenstückchen, Haferflocken und Rosinen
-sn-Cookies-desc = Ein süßer und zufriedenstellender Snack, Kekse sind Backwaren mit verschiedenen Zutaten wie Schokoladenstückchen, Haferflocken und Rosinen
-sn-Cookies-price = $8.99
+sn-Chips-title = Kartoffelchips
+sn-Chips-alt = Eine Schüssel mit knusprigen Kartoffelchips mit gerillter Textur
+sn-Chips-desc = Dünn geschnittene Kartoffeln, knusprig frittiert, mit Salz und verschiedenen Gewürzen für den Snackgenuss.
+sn-Chips-price = 6,99€
 
 # Beverage
 

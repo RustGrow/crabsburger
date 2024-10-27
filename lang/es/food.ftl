@@ -55,10 +55,10 @@ sn-Trail-alt = Una caja de galletas con chispas de chocolate, avena y pasas
 sn-Trail-desc = Un snack dulce y satisfactorio, las galletas son productos horneados con varios ingredientes, como chispas de chocolate, avena y pasas
 sn-Trail-price = $8.99
 
-sn-Cookies-title = Galletas
-sn-Cookies-alt = Una caja de galletas con chispas de chocolate, avena y pasas
-sn-Cookies-desc = Un snack dulce y satisfactorio, las galletas son productos horneados con varios ingredientes, como chispas de chocolate, avena y pasas
-sn-Cookies-price = $8.99
+sn-Chips-title = Papas Fritas
+sn-Chips-alt = Un tazón de papas fritas crujientes con textura ondulada
+sn-Chips-desc = Patatas cortadas finamente, fritas hasta quedar crujientes, sazonadas con sal y diversos sabores para picar.
+sn-Chips-price = $9,99
 
 # Beverage
 

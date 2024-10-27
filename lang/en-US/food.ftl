@@ -55,10 +55,10 @@ sn-Trail-alt = A box of cookies with chocolate chips, oatmeal and raisins
 sn-Trail-desc = A sweet and satisfying snack, cookies are baked goods with various ingredients, such as chocolate chips, oatmeal and raisins
 sn-Trail-price = $8.99
 
-sn-Cookies-title = Cookies
-sn-Cookies-alt = A box of cookies with chocolate chips, oatmeal and raisins
-sn-Cookies-desc = A sweet and satisfying snack, cookies are baked goods with various ingredients, such as chocolate chips, oatmeal and raisins
-sn-Cookies-price = $8.99
+sn-Chips-title = Chips
+sn-Chips-alt = A bowl of crispy potato chips with ridged texture
+sn-Chips-desc = Thin sliced potatoes deep-fried until crispy, seasoned with salt and various flavorings for snacking.
+sn-Chips-price = $6.99
 
 # Beverage
 

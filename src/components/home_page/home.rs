@@ -74,7 +74,7 @@ pub fn HomeContent() -> Element {
                     div { class: "mx-auto md:basis-1/2 lg:basis-2/5 animate-movingY",
                         img {
                             class: " w-60 md:w-full",
-                            src: "/images/home-image.png",
+                            src: asset!("/assets/images/home-image.png").input,
                             alt: "home image"
                         }
                     }
@@ -112,7 +112,7 @@ pub fn HomeContent() -> Element {
                     div { class: "flex-1",
                         img {
                             class: "rounded-lg",
-                            src: "/images/about.jpg",
+                            src: asset!("/assets/images/about.jpg").input,
                             alt: "{LOCALES.lookup(lang_id, \"ab-alt\")}"
                         }
                     }

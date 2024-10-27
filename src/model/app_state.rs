@@ -1,12 +1,4 @@
 use dioxus::prelude::*;
-// pub enum Visibility {
-//     Visible,
-//     Hidden,
-// }
-// pub enum Theme {
-//     Light,
-//     Dark,
-// }
 
 #[derive(Clone, Copy, Default)]
 pub struct ApplicationData {

@@ -17,7 +17,7 @@ pub fn PromoCard() -> Element {
             description: LOCALES.lookup(lang_id, "pr-bur-desc"),
             img: Image {
                 class: "",
-                src: "/images/promo-1.png",
+                src: asset!("/assets/images/promo-1.png").input,
                 alt: LOCALES.lookup(lang_id, "pr-bur-alt"),
             },
         },
@@ -27,7 +27,7 @@ pub fn PromoCard() -> Element {
             description: LOCALES.lookup(lang_id, "pr-bev-desc"),
             img: Image {
                 class: "",
-                src: "/images/promo-2.png",
+                src: asset!("/assets/images/promo-2.png").input,
                 alt: LOCALES.lookup(lang_id, "pr-bev-alt"),
             },
         },
@@ -38,7 +38,7 @@ pub fn PromoCard() -> Element {
                 img {
                     class: "w-40 mx-auto hover:animate-movingY md:mx-5",
                     src: "{card.img.src}",
-                    alt: "{card.img.alt}",
+                    alt: "{card.img.alt}"
                 }
                 div { class: "space-y-2 pt-5 md:pt-0",
                     p { class: "text-base text-redColor dark:text-secondaryColor",

@@ -1,7 +1,4 @@
-use dioxus::prelude::*;
 use fluent_templates::static_loader;
-
-pub const STYLE: &str = asset!("./assets/tailwind.css");
 
 static_loader! {
    pub static LOCALES = {
