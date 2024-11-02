@@ -14,4 +14,6 @@ unic-langid = "0.9.5"
 once_cell = "1.19.0"
 
 [features]
+default = ["web"]
 web = ["dioxus/web"]
+desktop = ["dioxus/desktop"]

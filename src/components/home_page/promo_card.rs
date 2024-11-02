@@ -38,7 +38,7 @@ pub fn PromoCard() -> Element {
                 img {
                     class: "w-40 mx-auto hover:animate-movingY md:mx-5",
                     src: "{card.img.src}",
-                    alt: "{card.img.alt}"
+                    alt: "{card.img.alt}",
                 }
                 div { class: "space-y-2 pt-5 md:pt-0",
                     p { class: "text-base text-redColor dark:text-secondaryColor",

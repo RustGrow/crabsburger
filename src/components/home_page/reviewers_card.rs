@@ -57,7 +57,7 @@ pub fn ReviewersCard() -> Element {
                         img {
                             class: "w-12 h-12 rounded-full",
                             src: card.img,
-                            alt: card.img_alt.clone()
+                            alt: card.img_alt.clone(),
                         }
                         div { class: "ml-2",
                             p { class: "font-oswald uppercase", "{card.name}" }

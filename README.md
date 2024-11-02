@@ -34,6 +34,12 @@ For Windows users need to install the [Netwide Assembler (NASM)](https://www.nas
 ```bash
 cargo install --git https://github.com/dioxuslabs/dioxus dioxus-cli --locked --force
 ```
+or you can install the CLI (instead of building from source) use:
+
+```bash
+cargo binstall dioxus-cli --version v0.6.0-alpha.4
+```
+
 2. Clone this repository
 ```bash
 https://github.com/DioxusGrow/crabsburger.git
@@ -58,49 +64,92 @@ dx serve
 
 - Open the browser to http://localhost:8080
 
-# Hot reloading with Tailwind CSS
-Hot reloading Tailwind CSS will work with [Tailwind CDN](https://tailwindcss.com/docs/installation/play-cdn) and Manganis using these settings.
+# How to use the Dioxus cli version from github
+It often happens that a necessary update is released or fix bugs in a minor version of a project. In this case you can use the github version of cli.
 
 1. Reinstall the CLI:
 ```bash
 cargo install --git https://github.com/dioxuslabs/dioxus dioxus-cli --locked --force
 ```
-For existing projects, to synchronize with cli, you must also run the command
 
-`cargo update`
-
-2. Check that the library version corresponds to 0.6
+2. Check Dioxus cli version
 ```bash
 dx --version
-// dioxus 0.6.0-alpha.3 (ef436e4)
+// dioxus 0.6.0-alpha.4 (e700e00)
 ```
 
-3. Create a new project from the command line:
-```bash
-// You can change the platform, name, and router as needed.
-dx new -> web -> Project Name: project-name -> Tailwind -> true
-```
+3. Add dependencies to the Cargo.toml file. The Dioxus version from github must match the cli version. In this case it is rev = "e700e00"
 
-4. Add dependencies to your Cargo.toml file:
-```rust
+```toml
 [dependencies]
-dioxus = { git = "https://github.com/DioxusLabs/dioxus", features = ["router"] }
+dioxus = { git = "https://github.com/DioxusLabs/dioxus", rev = "e700e00" features = ["router"] }
 dioxus-logger = "0.5.1"
 
 [features]
+default = ["web"]
 web = ["dioxus/web"]
+desktop = ["dioxus/desktop"]
 ```
 
-4. Start the Tailwind CSS compiler and the Dioxus dev server in different terminals:
+4. For existing projects, to synchronize with cli, you must also run the command
+`cargo update`
+
+5. Sometimes you will want to use [Dioxus sdk](https://github.com/DioxusLabs/sdk), but the version you need will not be the same as Dioxus cli. In that case you can try to use a patch. For example:
+
+```toml
+[dependencies]
+dioxus = { git = "https://github.com/DioxusLabs/dioxus", rev = "e700e00", features = ["router"] }
+dioxus-logger = "0.5.1"
+dioxus-sdk = { git = "https://github.com/DioxusLabs/sdk", branch = "feat/dioxus-0.6", features = ["storage"] }
+
+[patch.crates-io]
+dioxus = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-lib = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-core = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-core-macro = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-config-macro = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-router = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-router-macro = { git = "https://github.com/dioxuslabs/dioxus" }
+dioxus-html = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-html-internal-macro = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-hooks = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-web = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-ssr = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-desktop = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-interpreter-js = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-liveview = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-rsx = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-signals = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-cli-config = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+generational-box = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus_server_macro = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-fullstack = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-autofmt = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-devtools = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+dioxus-devtools-types = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+manganis = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+manganis-core = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+manganis-macro = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
+
+[features]
+default = ["web"]
+web = ["dioxus/web"]
+desktop = ["dioxus/desktop"]
+```
+
+6. Start the Tailwind CSS compiler and the Dioxus dev server in different terminals:
 ```bash
 npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch
-dx serve
 ```
+You can start web version by default:
+`dx serve`
+or with platform
+`dx serve --platform web`
 
-5. You need to set a script reference to use Tailwind CDN
-```rust
-document::Script { src: "https://cdn.tailwindcss.com" }
-```
+And you can start desktop version:
+`dx serve --platform desktop`
+
+
 
 
 # If you need a local stylesheet for custom styles inside input.css.
@@ -152,11 +201,16 @@ watch_path = ["src", "assets", "lang"]
 dx check
 //output No issues found.
 ```
-3. Make a release using the command:
+3. Make a release for web:
 ```bash
-dx build --release
+dx build --release --platform web
 ```
-4. The `dist` folder is by default the main project folder where the finished site is located.
+for desktop:
+```bash
+dx build --release --platform desktop
+```
+
+4. The release is inside `/target/dx/fustfood/release/web/public` folder is by default the main project folder where the finished site is located.
 
 # Netlify deployment
 

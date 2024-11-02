@@ -5,16 +5,16 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
-  <link rel="preload" href="/./assets/dioxus/Crabsburger_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-            <link rel="preload" href="/./assets/dioxus/Crabsburger.js" as="script">
+  <link rel="preload" href="/./wasm/fustfood_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+            <link rel="preload" href="/./wasm/fustfood.js" as="script">
             </head>
   <body>
     <div id="main"></div>
   <script>
             // We can't use a module script here because we need to start the script immediately when streaming
-            import("/./assets/dioxus/Crabsburger.js").then(
+            import("/./wasm/fustfood.js").then(
                 ({ default: init }) => {
-                init("/./assets/dioxus/Crabsburger_bg.wasm").then((wasm) => {
+                init("/./wasm/fustfood_bg.wasm").then((wasm) => {
                     if (wasm.__wbindgen_start == undefined) {
                     wasm.main();
                     }
