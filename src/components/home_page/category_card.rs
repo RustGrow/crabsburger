@@ -15,8 +15,10 @@ pub fn CategoryCard() -> Element {
             title: LOCALES.lookup(lang_id, "burger"),
             text: LOCALES.lookup(lang_id, "cat-bur-text"),
             img: Image {
-                class: "",
-                src: asset!("/assets/images/burger-1.png").input,
+                src: asset!(
+                    "/assets/images/burger-1.png",
+                    ImageAssetOptions::new().with_preload(true)
+                ),
                 alt: LOCALES.lookup(lang_id, "cat-bur-alt"),
             },
             bg_color: "bg-secondaryColor",
@@ -25,8 +27,10 @@ pub fn CategoryCard() -> Element {
             title: LOCALES.lookup(lang_id, "snack"),
             text: LOCALES.lookup(lang_id, "cat-sn-text"),
             img: Image {
-                class: "",
-                src: asset!("/assets/images/snack-french-fries.png").input,
+                src: asset!(
+                    "/assets/images/snack-french-fries.png",
+                    ImageAssetOptions::new().with_preload(true)
+                ),
                 alt: LOCALES.lookup(lang_id, "cat-sn-alt"),
             },
             bg_color: "bg-redColor",
@@ -35,8 +39,10 @@ pub fn CategoryCard() -> Element {
             title: LOCALES.lookup(lang_id, "beverage"),
             text: LOCALES.lookup(lang_id, "cat-bev-text"),
             img: Image {
-                class: "",
-                src: asset!("/assets/images/beverage-beer.png").input,
+                src: asset!(
+                    "/assets/images/beverage-beer.png",
+                    ImageAssetOptions::new().with_preload(true)
+                ),
                 alt: LOCALES.lookup(lang_id, "cat-bev-alt"),
             },
             bg_color: "bg-greenColor",

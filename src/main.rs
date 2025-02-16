@@ -23,9 +23,7 @@ fn App() -> Element {
     InitThemeColorState().expect("Fail to init color theme");
     rsx! {
         LangSettings {}
-        // document::Script { src: "https://cdn.tailwindcss.com" }
         document::Link { rel: "stylesheet", href: asset!("/assets/tailwind.css") }
-        // document::Link { rel: "stylesheet", href: STYLE }
         div { class: "w-full h-full", onclick: move |_| close_dropdown(), Router::<Route> {} }
     }
 }

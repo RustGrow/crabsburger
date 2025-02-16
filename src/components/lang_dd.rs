@@ -13,7 +13,7 @@ pub fn LangDropDown() -> Element {
     let mut data = use_context::<ApplicationData>();
     let lang_id = &LanguageIdentifier::from_str(&(data.lang_code)() as &str).unwrap();
     let rtl = use_memo(move || {
-        if (data.lang_code)() == "ar" {
+        if *(data.lang_code).read() == "ar" {
             true
         } else {
             false

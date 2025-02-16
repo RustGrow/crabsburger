@@ -14,7 +14,7 @@ This example showcases the new syntax introduced in Dioxus 0.6 and utilizes sign
 
 ### Features
 
-- Utilizes the new syntax of Dioxus 0.6
+- Utilizes the new syntax of Dioxus 0.6.3
 - State management with signals
 - Styling with Tailwind CSS v3.4
 
@@ -37,7 +37,7 @@ cargo install --git https://github.com/dioxuslabs/dioxus dioxus-cli --locked --f
 or you can install the CLI (instead of building from source) use:
 
 ```bash
-cargo binstall dioxus-cli --version v0.6.0-alpha.4
+cargo binstall dioxus-cli --force
 ```
 
 2. Clone this repository
@@ -74,70 +74,28 @@ cargo install --git https://github.com/dioxuslabs/dioxus dioxus-cli --locked --f
 
 2. Check Dioxus cli version
 ```bash
-dx --version
-// dioxus 0.6.0-alpha.4 (e700e00)
+dx -V
+// dioxus 0.6.3 (bdeedc1)
 ```
 
-3. Add dependencies to the Cargo.toml file. The Dioxus version from github must match the cli version. In this case it is rev = "e700e00"
+3. Add dependencies to the Cargo.toml file. The Dioxus version from github must match the cli version. In this case it is rev = "bdeedc1"
 
 ```toml
 [dependencies]
-dioxus = { git = "https://github.com/DioxusLabs/dioxus", rev = "e700e00" features = ["router"] }
+dioxus = { git = "https://github.com/DioxusLabs/dioxus", rev = "bdeedc1" features = ["router"] }
 dioxus-logger = "0.5.1"
 
 [features]
 default = ["web"]
 web = ["dioxus/web"]
 desktop = ["dioxus/desktop"]
+mobile = ["dioxus/mobile"]
 ```
 
 4. For existing projects, to synchronize with cli, you must also run the command
 `cargo update`
 
-5. Sometimes you will want to use [Dioxus sdk](https://github.com/DioxusLabs/sdk), but the version you need will not be the same as Dioxus cli. In that case you can try to use a patch. For example:
-
-```toml
-[dependencies]
-dioxus = { git = "https://github.com/DioxusLabs/dioxus", rev = "e700e00", features = ["router"] }
-dioxus-logger = "0.5.1"
-dioxus-sdk = { git = "https://github.com/DioxusLabs/sdk", branch = "feat/dioxus-0.6", features = ["storage"] }
-
-[patch.crates-io]
-dioxus = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-lib = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-core = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-core-macro = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-config-macro = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-router = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-router-macro = { git = "https://github.com/dioxuslabs/dioxus" }
-dioxus-html = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-html-internal-macro = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-hooks = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-web = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-ssr = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-desktop = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-interpreter-js = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-liveview = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-rsx = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-signals = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-cli-config = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-generational-box = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus_server_macro = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-fullstack = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-autofmt = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-devtools = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-dioxus-devtools-types = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-manganis = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-manganis-core = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-manganis-macro = { git = "https://github.com/dioxuslabs/dioxus", rev = "e700e00" }
-
-[features]
-default = ["web"]
-web = ["dioxus/web"]
-desktop = ["dioxus/desktop"]
-```
-
-6. Start the Tailwind CSS compiler and the Dioxus dev server in different terminals:
+5. Start the Tailwind CSS compiler and the Dioxus dev server in different terminals:
 ```bash
 npx tailwindcss -i ./input.css -o ./assets/tailwind.css --watch
 ```

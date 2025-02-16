@@ -14,35 +14,50 @@ pub fn ReviewersCard() -> Element {
     let reviews: [Review; 5] = [
         Review {
             paragraph: LOCALES.lookup(lang_id, "jane-par"),
-            img: asset!("/assets/images/review-1.jpg").input,
+            img: asset!(
+                "/assets/images/review-1.jpg",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             img_alt: LOCALES.lookup(lang_id, "jane-alt"),
             name: LOCALES.lookup(lang_id, "jane-name"),
             job: LOCALES.lookup(lang_id, "jane-job"),
         },
         Review {
             paragraph: LOCALES.lookup(lang_id, "mark-par"),
-            img: asset!("/assets/images/review-2.jpg").input,
+            img: asset!(
+                "/assets/images/review-2.jpg",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             img_alt: LOCALES.lookup(lang_id, "mark-alt"),
             name: LOCALES.lookup(lang_id, "mark-name"),
             job: LOCALES.lookup(lang_id, "mark-job"),
         },
         Review {
             paragraph: LOCALES.lookup(lang_id, "emily-par"),
-            img: asset!("/assets/images/review-3.jpg").input,
+            img: asset!(
+                "/assets/images/review-3.jpg",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             img_alt: LOCALES.lookup(lang_id, "emily-alt"),
             name: LOCALES.lookup(lang_id, "emily-name"),
             job: LOCALES.lookup(lang_id, "emily-job"),
         },
         Review {
             paragraph: LOCALES.lookup(lang_id, "tom-par"),
-            img: asset!("/assets/images/review-4.jpg").input,
+            img: asset!(
+                "/assets/images/review-4.jpg",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             img_alt: LOCALES.lookup(lang_id, "tom-alt"),
             name: LOCALES.lookup(lang_id, "tom-name"),
             job: LOCALES.lookup(lang_id, "tom-job"),
         },
         Review {
             paragraph: LOCALES.lookup(lang_id, "michael-par"),
-            img: asset!("/assets/images/review-5.jpg").input,
+            img: asset!(
+                "/assets/images/review-5.jpg",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             img_alt: LOCALES.lookup(lang_id, "michael-alt"),
             name: LOCALES.lookup(lang_id, "michael-name"),
             job: LOCALES.lookup(lang_id, "michael-job"),

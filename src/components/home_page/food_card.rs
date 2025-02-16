@@ -20,42 +20,60 @@ pub fn FoodCard(card: Menu) -> Element {
     let lang_id = &LanguageIdentifier::from_str(&(data.lang_code)() as &str).unwrap();
     let burgers = vec![
         Food {
-            img_path: asset!("/assets/images/burger-1.png").input,
+            img_path: asset!(
+                "/assets/images/burger-1.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bur-Cheesy-alt"),
             title: LOCALES.lookup(lang_id, "bur-Cheesy-title"),
             description: LOCALES.lookup(lang_id, "bur-Cheesy-desc"),
             price: LOCALES.lookup(lang_id, "bur-Cheesy-price"),
         },
         Food {
-            img_path: asset!("/assets/images/burger-2.png").input,
+            img_path: asset!(
+                "/assets/images/burger-2.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bur-Chicken-alt"),
             title: LOCALES.lookup(lang_id, "bur-Chicken-title"),
             description: LOCALES.lookup(lang_id, "bur-Chicken-desc"),
             price: LOCALES.lookup(lang_id, "bur-Chicken-price"),
         },
         Food {
-            img_path: asset!("/assets/images/burger-3.png").input,
+            img_path: asset!(
+                "/assets/images/burger-3.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bur-Mushroom-alt"),
             title: LOCALES.lookup(lang_id, "bur-Mushroom-title"),
             description: LOCALES.lookup(lang_id, "bur-Mushroom-desc"),
             price: LOCALES.lookup(lang_id, "bur-Mushroom-price"),
         },
         Food {
-            img_path: asset!("/assets/images/burger-4.png").input,
+            img_path: asset!(
+                "/assets/images/burger-4.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bur-Salmon-alt"),
             title: LOCALES.lookup(lang_id, "bur-Salmon-title"),
             description: LOCALES.lookup(lang_id, "bur-Salmon-desc"),
             price: LOCALES.lookup(lang_id, "bur-Salmon-price"),
         },
         Food {
-            img_path: asset!("/assets/images/burger-5.png").input,
+            img_path: asset!(
+                "/assets/images/burger-5.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bur-Black-alt"),
             title: LOCALES.lookup(lang_id, "bur-Black-title"),
             description: LOCALES.lookup(lang_id, "bur-Black-desc"),
             price: LOCALES.lookup(lang_id, "bur-Black-price"),
         },
         Food {
-            img_path: asset!("/assets/images/burger-6.png").input,
+            img_path: asset!(
+                "/assets/images/burger-6.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bur-Greek-alt"),
             title: LOCALES.lookup(lang_id, "bur-Greek-title"),
             description: LOCALES.lookup(lang_id, "bur-Greek-desc"),
@@ -64,42 +82,60 @@ pub fn FoodCard(card: Menu) -> Element {
     ];
     let snacks = vec![
         Food {
-            img_path: asset!("/assets/images/snack-popcorn.png").input,
+            img_path: asset!(
+                "/assets/images/snack-popcorn.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "sn-Popcorn-alt"),
             title: LOCALES.lookup(lang_id, "sn-Popcorn-title"),
             description: LOCALES.lookup(lang_id, "sn-Popcorn-desc"),
             price: LOCALES.lookup(lang_id, "sn-Popcorn-price"),
         },
         Food {
-            img_path: asset!("/assets/images/snack-nachos.png").input,
+            img_path: asset!(
+                "/assets/images/snack-nachos.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "sn-Nachos-alt"),
             title: LOCALES.lookup(lang_id, "sn-Nachos-title"),
             description: LOCALES.lookup(lang_id, "sn-Nachos-desc"),
             price: LOCALES.lookup(lang_id, "sn-Nachos-price"),
         },
         Food {
-            img_path: asset!("/assets/images/snack-pretzel.png").input,
+            img_path: asset!(
+                "/assets/images/snack-pretzel.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "sn-Pretzels-alt"),
             title: LOCALES.lookup(lang_id, "sn-Pretzels-title"),
             description: LOCALES.lookup(lang_id, "sn-Pretzels-desc"),
             price: LOCALES.lookup(lang_id, "sn-Pretzels-price"),
         },
         Food {
-            img_path: asset!("/assets/images/snack-mini-pizzas.png").input,
+            img_path: asset!(
+                "/assets/images/snack-mini-pizzas.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "sn-Pizzas-alt"),
             title: LOCALES.lookup(lang_id, "sn-Pizzas-title"),
             description: LOCALES.lookup(lang_id, "sn-Pizzas-desc"),
             price: LOCALES.lookup(lang_id, "sn-Pizzas-price"),
         },
         Food {
-            img_path: asset!("/assets/images/snack-trail-mix.png").input,
+            img_path: asset!(
+                "/assets/images/snack-trail-mix.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "sn-Trail-alt"),
             title: LOCALES.lookup(lang_id, "sn-Trail-title"),
             description: LOCALES.lookup(lang_id, "sn-Trail-desc"),
             price: LOCALES.lookup(lang_id, "sn-Trail-price"),
         },
         Food {
-            img_path: asset!("/assets/images/snack-chips.png").input,
+            img_path: asset!(
+                "/assets/images/snack-chips.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "sn-Chips-alt"),
             title: LOCALES.lookup(lang_id, "sn-Chips-title"),
             description: LOCALES.lookup(lang_id, "sn-Chips-desc"),
@@ -109,35 +145,50 @@ pub fn FoodCard(card: Menu) -> Element {
 
     let beverage = vec![
         Food {
-            img_path: asset!("/assets/images/beverage-orange-juice.png").input,
+            img_path: asset!(
+                "/assets/images/beverage-orange-juice.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bev-Orange-alt"),
             title: LOCALES.lookup(lang_id, "bev-Orange-title"),
             description: LOCALES.lookup(lang_id, "bev-Orange-desc"),
             price: LOCALES.lookup(lang_id, "bev-Orange-price"),
         },
         Food {
-            img_path: asset!("/assets/images/beverage-coffee.png").input,
+            img_path: asset!(
+                "/assets/images/beverage-coffee.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bev-Coffee-alt"),
             title: LOCALES.lookup(lang_id, "bev-Coffee-title"),
             description: LOCALES.lookup(lang_id, "bev-Coffee-desc"),
             price: LOCALES.lookup(lang_id, "bev-Coffee-price"),
         },
         Food {
-            img_path: asset!("/assets/images/beverage-beer.png").input,
+            img_path: asset!(
+                "/assets/images/beverage-beer.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bev-Beer-alt"),
             title: LOCALES.lookup(lang_id, "bev-Beer-title"),
             description: LOCALES.lookup(lang_id, "bev-Beer-desc"),
             price: LOCALES.lookup(lang_id, "bev-Beer-price"),
         },
         Food {
-            img_path: asset!("/assets/images/beverage-milk.png").input,
+            img_path: asset!(
+                "/assets/images/beverage-milk.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bev-Milk-alt"),
             title: LOCALES.lookup(lang_id, "bev-Milk-title"),
             description: LOCALES.lookup(lang_id, "bev-Milk-desc"),
             price: LOCALES.lookup(lang_id, "bev-Milk-price"),
         },
         Food {
-            img_path: asset!("/assets/images/beverage-hot-chocolate.png").input,
+            img_path: asset!(
+                "/assets/images/beverage-hot-chocolate.png",
+                ImageAssetOptions::new().with_preload(true)
+            ),
             alt: LOCALES.lookup(lang_id, "bev-Chocolate-alt"),
             title: LOCALES.lookup(lang_id, "bev-Chocolate-title"),
             description: LOCALES.lookup(lang_id, "bev-Chocolate-desc"),

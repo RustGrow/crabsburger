@@ -16,8 +16,10 @@ pub fn PromoCard() -> Element {
             title: LOCALES.lookup(lang_id, "pr-bur-title"),
             description: LOCALES.lookup(lang_id, "pr-bur-desc"),
             img: Image {
-                class: "",
-                src: asset!("/assets/images/promo-1.png").input,
+                src: asset!(
+                    "/assets/images/promo-1.png",
+                    ImageAssetOptions::new().with_preload(true)
+                ),
                 alt: LOCALES.lookup(lang_id, "pr-bur-alt"),
             },
         },
@@ -26,8 +28,10 @@ pub fn PromoCard() -> Element {
             title: LOCALES.lookup(lang_id, "pr-bev-title"),
             description: LOCALES.lookup(lang_id, "pr-bev-desc"),
             img: Image {
-                class: "",
-                src: asset!("/assets/images/promo-2.png").input,
+                src: asset!(
+                    "/assets/images/promo-2.png",
+                    ImageAssetOptions::new().with_preload(true)
+                ),
                 alt: LOCALES.lookup(lang_id, "pr-bev-alt"),
             },
         },

@@ -1,3 +1,4 @@
+use dioxus::prelude::Asset;
 #[derive(PartialEq, Debug, Clone)]
 pub struct Category {
     pub title: String,
@@ -8,7 +9,7 @@ pub struct Category {
 
 #[derive(PartialEq, Debug, Clone)]
 pub struct Food {
-    pub img_path: &'static str,
+    pub img_path: Asset,
     pub alt: String,
     pub title: String,
     pub description: String,
@@ -23,8 +24,7 @@ pub struct HomeIcon {
 
 #[derive(PartialEq, Debug, Clone)]
 pub struct Image {
-    pub class: &'static str,
-    pub src: &'static str,
+    pub src: Asset,
     pub alt: String,
 }
 
@@ -39,7 +39,7 @@ pub struct Promo {
 #[derive(PartialEq, Debug, Clone)]
 pub struct Review {
     pub paragraph: String,
-    pub img: &'static str,
+    pub img: Asset,
     pub img_alt: String,
     pub name: String,
     pub job: String,
